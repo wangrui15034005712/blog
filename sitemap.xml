@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://lastsummer.top/blog/about/index.html</loc>
+    
+    <lastmod>2018-10-30T02:07:30.463Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://lastsummer.top/blog/2018/10/29/Hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95/</loc>
     
     <lastmod>2018-10-29T07:39:29.221Z</lastmod>
@@ -82,13 +89,6 @@
     <loc>https://lastsummer.top/blog/2018/10/11/hello-world/</loc>
     
     <lastmod>2018-10-22T09:04:16.282Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lastsummer.top/blog/about/index.html</loc>
-    
-    <lastmod>2018-10-15T08:53:33.975Z</lastmod>
     
   </url>
   
