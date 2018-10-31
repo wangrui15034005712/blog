@@ -374,6 +374,45 @@ new WOW().init();
 
 
 
+  <link rel="stylesheet" href="/blog/plugin/galmenu/GalMenu.css">
+  <script src="/blog/plugin/galmenu/GalMenu.js"></script>
+  <div class="GalMenu GalDropDown">
+      <div class="circle" id="gal">
+        <div class="ring">
+          
+            <a href="/blog/blog/" title="" class="menuItem">首页</a>
+          
+            <a href="/blog/blog/tags" title="" class="menuItem">标签</a>
+          
+            <a href="/blog/blog/categories" title="" class="menuItem">分类</a>
+          
+            <a href="/blog/blog/archives" title="" class="menuItem">归档</a>
+          
+            <a href="/blog/blog/about" title="" class="menuItem">关于</a>
+          
+            <a href="/blog/blog/photos" title="" class="menuItem">相册</a>
+          
+        </div>
+        
+          <audio id="audio" src="#"></audio><!--plugin/galmenu/wulusai.mp3-->
+        
+      </div> 
+</div>
+<div id="overlay" style="opacity: 1; cursor: pointer;"></div>
+  <script type="text/javascript">var items = document.querySelectorAll('.menuItem');
+    for (var i = 0,
+    l = items.length; i < l; i++) {
+      items[i].style.left = (50 - 35 * Math.cos( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
+      items[i].style.top = (50 + 35 * Math.sin( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
+    }</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('body').GalMenu({
+      'menu': 'GalDropDown'
+    })
+  });
+</script>
+
   <section class="hidden-xs"> 
   <ul class="cb-slideshow"> 
     <li><span>苟利</span></li> 
