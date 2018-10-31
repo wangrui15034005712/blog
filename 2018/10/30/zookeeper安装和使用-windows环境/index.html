@@ -7,19 +7,24 @@
   <meta name="sogou_site_verification" content="y4IFS8seKn"/><!--搜狗 验证不成功-->
   <meta name="google-site-verification" content="2qH4bOdXGa7Pk1tuRp6ePLAGiP6K3H07EUYDPo_Ugp4" /><!--谷歌-->
   
-  <title>404 Not Found 该页面无法显示 | 去年夏天</title>
+  <title>zookeeper安装和使用 windows环境 | 去年夏天</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;lt;!DOCTYPE html&amp;gt; ]\404">
-<meta property="og:type" content="website">
-<meta property="og:title" content="404 Not Found 该页面无法显示">
-<meta property="og:url" content="https://lastsummer.top/blog/404.html">
+  <meta name="description" content="简介&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，是Google的Chubby一个开源的实现，是Hadoop和Hbase的重要组件。它是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护、域名服务、分布式同步、组服务等。">
+<meta name="keywords" content="Zookeeper">
+<meta property="og:type" content="article">
+<meta property="og:title" content="zookeeper安装和使用 windows环境">
+<meta property="og:url" content="https://lastsummer.top/blog/2018/10/30/zookeeper安装和使用-windows环境/index.html">
 <meta property="og:site_name" content="去年夏天">
-<meta property="og:description" content="&amp;lt;!DOCTYPE html&amp;gt; ]\404">
+<meta property="og:description" content="简介&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，是Google的Chubby一个开源的实现，是Hadoop和Hbase的重要组件。它是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护、域名服务、分布式同步、组服务等。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-11T08:20:27.048Z">
+<meta property="og:image" content="https://lastsummer.top/blog/2018/10/30/zookeeper安装和使用-windows环境/zookeeper1.png">
+<meta property="og:image" content="https://lastsummer.top/blog/2018/10/30/zookeeper安装和使用-windows环境/zookeeper2.png">
+<meta property="og:image" content="https://lastsummer.top/blog/2018/10/30/zookeeper安装和使用-windows环境/zookeeper3.png">
+<meta property="og:updated_time" content="2018-10-30T09:57:15.179Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="404 Not Found 该页面无法显示">
-<meta name="twitter:description" content="&amp;lt;!DOCTYPE html&amp;gt; ]\404">
+<meta name="twitter:title" content="zookeeper安装和使用 windows环境">
+<meta name="twitter:description" content="简介&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，是Google的Chubby一个开源的实现，是Hadoop和Hbase的重要组件。它是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护、域名服务、分布式同步、组服务等。">
+<meta name="twitter:image" content="https://lastsummer.top/blog/2018/10/30/zookeeper安装和使用-windows环境/zookeeper1.png">
   
     <link rel="alternate" href="/atom.xml" title="去年夏天" type="application/atom+xml">
   
@@ -103,12 +108,12 @@
   </div>
 </div>
 
-        <section id="main"><article id="page-" class="wow slideInRight article article-type-page" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-zookeeper安装和使用-windows环境" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/blog/404.html" class="article-date">
-  <time class="post-time" datetime="2018-10-11T08:17:19.000Z" itemprop="datePublished">
+    <a href="/blog/2018/10/30/zookeeper安装和使用-windows环境/" class="article-date">
+  <time class="post-time" datetime="2018-10-30T09:37:43.000Z" itemprop="datePublished">
     <span class="post-month">10月</span><br/>
-    <span class="post-day">11</span>
+    <span class="post-day">30</span>
   </time>
 </a>
    
@@ -120,12 +125,26 @@
         
   
     <h1 class="article-title" itemprop="name">
-      404 Not Found 该页面无法显示
+      zookeeper安装和使用 windows环境
     </h1>
   
 
         <div>
           
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/RPC/">RPC</a>
+  </div>
+
+          
+              
+  &nbsp; | &nbsp;
+  <div class="view-box">
+    <span id="/blog/2018/10/30/zookeeper安装和使用-windows环境/" class="leancloud_visitors" data-flag-title="zookeeper安装和使用 windows环境">
+      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
+    </span>
+  </div>
+
+
           
         </div>
       </header>
@@ -134,8 +153,37 @@
       
 		<!-- Table of Contents -->
 		
+      <div id="toc" class="toc-article">
+      <strong class="toc-title">文章目录</strong>
+      
+      </div>
+    
       <!-- 目录内容 -->
 
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+    <div id="toc-article" class="toc-article" >
+        <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+        <strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下载"><span class="toc-number">2.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">3.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动"><span class="toc-number">4.</span> <span class="toc-text">启动</span></a></li></ol>
+         </div>
+   <script type="text/javascript">
+    function showToc(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:block");
+        show_toc_btn.setAttribute("style","display:none");
+        };
+    function showBtn(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:none");
+        show_toc_btn.setAttribute("style","display:block");
+        };
+   </script>
+   
 <!-- 目录内容结束 -->
 <style>
 /* 新添加的 */
@@ -149,24 +197,132 @@
 }
 
 </style>
-        <p>&lt;!DOCTYPE html&gt;</p>
-<html lang="en"><br><head>]\<br><meta charset="UTF-8"><br><title>404</title><br></head><br><body><br><script type="text/javascript" src="//qzonestyle.gtimg.cn/qzone/hybrid/app/404/search_children.js" charset="utf-8"></script><br></body><br></html>
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，是Google的Chubby一个开源的实现，是Hadoop和Hbase的重要组件。它是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护、域名服务、分布式同步、组服务等。<br><a id="more"></a><br>ZooKeeper的目标就是封装好复杂易出错的关键服务，将简单易用的接口和性能高效、功能稳定的系统提供给用户。<br>ZooKeeper包含一个简单的原语集，提供Java和C的接口。<br>ZooKeeper代码版本中，提供了分布式独享锁、选举、队列的接口，代码在zookeeper-3.4.12\src\recipes。其中分布锁和队列有Java和C两个版本，选举只有Java版本。</p>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>Apache官方最新版本为：3.4.12<br>下载地址：<a href="http://mirror.bit.edu.cn/apache/zookeeper/stable/zookeeper-3.4.12.tar.gz" target="_blank" rel="noopener">http://mirror.bit.edu.cn/apache/zookeeper/stable/zookeeper-3.4.12.tar.gz</a></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>解压到指定目录下    D:\dubbo\zookeeper-3.4.12<br>修改zoo_sample.cfg 文件名(D:\dubbo\zookeeper-3.4.12\conf) 为 zoo.cfg<br>主要修改一下日志位置，具体配置文件如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"># The number of milliseconds of each tick</span><br><span class="line">tickTime=2000</span><br><span class="line"># The number of ticks that the initial </span><br><span class="line"># synchronization phase can take</span><br><span class="line">initLimit=10</span><br><span class="line"># The number of ticks that can pass between </span><br><span class="line"># sending a request and getting an acknowledgement</span><br><span class="line">syncLimit=5</span><br><span class="line"># the directory where the snapshot is stored.</span><br><span class="line"># do not use /tmp for storage, /tmp here is just </span><br><span class="line"># example sakes.</span><br><span class="line">dataDir=D:\\zookeeper-3.4.12\\data</span><br><span class="line">dataLogDir=D:\\zookeeper-3.4.12\\log</span><br><span class="line"># the port at which the clients will connect</span><br><span class="line">clientPort=2181</span><br><span class="line"># the maximum number of client connections.</span><br><span class="line"># increase this if you need to handle more clients</span><br><span class="line">#maxClientCnxns=60</span><br><span class="line">#</span><br><span class="line"># Be sure to read the maintenance section of the </span><br><span class="line"># administrator guide before turning on autopurge.</span><br><span class="line">#</span><br><span class="line"># http://zookeeper.apache.org/doc/current/zookeeperAdmin.html#sc_maintenance</span><br><span class="line">#</span><br><span class="line"># The number of snapshots to retain in dataDir</span><br><span class="line">#autopurge.snapRetainCount=3</span><br><span class="line"># Purge task interval in hours</span><br><span class="line"># Set to &quot;0&quot; to disable auto purge feature</span><br><span class="line">#autopurge.purgeInterval=1</span><br></pre></td></tr></table></figure></p>
+<p>配置文件简单解析<br>1、tickTime：这个时间是作为 Zookeeper 服务器之间或客户端与服务器之间维持心跳的时间间隔，也就是每个 tickTime 时间就会发送一个心跳。<br>2、dataDir：顾名思义就是 Zookeeper 保存数据的目录，默认情况下，Zookeeper 将写数据的日志文件也保存在这个目录里。<br>3、dataLogDir：顾名思义就是 Zookeeper 保存日志文件的目录<br>4、clientPort：这个端口就是客户端连接 Zookeeper 服务器的端口，Zookeeper 会监听这个端口，接受客户端的访问请求。</p>
+<h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><p>进入到bin目录，并且启动zkServer.cmd，这个脚本中会启动一个java进程(不可关闭，造成客户端无法访问)<br><img src="/blog/2018/10/30/zookeeper安装和使用-windows环境/zookeeper1.png" alt=""><br>启动后jps可以看到QuorumPeerMain的进程<br><img src="/blog/2018/10/30/zookeeper安装和使用-windows环境/zookeeper2.png" alt=""><br>也可以启动客户端连接一下<br><img src="/blog/2018/10/30/zookeeper安装和使用-windows环境/zookeeper3.png" alt=""><br>OK，安装成功，很简单</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://lastsummer.top/blog//404.html" data-id="cjnwfnr150001sovb7a4581aw" class="article-share-link-test"></a>
+      <a data-url="https://lastsummer.top/blog/2018/10/30/zookeeper安装和使用-windows环境/" data-id="cjnwfnr2e000osovbe6g092cz" class="article-share-link-test"></a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Zookeeper/">Zookeeper</a></li></ul>
+
     </footer>
 	
+	
+	  
+    <!--MOB SHARE BEGIN-->
+	<div class="-mob-share-ui-button -mob-share-open">分享</div>
+	<div class="-mob-share-ui" style="display: none">
+		<ul class="-mob-share-list">
+			<li class="-mob-share-weibo"><p>新浪微博</p></li>
+			<li class="-mob-share-tencentweibo"><p>腾讯微博</p></li>
+			<li class="-mob-share-qzone"><p>QQ空间</p></li>
+			<li class="-mob-share-qq"><p>QQ好友</p></li>
+			<li class="-mob-share-weixin"><p>微信</p></li>
+			<li class="-mob-share-douban"><p>豆瓣</p></li>
+			<li class="-mob-share-renren"><p>人人网</p></li>
+			<li class="-mob-share-kaixin"><p>开心网</p></li>
+			<li class="-mob-share-facebook"><p>Facebook</p></li>
+			<li class="-mob-share-twitter"><p>Twitter</p></li>
+			<li class="-mob-share-pocket"><p>Pocket</p></li>
+			<li class="-mob-share-google"><p>Google+</p></li>
+			<li class="-mob-share-youdao"><p>有道云笔记</p></li>
+			<li class="-mob-share-mingdao"><p>明道</p></li>
+			<li class="-mob-share-pengyou"><p>朋友网</p></li>
+			<li class="-mob-share-tumblr"><p>Tumblr</p></li>
+			<li class="-mob-share-instapaper"><p>Instapaper</p></li>
+			<li class="-mob-share-linkedin"><p>LinkedIn</p></li>
+		</ul>
+		<div class="-mob-share-close">取消</div>
+	</div>
+	<div class="-mob-share-ui-bg"></div>
+	<script id="-mob-share" src="https://f1.webshare.mob.com/code/mob-share.js?appkey=283bca7b96411"></script>
+	<!--MOB SHARE END-->
 	
 	
   </div>
   
   
     
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2018/10/30/Dubbo入门-搭建一个最简单的Demo框架/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一页</strong>
+      <div class="article-nav-title">Dubbo入门---搭建一个最简单的Demo框架</div>
+    </a>
+  
+</nav>
+
   
 
+	
+		<! -- 添加捐赠图标 -->
+	<div align='center' style='margin-top:80px;'>
+		<div id='donate_board' class="donate_bar">
+			<a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏"></a>
+			<span class="donate_txt">
+			   &uarr;<br>
+			   欣赏此文？求鼓励，求支持！
+			</span>
+		</div>
+		<div id="donate_guide" class="donate_bar hidden" >
+			<!-- 支付宝打赏图案 -->
+			<img src="/photos/donate/zhifubao.jpg" alt="支付宝打赏"> 
+			<!-- 微信打赏图案 -->
+			<img src="/photos/donate/weixin.png" alt="微信打赏">  
+		</div>
+	 </div>
+<! -- 添加捐赠图标 -->
+<script>
+	document.getElementById('btn_donate').onclick = function(){
+		$('#donate_board').addClass('hidden');
+		$('#donate_guide').removeClass('hidden');
+	}
+	document.getElementById('donate_guide').onclick = function(){
+		$('#donate_guide').addClass('hidden');
+		$('#donate_board').removeClass('hidden');
+	}
+</script>
+<style>
+.hidden{
+	display: none;
+}
+a.btn_donate {
+	display: inline-block;
+	width: 82px;
+	height: 82px;
+	margin-left: auto;
+	margin-right: auto;
+	background: url(http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif)no-repeat;
+	-webkit-transition: background 0s;
+	-moz-transition: background 0s;
+	-o-transition: background 0s;
+	-ms-transition: background 0s;
+	transition: background 0s
+}
+.donate_bar .donate_txt {
+	display: block;
+	color: #9d9d9d;
+	font: 14px/2 "Microsoft Yahei"
+}
+#donate_guide{
+	height: 210px;
+	width: 500px;
+	margin: 0 auto;
+}
+#donate_guide img{
+	height: 200px;
+	height: 200px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+</style>
 	
   
 </article>
@@ -176,6 +332,17 @@
 
 
 
+
+
+	<!--PC和WAP自适应版 sid="请将此处替换为配置SourceID的语句"-->
+<div id="SOHUCS"></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cytRJBBqd'; 
+var conf = '6c62cf127e7cfd66a7c253c93daeda6e'; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
 
 
 
