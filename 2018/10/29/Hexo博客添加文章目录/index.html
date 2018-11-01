@@ -13,16 +13,16 @@
 <meta name="keywords" content="Html">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo博客添加文章目录">
-<meta property="og:url" content="https://lastsummer.top/2018/10/29/Hexo博客添加文章目录/index.html">
+<meta property="og:url" content="https://lastsummer.top/blog/2018/10/29/Hexo博客添加文章目录/index.html">
 <meta property="og:site_name" content="去年夏天">
 <meta property="og:description" content="Hexo博客添加嵌入边栏的文章目录，以 hexo-theme-shana-master 主题为例。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://lastsummer.top/2018/10/29/Hexo博客添加文章目录/catalog1.png">
+<meta property="og:image" content="https://lastsummer.top/blog/2018/10/29/Hexo博客添加文章目录/catalog1.png">
 <meta property="og:updated_time" content="2018-10-29T07:39:29.221Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo博客添加文章目录">
 <meta name="twitter:description" content="Hexo博客添加嵌入边栏的文章目录，以 hexo-theme-shana-master 主题为例。">
-<meta name="twitter:image" content="https://lastsummer.top/2018/10/29/Hexo博客添加文章目录/catalog1.png">
+<meta name="twitter:image" content="https://lastsummer.top/blog/2018/10/29/Hexo博客添加文章目录/catalog1.png">
   
     <link rel="alternate" href="/atom.xml" title="去年夏天" type="application/atom+xml">
   
@@ -32,8 +32,8 @@
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
-  <link rel="stylesheet" href="/blog/css/style.css">
-  <link rel="stylesheet" href="/blog/plugin/bganimation/bg.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/plugin/bganimation/bg.css">
   
 
   <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
@@ -108,7 +108,7 @@
 
         <section id="main"><article id="post-Hexo博客添加文章目录" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/blog/2018/10/29/Hexo博客添加文章目录/" class="article-date">
+    <a href="/2018/10/29/Hexo博客添加文章目录/" class="article-date">
   <time class="post-time" datetime="2018-10-29T02:57:09.000Z" itemprop="datePublished">
     <span class="post-month">10月</span><br/>
     <span class="post-day">29</span>
@@ -130,14 +130,14 @@
         <div>
           
   <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/hexo/">hexo</a>
+    <a class="article-category-link" href="/categories/hexo/">hexo</a>
   </div>
 
           
               
   &nbsp; | &nbsp;
   <div class="view-box">
-    <span id="/blog/2018/10/29/Hexo博客添加文章目录/" class="leancloud_visitors" data-flag-title="Hexo博客添加文章目录">
+    <span id="/2018/10/29/Hexo博客添加文章目录/" class="leancloud_visitors" data-flag-title="Hexo博客添加文章目录">
       &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
     </span>
   </div>
@@ -195,7 +195,7 @@
 }
 
 </style>
-        <p>Hexo博客添加嵌入边栏的文章目录，以 hexo-theme-shana-master 主题为例。<br><a id="more"></a><br><img src="/2018/10/29/Hexo博客添加文章目录/catalog1.png" alt="效果展示"></p>
+        <p>Hexo博客添加嵌入边栏的文章目录，以 hexo-theme-shana-master 主题为例。<br><a id="more"></a><br><img src="/blog/2018/10/29/Hexo博客添加文章目录/catalog1.png" alt="效果展示"></p>
 <h3 id="第一步：编写文章目录模块的代码"><a href="#第一步：编写文章目录模块的代码" class="headerlink" title="第一步：编写文章目录模块的代码"></a>第一步：编写文章目录模块的代码</h3><p><code>themes\hexo-theme-shana-master\layout\_partial</code> 下新建 <code>toc.ejs</code> 输入如下内容：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 目录内容 --&gt;</span><br><span class="line">&lt;p class=<span class="string">"show-toc-btn"</span> id=<span class="string">"show-toc-btn"</span> onclick=<span class="string">"showToc();"</span> style=<span class="string">"display:none"</span>&gt;</span><br><span class="line">  &lt;span class=<span class="string">"btn-bg"</span>&gt;&lt;/span&gt;</span><br><span class="line">  &lt;span class=<span class="string">"btn-text"</span>&gt;文章导航&lt;/span&gt;</span><br><span class="line">&lt;/p&gt;</span><br><span class="line">&lt;div id=<span class="string">"toc-article"</span> class=<span class="string">"toc-article"</span> &gt;</span><br><span class="line">  &lt;span id=<span class="string">"toc-close"</span> class=<span class="string">"toc-close"</span> title=<span class="string">"隐藏导航"</span> onclick=<span class="string">"showBtn();"</span>&gt;×&lt;/span&gt;</span><br><span class="line">  &lt;strong class=<span class="string">"toc-title"</span>&gt;文章目录&lt;/strong&gt;</span><br><span class="line">  &lt;%- toc(post.content) %&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">showToc</span></span>()&#123;</span><br><span class="line">   var toc_article = document.getElementById(<span class="string">"toc-article"</span>);</span><br><span class="line">   var show_toc_btn = document.getElementById(<span class="string">"show-toc-btn"</span>);</span><br><span class="line">   toc_article.setAttribute(<span class="string">"style"</span>,<span class="string">"display:block"</span>);</span><br><span class="line">   show_toc_btn.setAttribute(<span class="string">"style"</span>,<span class="string">"display:none"</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">showBtn</span></span>()&#123;</span><br><span class="line">   var toc_article = document.getElementById(<span class="string">"toc-article"</span>);</span><br><span class="line">   var show_toc_btn = document.getElementById(<span class="string">"show-toc-btn"</span>);</span><br><span class="line">   toc_article.setAttribute(<span class="string">"style"</span>,<span class="string">"display:none"</span>);</span><br><span class="line">   show_toc_btn.setAttribute(<span class="string">"style"</span>,<span class="string">"display:block"</span>);</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;!-- 目录内容结束 --&gt;</span><br></pre></td></tr></table></figure></p>
 <h3 id="第二步：编写文章目录模块的样式"><a href="#第二步：编写文章目录模块的样式" class="headerlink" title="第二步：编写文章目录模块的样式"></a>第二步：编写文章目录模块的样式</h3><p><code>themes\hexo-theme-shana-master\source\css\_partial</code> 下新建 <code>toc.styl</code> 输入如下内容：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line"><span class="comment">#container .show-toc-btn,#container .toc-article&#123;display:block&#125;</span></span><br><span class="line">.toc-article&#123;z-index:100;background:<span class="comment">#fff;border:1px solid #ccc;max-width:250px;min-width:150px;max-height:500px;overflow-y:auto;-webkit-box-shadow:5px 5px 2px #ccc;box-shadow:5px 5px 2px #ccc;font-size:12px;padding:10px;position:fixed;right:35px;top:129px&#125;</span></span><br><span class="line">.toc-article .toc-close&#123;font-weight:700;font-size:20px;cursor:pointer;<span class="built_in">float</span>:right;color:<span class="comment">#ccc&#125;</span></span><br><span class="line">.toc-article .toc-close:hover&#123;color:<span class="comment">#000&#125;</span></span><br><span class="line">.toc-article .toc&#123;font-size:12px;padding:0;line-height:20px&#125;</span><br><span class="line">.toc-article .toc .toc-number&#123;color:<span class="comment">#333&#125;</span></span><br><span class="line">.toc-article .toc .toc-text:hover&#123;text-decoration:underline;color:<span class="comment">#2a6496&#125;</span></span><br><span class="line">.toc-article li&#123;list-style-type:none&#125;</span><br><span class="line">.toc-article .toc-level-1&#123;margin:4px 0&#125;</span><br><span class="line">.toc-article .toc-child&#123;&#125;</span><br><span class="line">@-moz-keyframes <span class="built_in">cd</span>-bounce-1&#123;0%&#123;opacity:0;-o-transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1)&#125;60%&#123;opacity:1;-o-transform:scale(1.01);-webkit-transform:scale(1.01);-moz-transform:scale(1.01);-ms-transform:scale(1.01);transform:scale(1.01)&#125;100%&#123;-o-transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1)&#125;&#125;</span><br><span class="line">@-webkit-keyframes <span class="built_in">cd</span>-bounce-1&#123;0%&#123;opacity:0;-o-transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1)&#125;60%&#123;opacity:1;-o-transform:scale(1.01);-webkit-transform:scale(1.01);-moz-transform:scale(1.01);-ms-transform:scale(1.01);transform:scale(1.01)&#125;100%&#123;-o-transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1)&#125;&#125;</span><br><span class="line">@-o-keyframes <span class="built_in">cd</span>-bounce-1&#123;0%&#123;opacity:0;-o-transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1)&#125;60%&#123;opacity:1;-o-transform:scale(1.01);-webkit-transform:scale(1.01);-moz-transform:scale(1.01);-ms-transform:scale(1.01);transform:scale(1.01)&#125;100%&#123;-o-transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1)&#125;&#125;</span><br><span class="line">@keyframes <span class="built_in">cd</span>-bounce-1&#123;0%&#123;opacity:0;-o-transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1)&#125;60%&#123;opacity:1;-o-transform:scale(1.01);-webkit-transform:scale(1.01);-moz-transform:scale(1.01);-ms-transform:scale(1.01);transform:scale(1.01)&#125;100%&#123;-o-transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1)&#125;&#125;</span><br><span class="line">.show-toc-btn&#123;display:none;z-index:10;width:30px;min-height:14px;overflow:hidden;padding:4px 6px 8px 5px;border:1px solid <span class="comment">#ddd;border-right:none;position:fixed;right:40px;text-align:center;background-color:#f9f9f9&#125;</span></span><br><span class="line">.show-toc-btn .btn-bg&#123;margin-top:2px;display:block;width:16px;height:14px;background:url(http://7xtawy.com1.z0.glb.clouddn.com/show.png) no-repeat;-webkit-background-size:100%;-moz-background-size:100%;background-size:100%&#125;</span><br><span class="line">.show-toc-btn .btn-text&#123;color:<span class="comment">#999;font-size:12px&#125;</span></span><br><span class="line">.show-toc-btn:hover&#123;cursor:pointer&#125;</span><br><span class="line">.show-toc-btn:hover .btn-bg&#123;background-position:0 -16px&#125;</span><br><span class="line">.show-toc-btn:hover .btn-text&#123;font-size:12px;color:<span class="comment">#ea8010&#125;</span></span><br><span class="line">.toc-article li ol, .toc-article li ul &#123;margin-left: 30px;&#125;</span><br><span class="line">.toc-article ol, .toc-article ul &#123;margin: 10px 0;&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></p>
 <p>最后，记得在 <code>toc.styl</code> 中添加 @import <code>_partial/toc</code> </p>
@@ -206,10 +206,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://lastsummer.top/2018/10/29/Hexo博客添加文章目录/" data-id="cjnxyqdf0000cr8vbl423ac9d" class="article-share-link-test"></a>
+      <a data-url="https://lastsummer.top/blog/2018/10/29/Hexo博客添加文章目录/" data-id="cjny509uy000fowvbggff3050" class="article-share-link-test"></a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Html/">Html</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Html/">Html</a></li></ul>
 
     </footer>
 	
@@ -251,7 +251,7 @@
     
 <nav id="article-nav">
   
-    <a href="/blog/2018/10/29/Hexo博客实现站内搜索/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/10/29/Hexo博客实现站内搜索/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">首页</strong>
       <div class="article-nav-title">
         
@@ -261,7 +261,7 @@
     </a>
   
   
-    <a href="/blog/2018/10/26/Hexo博客用Leancloud统计文章阅读量/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/10/26/Hexo博客用Leancloud统计文章阅读量/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一页</strong>
       <div class="article-nav-title">Hexo博客用Leancloud统计文章阅读量</div>
     </a>
@@ -584,28 +584,28 @@ new WOW().init();
 </script>   
 
 
-  <link rel="stylesheet" href="/blog/plugin/fancybox/jquery.fancybox.css">
-  <script src="/blog/plugin/fancybox/jquery.fancybox.pack.js"></script>
+  <link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+  <script src="/plugin/fancybox/jquery.fancybox.pack.js"></script>
 
 
 
-  <link rel="stylesheet" href="/blog/plugin/galmenu/GalMenu.css">
-  <script src="/blog/plugin/galmenu/GalMenu.js"></script>
+  <link rel="stylesheet" href="/plugin/galmenu/GalMenu.css">
+  <script src="/plugin/galmenu/GalMenu.js"></script>
   <div class="GalMenu GalDropDown">
       <div class="circle" id="gal">
         <div class="ring">
           
-            <a href="/blog/" title="" class="menuItem">首页</a>
+            <a href="/" title="" class="menuItem">首页</a>
           
-            <a href="/blog/tags" title="" class="menuItem">标签</a>
+            <a href="/tags" title="" class="menuItem">标签</a>
           
-            <a href="/blog/categories" title="" class="menuItem">分类</a>
+            <a href="/categories" title="" class="menuItem">分类</a>
           
-            <a href="/blog/archives" title="" class="menuItem">归档</a>
+            <a href="/archives" title="" class="menuItem">归档</a>
           
-            <a href="/blog/about" title="" class="menuItem">关于</a>
+            <a href="/about" title="" class="menuItem">关于</a>
           
-            <a href="/blog/photos" title="" class="menuItem">相册</a>
+            <a href="/photos" title="" class="menuItem">相册</a>
           
         </div>
         
@@ -638,7 +638,7 @@ new WOW().init();
     <li><span>趋避之</span></li> 
   </ul>
 </section>
-<script src="/blog/js/script.js"></script>
+<script src="/js/script.js"></script>
 
 
 
