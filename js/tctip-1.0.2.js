@@ -2098,7 +2098,7 @@ var Link = function (_BaseDom2) {
     key: 'genDom',
     value: function genDom() {
       this.createDom(_defineProperty({
-        href: 'https://github.com/greedying/tctip',
+        href: 'https://github.com/wangrui15034005712',
         target: '_blank'
       }, _dom.textKey, '了解更多'), 'a');
     }
