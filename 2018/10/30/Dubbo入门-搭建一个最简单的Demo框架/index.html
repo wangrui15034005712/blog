@@ -259,7 +259,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://lastsummer.top/blog/2018/10/30/Dubbo入门-搭建一个最简单的Demo框架/" data-id="cjo5j8e98001ly0vbjjz6wzcn" class="article-share-link-test"></a>
+      <a data-url="https://lastsummer.top/blog/2018/10/30/Dubbo入门-搭建一个最简单的Demo框架/" data-id="cjo5jbpn6001nd0vbx84yy726" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Dubbo/">Dubbo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Maven/">Maven</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Zookeeper/">Zookeeper</a></li></ul>
@@ -367,37 +367,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
   }).init()
 </script>
 
-
-<div class="top gongyong">
-    <a href="javascript:void(0);">顶部</a>
-</div>
-<div class="bottom gongyong">
-    <a href="javascript:void(0);">底部</a>
-</div>
-<style>
-.gongyong a {
-	width:50px;
-	height:50px;
-	background:#000;
-	color:#fff;
-	position:fixed;
-	text-align:center;
-	line-height:50px;
-	right:2%;
-	text-decoration:none;
-	transition:all 0.5s;
-	display:none;
-}
-.top a {
-	top:70%;
-}
-.bottom a {
-	top:80%;
-}
-.gongyong a.hover {
-	background:#e14da0;
-}
-</style></section>
+</section>
         
           <aside id="sidebar">
   
@@ -616,6 +586,67 @@ var searchFunc = function(path, search_id, content_id) {
     setInterval("createtime()",250);
     </script>
 </footer>
+<style>
+body {
+  position:relative;
+}
+.gongyong a {
+  width:50px;
+  height:50px;
+  background:#000;
+  color:#fff;
+  position:fixed;
+  text-align:center;
+  line-height:50px;
+  right:2%;
+  text-decoration:none;
+  transition:all 0.5s;
+  display:none;
+}
+.top a {
+  top:70%;
+}
+.bottom a {
+  top:80%;
+}
+.gongyong a.hover {
+  background:#e14da0;
+}
+</style>
+<div class="top gongyong">
+    <a href="javascript:void(0);">顶部</a>
+</div>
+<div class="bottom gongyong">
+    <a href="javascript:void(0);">底部</a>
+</div>
+
+
+<script>
+$(function() {
+    $(window).scroll(function() {
+        if ($(window).scrollTop() >= 300) {
+            $('.gongyong a').fadeIn(600);
+        } else {
+            $('.gongyong a').fadeOut(600);
+        }
+    });
+    $('.gongyong a').hover(function() {
+        $(this).addClass('hover');
+    }, function() {
+        $(this).removeClass('hover');
+    });
+    $('.top a').click(function() {
+        $("html,body").animate({
+            scrollTop: 0
+        }, 500);
+    });
+    $('.bottom a').click(function() {
+        $("html,body").animate({
+            scrollTop: $(document).height()
+        }, 500);
+    });
+});
+</script>
     </div>
     
 
