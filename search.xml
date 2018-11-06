@@ -65,9 +65,9 @@
       
         <tags>
             
-            <tag> Zookeeper </tag>
-            
             <tag> Dubbo </tag>
+            
+            <tag> Zookeeper </tag>
             
             <tag> Maven </tag>
             
