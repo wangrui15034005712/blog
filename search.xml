@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>Git添加Tag用法</title>
+      <link href="/blog/2018/11/14/Git%E6%B7%BB%E5%8A%A0Tag%E7%94%A8%E6%B3%95/"/>
+      <url>/blog/2018/11/14/Git%E6%B7%BB%E5%8A%A0Tag%E7%94%A8%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<p>作为版本管理工具，Git可以对某个版本打上标签(tag)，表示本版本为发行版。这样一个不可修改的历史代码版本就像被我们封存起来一样,不论是运维发布拉取,或者以后的代码版本管理,都是十分方便的。<br><a id="more"></a><br>Git标签分为两类：<br>1、轻量级的：它其实是一个独立的分支,或者说是一个不可变的分支.指向特定提交对象的引用<br>2、带附注的：实际上是存储在仓库中的一个独立对象，它有自身的校验和信息，包含着标签的名字，标签说明，标签本身也允许使用 GNU Privacy Guard (GPG) 来签署或验证,电子邮件地址和日期，一般我们都建议使用含附注型的标签，以便保留相关信息</p><h2 id="查看标签"><a href="#查看标签" class="headerlink" title="查看标签"></a>查看标签</h2><h3 id="打印所有标签"><a href="#打印所有标签" class="headerlink" title="打印所有标签"></a>打印所有标签</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag</span><br></pre></td></tr></table></figure><h3 id="打印符合检索条件的标签"><a href="#打印符合检索条件的标签" class="headerlink" title="打印符合检索条件的标签"></a>打印符合检索条件的标签</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -l &lt;版本号&gt;</span><br></pre></td></tr></table></figure><p>如 <code>git tag -l 1.*.*</code> 为搜索一级版本为1的版本</p><h3 id="查看对应标签状态"><a href="#查看对应标签状态" class="headerlink" title="查看对应标签状态"></a>查看对应标签状态</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout &lt;版本号&gt;</span><br></pre></td></tr></table></figure><h2 id="创建本地标签"><a href="#创建本地标签" class="headerlink" title="创建本地标签"></a>创建本地标签</h2><h3 id="创建轻量标签"><a href="#创建轻量标签" class="headerlink" title="创建轻量标签"></a>创建轻量标签</h3><p>轻量标签指向一个发行版的分支，其只是一个像某commit的引用，不存储名称时间戳及标签说明等信息。定义方法如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag &lt;版本号&gt;-light</span><br></pre></td></tr></table></figure></p><h3 id="创建带附注标签"><a href="#创建带附注标签" class="headerlink" title="创建带附注标签"></a>创建带附注标签</h3><p>相对于轻量标签，附注标签是一个独立的标签对象，包含了名称时间戳以及标签备注等信息，同时指向对应的commit。定义方法如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -a &lt;版本号&gt; -m &quot;&lt;备注信息&gt;&quot;</span><br></pre></td></tr></table></figure></p><p>同时我们也可以像特定的commit添加标签，使用该commit对应的SHA值即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -a &lt;版本号&gt; &lt;SHA值&gt; -m &quot;&lt;备注信息&gt;&quot;</span><br></pre></td></tr></table></figure></p><p>比如 <code>git tag -a 1.0.0 0c3b62d -m &quot;Release Edition v1.0.0&quot;</code> 就是为SHA为0c3b62d的这次提交打了1.0发行版的tag</p><h2 id="删除标签"><a href="#删除标签" class="headerlink" title="删除标签"></a>删除标签</h2><h3 id="删除本地标签"><a href="#删除本地标签" class="headerlink" title="删除本地标签"></a>删除本地标签</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -d &lt;版本号&gt;</span><br></pre></td></tr></table></figure><h3 id="删除远程仓库的标签"><a href="#删除远程仓库的标签" class="headerlink" title="删除远程仓库的标签"></a>删除远程仓库的标签</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin --delete &lt;版本号&gt; #新版本Git (&gt; v1.7.0)</span><br></pre></td></tr></table></figure><h2 id="推送标签"><a href="#推送标签" class="headerlink" title="推送标签"></a>推送标签</h2><h3 id="推送所有标签"><a href="#推送所有标签" class="headerlink" title="推送所有标签"></a>推送所有标签</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin --tags</span><br></pre></td></tr></table></figure><h3 id="推送指定版本的标签"><a href="#推送指定版本的标签" class="headerlink" title="推送指定版本的标签"></a>推送指定版本的标签</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin &lt;版本号&gt;</span><br></pre></td></tr></table></figure><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>最后总结一下常用命令，方便查阅。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">// 创建标签(本地)</span><br><span class="line">// 创建轻量标签</span><br><span class="line">git tag 1.0.0-light</span><br><span class="line">// 创建带备注标签(推荐)</span><br><span class="line">git tag -a 1.0.0 -m &quot;这是备注信息&quot;</span><br><span class="line">// 针对特定commit版本SHA创建标签</span><br><span class="line">git tag -a 1.0.0 0c3b62d -m &quot;这是备注信息&quot;</span><br><span class="line"></span><br><span class="line">// 查看标签</span><br><span class="line">// 打印所有标签</span><br><span class="line">git tag</span><br><span class="line">// 打印符合检索条件的标签</span><br><span class="line">git tag -l 1.*.*</span><br><span class="line">// 查看对应标签状态</span><br><span class="line">git checkout 1.0.0</span><br><span class="line"></span><br><span class="line">// 将本地标签发布到远程仓库</span><br><span class="line">// 发送所有</span><br><span class="line">git push origin --tags</span><br><span class="line">// 指定版本发送</span><br><span class="line">git push origin 1.0.0</span><br><span class="line"></span><br><span class="line">// 删除标签(本地)</span><br><span class="line">git tag -d 1.0.0</span><br><span class="line"></span><br><span class="line">// 删除远程仓库对应标签</span><br><span class="line">// Git版本 &gt; V1.7.0</span><br><span class="line">git push origin --delete 1.0.0</span><br><span class="line">// 旧版本Git</span><br><span class="line">git push origin :refs/tags/1.0.0</span><br></pre></td></tr></table></figure></p><p>参考博客：<a href="https://www.jianshu.com/p/8956a9cfa9da" target="_blank" rel="noopener">使用Git添加Tag的方法</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Git </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Hexo实现github+coding双线部署</title>
       <link href="/blog/2018/11/08/Hexo%E5%AE%9E%E7%8E%B0github-coding%E5%8F%8C%E7%BA%BF%E9%83%A8%E7%BD%B2/"/>
       <url>/blog/2018/11/08/Hexo%E5%AE%9E%E7%8E%B0github-coding%E5%8F%8C%E7%BA%BF%E9%83%A8%E7%BD%B2/</url>
@@ -44,9 +67,9 @@
       
         <tags>
             
-            <tag> Github </tag>
-            
             <tag> Html </tag>
+            
+            <tag> Github </tag>
             
         </tags>
       
@@ -165,9 +188,9 @@
       
         <tags>
             
-            <tag> Nodejs </tag>
-            
             <tag> Html </tag>
+            
+            <tag> Nodejs </tag>
             
         </tags>
       
@@ -305,9 +328,9 @@
       
         <tags>
             
-            <tag> Nodejs </tag>
-            
             <tag> Git </tag>
+            
+            <tag> Nodejs </tag>
             
             <tag> Hexo </tag>
             

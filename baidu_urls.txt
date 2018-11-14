@@ -1,3 +1,4 @@
+https://lastsummer.top/blog/2018/11/14/Git添加Tag用法/
 https://lastsummer.top/blog/2018/11/08/Hexo实现github-coding双线部署/
 https://lastsummer.top/blog/2018/11/07/Hexo博客用自己的页面做首页/
 https://lastsummer.top/blog/2018/11/06/Hexo博客添加返回顶部按钮/
