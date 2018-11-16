@@ -223,7 +223,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://lastsummer.top/blog/2018/11/08/Hexo实现github-coding双线部署/" data-id="cjojsw8dh000p34vbk1dmpoev" class="article-share-link-test"></a>
+      <a data-url="https://lastsummer.top/blog/2018/11/08/Hexo实现github-coding双线部署/" data-id="cjojta3zv000xggvbqtg1pur4" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Coding/">Coding</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Github/">Github</a></li></ul>
@@ -468,7 +468,7 @@ var searchFunc = function(path, search_id, content_id) {
                    title = data.title;
                 }
                 if(count <= 20){
-                var url = 'https://lastsummer.top' + data.url;
+                var url = 'https://lastsummer.top/' + data.url;
                  string1 += "<li><a href='"+  url +"'>"+ title +"</a>";
                 }
              });
@@ -489,6 +489,7 @@ var searchFunc = function(path, search_id, content_id) {
                     var data_title = data.title.trim().toLowerCase();
                     var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
                     var data_url = data.url;
+                    data_url = 'https://lastsummer.top/' + data_url;
                     var index_title = -1;
                     var index_content = -1;
                     var first_occur = -1;

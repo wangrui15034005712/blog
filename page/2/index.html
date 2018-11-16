@@ -156,7 +156,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://lastsummer.top/blog/2018/10/25/Hexo博客添加打赏功能/" data-id="cjojsw8da000e34vbwx7qrykt" class="article-share-link-test"></a>
+      <a data-url="https://lastsummer.top/blog/2018/10/25/Hexo博客添加打赏功能/" data-id="cjojta3zd0007ggvbpifxzx41" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Html/">Html</a></li></ul>
@@ -236,7 +236,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://lastsummer.top/blog/2018/10/23/Hexo博客添加图片音乐及视频/" data-id="cjojsw8d8000a34vb8v0ffl5x" class="article-share-link-test"></a>
+      <a data-url="https://lastsummer.top/blog/2018/10/23/Hexo博客添加图片音乐及视频/" data-id="cjojta3zi000dggvbqb1fetrz" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Html/">Html</a></li></ul>
@@ -316,7 +316,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/" data-id="cjojsw8d1000434vb6ybt935c" class="article-share-link-test"></a>
+      <a data-url="https://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/" data-id="cjojta3z80004ggvbfn44qkn8" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Github/">Github</a></li></ul>
@@ -396,7 +396,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://lastsummer.top/blog/2018/10/15/Hexo-Github搭建个人博客/" data-id="cjojsw8d6000934vb1w49s84i" class="article-share-link-test"></a>
+      <a data-url="https://lastsummer.top/blog/2018/10/15/Hexo-Github搭建个人博客/" data-id="cjojta3zf0009ggvbtcy0sf8u" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Nodejs/">Nodejs</a></li></ul>
@@ -476,7 +476,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://lastsummer.top/blog/2018/10/11/hello-world/" data-id="cjojsw8do001234vbpx198ykj" class="article-share-link-test"></a>
+      <a data-url="https://lastsummer.top/blog/2018/10/11/hello-world/" data-id="cjojta3zt000sggvb355p22do" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/test/">test</a></li></ul>
@@ -646,7 +646,7 @@ var searchFunc = function(path, search_id, content_id) {
                    title = data.title;
                 }
                 if(count <= 20){
-                var url = 'https://lastsummer.top' + data.url;
+                var url = 'https://lastsummer.top/' + data.url;
                  string1 += "<li><a href='"+  url +"'>"+ title +"</a>";
                 }
              });
@@ -667,6 +667,7 @@ var searchFunc = function(path, search_id, content_id) {
                     var data_title = data.title.trim().toLowerCase();
                     var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
                     var data_url = data.url;
+                    data_url = 'https://lastsummer.top/' + data_url;
                     var index_title = -1;
                     var index_content = -1;
                     var first_occur = -1;

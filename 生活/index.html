@@ -157,7 +157,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://lastsummer.top/blog/生活/index.html" data-id="cjojsw8es002834vbond71i46" class="article-share-link-test"></a>
+      <a data-url="https://lastsummer.top/blog/生活/index.html" data-id="cjojta4120025ggvbi6lcgnuf" class="article-share-link-test"></a>
       
       
     </footer>
@@ -381,7 +381,7 @@ var searchFunc = function(path, search_id, content_id) {
                    title = data.title;
                 }
                 if(count <= 20){
-                var url = 'https://lastsummer.top' + data.url;
+                var url = 'https://lastsummer.top/' + data.url;
                  string1 += "<li><a href='"+  url +"'>"+ title +"</a>";
                 }
              });
@@ -402,6 +402,7 @@ var searchFunc = function(path, search_id, content_id) {
                     var data_title = data.title.trim().toLowerCase();
                     var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
                     var data_url = data.url;
+                    data_url = 'https://lastsummer.top/' + data_url;
                     var index_title = -1;
                     var index_content = -1;
                     var first_occur = -1;
