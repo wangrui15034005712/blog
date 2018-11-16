@@ -211,7 +211,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://lastsummer.top/blog/2018/11/14/Git添加Tag用法/" data-id="cjogucmgb0002msvbd6moap8c" class="article-share-link-test"></a>
+      <a data-url="https://lastsummer.top/blog/2018/11/14/Git添加Tag用法/" data-id="cjojm088m0003e4vbvpppzt8k" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Git/">Git</a></li></ul>
@@ -314,7 +314,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
         
           <aside id="sidebar">
   
-    <div class="widget-wrap" style='z-index:10;position:fixed;width:225px;margin-top:35px;'>
+    <div class="widget-wrap" style='width:225px;margin-top:50px;'>
   <h3 class="widget-title"></h3>
   <div class="widget">
     <h1 class="blog-title">去年夏天</h1>
@@ -358,7 +358,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
 </div>
 
   
-    <div class="widget-wrap" style='z-index:10;position:fixed;width:225px;margin-top:220px;margin-bottom:500px;'>
+    <div class="widget-wrap" style='width:225px;'>
   <h3 class="widget-title"></h3>
   <div class="widget">
     <img class="avatar" src="https://pic.qqtn.com/up/2018-9/15368261867401976.jpg">
@@ -373,8 +373,23 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
 	  <input type="text" id="local-search-input" name="q" results="0" placeholder="本站搜索" style='width:180px;height:25px;'/>
 	  <div id="local-search-result"></div>
 	</div>
-
+    <div align='center' style="margin:15px 0 0 0;">
+      <input type="text" name="guge" results="0" placeholder="谷歌搜索" style='width:180px;height:25px;'/>
+    </div>
     
+    
+    <div class="friend-link">
+      <h2>社交链接</h2>
+      
+        <a class="hvr-bounce-in" href="https://github.com/wangrui15034005712" target="_blank" title="Github">
+          Github
+        </a>
+      
+        <a class="hvr-bounce-in" href="https://dev.tencent.com/u/wangrui15034005712" target="_blank" title="Coding">
+          Coding
+        </a>
+      
+    </div>
     
 
     <div class="friend-link">
@@ -390,7 +405,19 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
       
     </div>
 
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=200 height=86 src="//music.163.com/outchain/player?type=2&id=1306515028&auto=0&height=66"></iframe>
+    <div class="friend-link">
+        <h2>音乐鉴赏</h2>
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=200 height=86 src="//music.163.com/outchain/player?type=2&id=1306515028&auto=0&height=66"></iframe>
+    </div>
+  </div>
+</div>
+
+<div class="widget-wrap" style='width:225px;'>
+  <div class="widget">
+    <h2><font style='font-size: 15px;font-weight: bold;padding: 10px 0px;'>最新文章</font></h2>
+    <div class="tag-link" id='taglink'>
+
+    </div>
   </div>
 </div>
 <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -409,6 +436,21 @@ var searchFunc = function(path, search_id, content_id) {
                     url: $( "url" , this).text()
                 };
             }).get();
+            var string1 = "";
+            var count = 0;
+             datas.forEach(function(data) {
+               count++;
+               var title = "";
+                if(data.title.length > 20){
+                   title = data.title.substr(0, 20)+".."; 
+                }else{
+                   title = data.title;
+                }
+                if(count <= 20){
+                 string1 += "<li><a href='"+  data.url +"'>"+ title +"</a>";
+                }
+             });
+             $('#taglink').html(string1);
             var $input = document.getElementById(search_id);
             var $resultContent = document.getElementById(content_id);
             $input.addEventListener('input', function(){
@@ -496,7 +538,7 @@ var searchFunc = function(path, search_id, content_id) {
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy;2018-11-14 We Wang Rui<br>
+      &copy;2018-11-16 Fr Wang Rui<br>
       个人专属 | 
       <a href="https://wangrui15034005712.github.io">博客-Wang Rui</a>
       

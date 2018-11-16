@@ -2300,7 +2300,7 @@ pre .javascript .function {
   }
 }
 .widget-wrap {
-  margin: 50px 0;
+  margin: 25px 0;
 }
 .widget {
   color: #777;
@@ -2402,7 +2402,7 @@ pre .javascript .function {
 .friend-link {
   font-size: 0px;
   text-align: left;
-  padding: 10px 0px;
+  padding: 5px 0px;
 }
 .social-link a,
 .friend-link a {
@@ -2420,7 +2420,32 @@ pre .javascript .function {
   border-radius: 5px;
   text-decoration: none;
 }
+.social-link,
+.tag-link {
+  font-size: 0px;
+  text-align: left;
+  padding: 5px 0px;
+}
+.social-link a,
+.tag-link a {
+  display: inline-block;
+  text-align: left;
+  font-size: 10px;
+  color: #6e90ef;
+}
+.social-link a:hover,
+.tag-link a:hover {
+  background-color: #6e90ef;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+}
 .friend-link h2 {
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px 0px;
+}
+.tag-link h2 {
   font-size: 15px;
   font-weight: bold;
   padding: 10px 0px;
