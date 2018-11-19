@@ -82,9 +82,9 @@
       <category term="hexo" scheme="https://lastsummer.top/blog/categories/hexo/"/>
     
     
-      <category term="Html" scheme="https://lastsummer.top/blog/tags/Html/"/>
-    
       <category term="Github" scheme="https://lastsummer.top/blog/tags/Github/"/>
+    
+      <category term="Html" scheme="https://lastsummer.top/blog/tags/Html/"/>
     
   </entry>
   
@@ -172,9 +172,9 @@
       <category term="SOA" scheme="https://lastsummer.top/blog/categories/SOA/"/>
     
     
-      <category term="Dubbo" scheme="https://lastsummer.top/blog/tags/Dubbo/"/>
-    
       <category term="Zookeeper" scheme="https://lastsummer.top/blog/tags/Zookeeper/"/>
+    
+      <category term="Dubbo" scheme="https://lastsummer.top/blog/tags/Dubbo/"/>
     
       <category term="Maven" scheme="https://lastsummer.top/blog/tags/Maven/"/>
     
