@@ -223,7 +223,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/" data-id="cjomtu75g000cn8vbk9d2s0ig" class="article-share-link-test"></a>
+      <a data-url="https://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/" data-id="cjonl3mmo00084wvbplxury0a" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Github/">Github</a></li></ul>
@@ -395,7 +395,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
 	  <div id="local-search-result"></div>
 	</div>
     <div align="center" style="margin:15px 0 0 0;">
-      <input type="text" name="guge" results="0" placeholder="谷歌搜索" style="width:180px;height:25px;">
+      <input type="text" id="guge" name="guge" results="0" placeholder="谷歌搜索" style="width:180px;height:25px;">
     </div>
     
     
@@ -552,6 +552,10 @@ var searchFunc = function(path, search_id, content_id) {
      }
      var path = "/" + search_path;
      searchFunc(path, 'local-search-input', 'local-search-result');
+	 
+	 $('#guge').blur(function () {
+            window.open("https://www.google.com.hk/search?q=site%3Alastsummer.top");
+        });
 </script>
   
 </aside>
@@ -561,7 +565,7 @@ var searchFunc = function(path, search_id, content_id) {
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy;2018-11-18 Su Wang Rui<br>
+      &copy;2018-11-19 Mo Wang Rui<br>
       个人专属 | 
       <a href="https://wangrui15034005712.github.io">博客-Wang Rui</a>
       
