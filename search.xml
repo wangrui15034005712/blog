@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Java获得日期间的所有月份]]></title>
+    <url>%2Fblog%2F2018%2F11%2F28%2FJava%E8%8E%B7%E5%BE%97%E6%97%A5%E6%9C%9F%E9%97%B4%E7%9A%84%E6%89%80%E6%9C%89%E6%9C%88%E4%BB%BD%2F</url>
+    <content type="text"><![CDATA[java获得两个日期之间的所有月份及日期之间的间隔。12345678910111213141516171819202122232425262728293031323334353637383940414243444546private static List&lt;String&gt; getMonthBetween(String minDate, String maxDate) throws ParseException &#123; ArrayList&lt;String&gt; result = new ArrayList&lt;String&gt;(); SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM&quot;);//格式化为年月 Calendar min = Calendar.getInstance(); Calendar max = Calendar.getInstance(); min.setTime(sdf.parse(minDate)); min.set(min.get(Calendar.YEAR), min.get(Calendar.MONTH), 1); max.setTime(sdf.parse(maxDate)); max.set(max.get(Calendar.YEAR), max.get(Calendar.MONTH), 2); Calendar curr = max; while (min.before(curr)) &#123; result.add(sdf.format(curr.getTime())); curr.add(Calendar.MONTH, -1); &#125; //得到日期之间的间隔totalMonth Calendar calendarStart = Calendar.getInstance(); int startYear = calendarStart.get(Calendar.YEAR); int startMonth = calendarStart.get(Calendar.MONTH); Calendar calendarEnd = Calendar.getInstance(); calendarEnd.setTime(sdf.parse(maxDate)); int endYear = calendarEnd.get(Calendar.YEAR); int endMonth = calendarEnd.get(Calendar.MONTH); int totalMonth = 0; if (endYear &gt; startYear) &#123; totalMonth = (endYear-startYear)*12 +(endMonth - startMonth)+1; &#125;else if (endYear == startYear) &#123; totalMonth = endMonth - startMonth+1; &#125;else &#123; throw new ParameterException(&quot;结束时间不能小于开始时间&quot;); &#125; return result;&#125;public static void main(String[] args) throws ParseException &#123; List&lt;String&gt; list= getMonthBetween(&quot;2018-10&quot;,&quot;2019-10&quot;); for(String date : list) &#123; System.out.println(date); &#125;&#125;]]></content>
+      <categories>
+        <category>JAVA</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Git添加Tag用法]]></title>
     <url>%2Fblog%2F2018%2F11%2F14%2FGit%E6%B7%BB%E5%8A%A0Tag%E7%94%A8%E6%B3%95%2F</url>
     <content type="text"><![CDATA[作为版本管理工具，Git可以对某个版本打上标签(tag)，表示本版本为发行版。这样一个不可修改的历史代码版本就像被我们封存起来一样,不论是运维发布拉取,或者以后的代码版本管理,都是十分方便的。Git标签分为两类：1、轻量级的：它其实是一个独立的分支,或者说是一个不可变的分支.指向特定提交对象的引用2、带附注的：实际上是存储在仓库中的一个独立对象，它有自身的校验和信息，包含着标签的名字，标签说明，标签本身也允许使用 GNU Privacy Guard (GPG) 来签署或验证,电子邮件地址和日期，一般我们都建议使用含附注型的标签，以便保留相关信息 查看标签打印所有标签1git tag 打印符合检索条件的标签1git tag -l &lt;版本号&gt; 如 git tag -l 1.*.* 为搜索一级版本为1的版本 查看对应标签状态1git checkout &lt;版本号&gt; 创建本地标签创建轻量标签轻量标签指向一个发行版的分支，其只是一个像某commit的引用，不存储名称时间戳及标签说明等信息。定义方法如下1git tag &lt;版本号&gt;-light 创建带附注标签相对于轻量标签，附注标签是一个独立的标签对象，包含了名称时间戳以及标签备注等信息，同时指向对应的commit。定义方法如下1git tag -a &lt;版本号&gt; -m &quot;&lt;备注信息&gt;&quot; 同时我们也可以像特定的commit添加标签，使用该commit对应的SHA值即可1git tag -a &lt;版本号&gt; &lt;SHA值&gt; -m &quot;&lt;备注信息&gt;&quot; 比如 git tag -a 1.0.0 0c3b62d -m &quot;Release Edition v1.0.0&quot; 就是为SHA为0c3b62d的这次提交打了1.0发行版的tag 删除标签删除本地标签1git tag -d &lt;版本号&gt; 删除远程仓库的标签1git push origin --delete &lt;版本号&gt; #新版本Git (&gt; v1.7.0) 推送标签推送所有标签1git push origin --tags 推送指定版本的标签1git push origin &lt;版本号&gt; 总结最后总结一下常用命令，方便查阅。123456789101112131415161718192021222324252627282930// 创建标签(本地)// 创建轻量标签git tag 1.0.0-light// 创建带备注标签(推荐)git tag -a 1.0.0 -m &quot;这是备注信息&quot;// 针对特定commit版本SHA创建标签git tag -a 1.0.0 0c3b62d -m &quot;这是备注信息&quot;// 查看标签// 打印所有标签git tag// 打印符合检索条件的标签git tag -l 1.*.*// 查看对应标签状态git checkout 1.0.0// 将本地标签发布到远程仓库// 发送所有git push origin --tags// 指定版本发送git push origin 1.0.0// 删除标签(本地)git tag -d 1.0.0// 删除远程仓库对应标签// Git版本 &gt; V1.7.0git push origin --delete 1.0.0// 旧版本Gitgit push origin :refs/tags/1.0.0 参考博客：使用Git添加Tag的方法]]></content>
@@ -76,8 +87,8 @@
         <category>SOA</category>
       </categories>
       <tags>
-        <tag>Zookeeper</tag>
         <tag>Dubbo</tag>
+        <tag>Zookeeper</tag>
         <tag>Maven</tag>
       </tags>
   </entry>

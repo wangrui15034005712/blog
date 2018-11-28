@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://lastsummer.top/blog/"/>
-  <updated>2018-11-14T07:25:09.126Z</updated>
+  <updated>2018-11-28T07:47:51.926Z</updated>
   <id>https://lastsummer.top/blog/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java获得日期间的所有月份</title>
+    <link href="https://lastsummer.top/blog/2018/11/28/Java%E8%8E%B7%E5%BE%97%E6%97%A5%E6%9C%9F%E9%97%B4%E7%9A%84%E6%89%80%E6%9C%89%E6%9C%88%E4%BB%BD/"/>
+    <id>https://lastsummer.top/blog/2018/11/28/Java获得日期间的所有月份/</id>
+    <published>2018-11-28T06:53:09.000Z</published>
+    <updated>2018-11-28T07:47:51.926Z</updated>
+    
+    <content type="html"><![CDATA[<p>java获得两个日期之间的所有月份及日期之间的间隔。<a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">private static List&lt;String&gt; getMonthBetween(String minDate, String maxDate) </span><br><span class="line"> throws ParseException &#123;</span><br><span class="line">  ArrayList&lt;String&gt; result = new ArrayList&lt;String&gt;();</span><br><span class="line">  SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM&quot;);//格式化为年月</span><br><span class="line"></span><br><span class="line">  Calendar min = Calendar.getInstance();</span><br><span class="line">  Calendar max = Calendar.getInstance();</span><br><span class="line"></span><br><span class="line">  min.setTime(sdf.parse(minDate));</span><br><span class="line">  min.set(min.get(Calendar.YEAR), min.get(Calendar.MONTH), 1);</span><br><span class="line"></span><br><span class="line">  max.setTime(sdf.parse(maxDate));</span><br><span class="line">  max.set(max.get(Calendar.YEAR), max.get(Calendar.MONTH), 2);</span><br><span class="line"></span><br><span class="line">  Calendar curr = max;</span><br><span class="line">  while (min.before(curr)) &#123;</span><br><span class="line">result.add(sdf.format(curr.getTime()));</span><br><span class="line">curr.add(Calendar.MONTH, -1);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  //得到日期之间的间隔totalMonth</span><br><span class="line">  Calendar calendarStart = Calendar.getInstance();</span><br><span class="line">  int startYear = calendarStart.get(Calendar.YEAR);</span><br><span class="line">  int startMonth = calendarStart.get(Calendar.MONTH);</span><br><span class="line">  Calendar calendarEnd = Calendar.getInstance();</span><br><span class="line">  calendarEnd.setTime(sdf.parse(maxDate));</span><br><span class="line">  int endYear = calendarEnd.get(Calendar.YEAR);</span><br><span class="line">  int endMonth = calendarEnd.get(Calendar.MONTH);</span><br><span class="line">  int totalMonth = 0;</span><br><span class="line">  if (endYear &gt; startYear) &#123;</span><br><span class="line">totalMonth = (endYear-startYear)*12 +(endMonth - startMonth)+1;</span><br><span class="line">  &#125;else if (endYear == startYear) &#123;</span><br><span class="line">totalMonth = endMonth - startMonth+1;</span><br><span class="line">  &#125;else &#123;</span><br><span class="line">throw new ParameterException(&quot;结束时间不能小于开始时间&quot;);</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static void main(String[] args) throws ParseException &#123;</span><br><span class="line">  List&lt;String&gt; list= getMonthBetween(&quot;2018-10&quot;,&quot;2019-10&quot;);</span><br><span class="line">  for(String date : list) &#123;</span><br><span class="line">    System.out.println(date);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;java获得两个日期之间的所有月份及日期之间的间隔。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="JAVA" scheme="https://lastsummer.top/blog/categories/JAVA/"/>
+    
+    
+      <category term="JAVA" scheme="https://lastsummer.top/blog/tags/JAVA/"/>
+    
+  </entry>
   
   <entry>
     <title>Git添加Tag用法</title>
@@ -172,9 +194,9 @@
       <category term="SOA" scheme="https://lastsummer.top/blog/categories/SOA/"/>
     
     
-      <category term="Zookeeper" scheme="https://lastsummer.top/blog/tags/Zookeeper/"/>
-    
       <category term="Dubbo" scheme="https://lastsummer.top/blog/tags/Dubbo/"/>
+    
+      <category term="Zookeeper" scheme="https://lastsummer.top/blog/tags/Zookeeper/"/>
     
       <category term="Maven" scheme="https://lastsummer.top/blog/tags/Maven/"/>
     
