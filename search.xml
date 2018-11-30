@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Oracle查询各班前三名学生信息]]></title>
+    <url>%2Fblog%2F2018%2F11%2F30%2FOracle%E6%9F%A5%E8%AF%A2%E5%90%84%E7%8F%AD%E5%89%8D%E4%B8%89%E5%90%8D%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%2F</url>
+    <content type="text"><![CDATA[Oracle查询各班前三名学生的信息。row_number函数排序最好用它，每一行记录生成一个序号，依次排序且不会重复。rank函数返回结果集的分区内每行排名，行的排名是相关行之前的排名数加一，重复排序会重复。dense_rank函数的功能与rank函数类似，dense_rank函数在生成序号时是连续的，依次排序会重复。12345select * from (select rank() over(partition by class order by score desc nulls last)rank, s.*from test s) t where rank &lt;= 3 order by class asc, score desc; 12345select * from (select row_number()over(partition by class order by score desc nulls last) rank,s.*from test s) t where rank &lt;= 3 order by class asc, score desc 12345select * from (select dense_rank()over(partition by class order by score desc nulls last) rank,s.*from test s) t where rank &lt;= 3 order by class asc, score desc 关于Parttion by： Parttion by关键字是Oracle中分析性函数的一部分，用于给结果集进行分区。它和聚合函数Group by不同的地方在于它只是将原始数据进行名次排列，能够返回一个分组中的多条记录（记录数不变），而Group by是对原始数据进行聚合统计，一般只有一条反映统计值的结果（每组返回一条）。TIPS：使用rank over()的时候，空值是最大的，如果排序字段为null, 可能造成null字段排在最前面，影响排序结果。可以这样： rank over(partition by course order by score desc nulls last) 总结： 在使用排名函数的时候需要注意以下三点：1、排名函数必须有 OVER 子句。2、排名函数必须有包含 ORDER BY 的 OVER 子句。3、分组内从1开始排序。]]></content>
+      <categories>
+        <category>ORACLE</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Java获得日期间的所有月份]]></title>
     <url>%2Fblog%2F2018%2F11%2F28%2FJava%E8%8E%B7%E5%BE%97%E6%97%A5%E6%9C%9F%E9%97%B4%E7%9A%84%E6%89%80%E6%9C%89%E6%9C%88%E4%BB%BD%2F</url>
     <content type="text"><![CDATA[java获得两个日期之间的所有月份及日期之间的间隔。12345678910111213141516171819202122232425262728293031323334353637383940414243444546private static List&lt;String&gt; getMonthBetween(String minDate, String maxDate) throws ParseException &#123; ArrayList&lt;String&gt; result = new ArrayList&lt;String&gt;(); SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM&quot;);//格式化为年月 Calendar min = Calendar.getInstance(); Calendar max = Calendar.getInstance(); min.setTime(sdf.parse(minDate)); min.set(min.get(Calendar.YEAR), min.get(Calendar.MONTH), 1); max.setTime(sdf.parse(maxDate)); max.set(max.get(Calendar.YEAR), max.get(Calendar.MONTH), 2); Calendar curr = max; while (min.before(curr)) &#123; result.add(sdf.format(curr.getTime())); curr.add(Calendar.MONTH, -1); &#125; //得到日期之间的间隔totalMonth Calendar calendarStart = Calendar.getInstance(); int startYear = calendarStart.get(Calendar.YEAR); int startMonth = calendarStart.get(Calendar.MONTH); Calendar calendarEnd = Calendar.getInstance(); calendarEnd.setTime(sdf.parse(maxDate)); int endYear = calendarEnd.get(Calendar.YEAR); int endMonth = calendarEnd.get(Calendar.MONTH); int totalMonth = 0; if (endYear &gt; startYear) &#123; totalMonth = (endYear-startYear)*12 +(endMonth - startMonth)+1; &#125;else if (endYear == startYear) &#123; totalMonth = endMonth - startMonth+1; &#125;else &#123; throw new ParameterException(&quot;结束时间不能小于开始时间&quot;); &#125; return result;&#125;public static void main(String[] args) throws ParseException &#123; List&lt;String&gt; list= getMonthBetween(&quot;2018-10&quot;,&quot;2019-10&quot;); for(String date : list) &#123; System.out.println(date); &#125;&#125;]]></content>
@@ -42,8 +53,8 @@
         <category>hexo</category>
       </categories>
       <tags>
-        <tag>Github</tag>
         <tag>Html</tag>
+        <tag>Github</tag>
       </tags>
   </entry>
   <entry>
@@ -87,8 +98,8 @@
         <category>SOA</category>
       </categories>
       <tags>
-        <tag>Dubbo</tag>
         <tag>Zookeeper</tag>
+        <tag>Dubbo</tag>
         <tag>Maven</tag>
       </tags>
   </entry>

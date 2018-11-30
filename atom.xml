@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://lastsummer.top/blog/"/>
-  <updated>2018-11-28T07:47:51.926Z</updated>
+  <updated>2018-11-30T09:09:59.033Z</updated>
   <id>https://lastsummer.top/blog/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Oracle查询各班前三名学生信息</title>
+    <link href="https://lastsummer.top/blog/2018/11/30/Oracle%E6%9F%A5%E8%AF%A2%E5%90%84%E7%8F%AD%E5%89%8D%E4%B8%89%E5%90%8D%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF/"/>
+    <id>https://lastsummer.top/blog/2018/11/30/Oracle查询各班前三名学生信息/</id>
+    <published>2018-11-30T06:46:11.000Z</published>
+    <updated>2018-11-30T09:09:59.033Z</updated>
+    
+    <content type="html"><![CDATA[<p>Oracle查询各班前三名学生的信息。<br>row_number函数排序最好用它，每一行记录生成一个序号，依次排序且不会重复。<br>rank函数返回结果集的分区内每行排名，行的排名是相关行之前的排名数加一，重复排序会重复。<br>dense_rank函数的功能与rank函数类似，dense_rank函数在生成序号时是连续的，依次排序会重复。<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select * from </span><br><span class="line">  (select rank() over(partition by class order by score desc nulls last)rank,</span><br><span class="line">  s.*from test s) t</span><br><span class="line">  where rank &lt;= 3</span><br><span class="line">  order by class asc, score desc;</span><br></pre></td></tr></table></figure></p><p><img src="/blog/2018/11/30/Oracle查询各班前三名学生信息/sql1.png" alt="rank效果展示"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select * from </span><br><span class="line">  (select row_number()over(partition by class order by score desc nulls last)</span><br><span class="line">  rank,s.*from test s) t</span><br><span class="line">  where rank &lt;= 3</span><br><span class="line">  order by class asc, score desc</span><br></pre></td></tr></table></figure></p><p><img src="/blog/2018/11/30/Oracle查询各班前三名学生信息/sql2.png" alt="row_number效果展示"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select * from </span><br><span class="line">  (select dense_rank()over(partition by class order by score desc nulls last)</span><br><span class="line">  rank,s.*from test s) t</span><br><span class="line">  where rank &lt;= 3</span><br><span class="line">  order by class asc, score desc</span><br></pre></td></tr></table></figure></p><p><img src="/blog/2018/11/30/Oracle查询各班前三名学生信息/sql3.png" alt="dense_rank效果展示"></p><h2 id="关于Parttion-by："><a href="#关于Parttion-by：" class="headerlink" title="关于Parttion by："></a>关于Parttion by：</h2><ul><li>Parttion by关键字是Oracle中分析性函数的一部分，用于给结果集进行分区。它和聚合函数Group by不同的地方在于它只是将原始数据进行名次排列，能够返回一个分组中的多条记录（记录数不变），而Group by是对原始数据进行聚合统计，一般只有一条反映统计值的结果（每组返回一条）。<br>TIPS：<br>使用rank over()的时候，空值是最大的，如果排序字段为null, 可能造成null字段排在最前面，影响排序结果。<br>可以这样： rank over(partition by course order by score desc nulls last)</li></ul><h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><ul><li>在使用排名函数的时候需要注意以下三点：<br>1、排名函数必须有 OVER 子句。<br>2、排名函数必须有包含 ORDER BY 的 OVER 子句。<br>3、分组内从1开始排序。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Oracle查询各班前三名学生的信息。&lt;br&gt;row_number函数排序最好用它，每一行记录生成一个序号，依次排序且不会重复。&lt;br&gt;rank函数返回结果集的分区内每行排名，行的排名是相关行之前的排名数加一，重复排序会重复。&lt;br&gt;dense_rank函数的功能与rank函数类似，dense_rank函数在生成序号时是连续的，依次排序会重复。&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="ORACLE" scheme="https://lastsummer.top/blog/categories/ORACLE/"/>
+    
+    
+      <category term="SQL" scheme="https://lastsummer.top/blog/tags/SQL/"/>
+    
+  </entry>
   
   <entry>
     <title>Java获得日期间的所有月份</title>
@@ -104,9 +126,9 @@
       <category term="hexo" scheme="https://lastsummer.top/blog/categories/hexo/"/>
     
     
-      <category term="Github" scheme="https://lastsummer.top/blog/tags/Github/"/>
-    
       <category term="Html" scheme="https://lastsummer.top/blog/tags/Html/"/>
+    
+      <category term="Github" scheme="https://lastsummer.top/blog/tags/Github/"/>
     
   </entry>
   
@@ -194,9 +216,9 @@
       <category term="SOA" scheme="https://lastsummer.top/blog/categories/SOA/"/>
     
     
-      <category term="Dubbo" scheme="https://lastsummer.top/blog/tags/Dubbo/"/>
-    
       <category term="Zookeeper" scheme="https://lastsummer.top/blog/tags/Zookeeper/"/>
+    
+      <category term="Dubbo" scheme="https://lastsummer.top/blog/tags/Dubbo/"/>
     
       <category term="Maven" scheme="https://lastsummer.top/blog/tags/Maven/"/>
     
