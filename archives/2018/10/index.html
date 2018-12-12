@@ -404,6 +404,9 @@
     <div align="center" style="margin:15px 0 0 0;">
       <input type="text" id="guge" name="guge" results="0" placeholder="谷歌搜索" style="width:180px;height:25px;">
     </div>
+	<div align="center" style="margin:15px 0 0 0;">
+      <i class="fa fa-rss fa-2x" aria-hidden="true" id="rss"></i>
+    </div>
     
     
     <div class="friend-link">
@@ -456,7 +459,7 @@
     </div>
   </div>
 </div>
-
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
 <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script>
 var searchFunc = function(path, search_id, content_id) {
@@ -572,6 +575,9 @@ var searchFunc = function(path, search_id, content_id) {
 	 $('#guge').blur(function () {
             window.open("https://www.google.com.hk/search?q=site%3Alastsummer.top");
         });
+	 $('#rss').click(function () {	
+		window.open("https://lastsummer.top/blog/atom.xml");
+	 });
 </script>
   
 </aside>
@@ -581,7 +587,7 @@ var searchFunc = function(path, search_id, content_id) {
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy;2018-11-30 Fr Wang Rui<br>
+      &copy;2018-12-12 We Wang Rui<br>
       个人专属 | 
       <a href="https://wangrui15034005712.github.io">博客-Wang Rui</a>
       
