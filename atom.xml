@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://lastsummer.top/blog/"/>
-  <updated>2018-12-24T08:01:29.307Z</updated>
+  <updated>2019-01-09T05:33:43.522Z</updated>
   <id>https://lastsummer.top/blog/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Calendar获取日期</title>
+    <link href="https://lastsummer.top/blog/2019/01/09/Calendar%E8%8E%B7%E5%8F%96%E6%97%A5%E6%9C%9F/"/>
+    <id>https://lastsummer.top/blog/2019/01/09/Calendar获取日期/</id>
+    <published>2019-01-09T05:30:48.000Z</published>
+    <updated>2019-01-09T05:33:43.522Z</updated>
+    
+    <content type="html"><![CDATA[<p>Calendar获取月初月末日期。<a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">SimpleDateFormat simpleDateFormat = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);</span><br><span class="line">SimpleDateFormat startSimpleDateFormat = new SimpleDateFormat(&quot;yyyy-MM-dd 00:00:00&quot;);</span><br><span class="line">SimpleDateFormat EndDateFormat = new SimpleDateFormat(&quot;yyyy-MM-dd 23:59:59&quot;);</span><br><span class="line">//上月第一天</span><br><span class="line">Calendar calendar = Calendar.getInstance();</span><br><span class="line">System.out.println(&quot;当前时间：&quot;+simpleDateFormat.format(calendar.getTime()));</span><br><span class="line">calendar.add(Calendar.MONTH, -1);</span><br><span class="line">calendar.set(Calendar.DAY_OF_MONTH, 1);</span><br><span class="line">System.out.println(calendar.getTime());</span><br><span class="line">System.out.println(&quot;上月第一天时间：&quot;+startSimpleDateFormat.format(calendar.getTime()));</span><br><span class="line">//上月最后一天</span><br><span class="line">Calendar calendar1 = Calendar.getInstance();</span><br><span class="line">calendar1.set(Calendar.DAY_OF_MONTH, 1);</span><br><span class="line">calendar1.add(Calendar.DATE, -1);</span><br><span class="line">System.out.println(calendar1.getTime());</span><br><span class="line">System.out.println(&quot;上月最后一天：&quot;+EndDateFormat.format(calendar1.getTime()));</span><br><span class="line">//本月第一天</span><br><span class="line">Calendar calendar2 = Calendar.getInstance();</span><br><span class="line">calendar2.set(Calendar.DAY_OF_MONTH, calendar2.getActualMinimum(Calendar.DAY_OF_MONTH));</span><br><span class="line">System.out.println(calendar2.getTime());</span><br><span class="line">System.out.println(&quot;本月第一天：&quot;+startSimpleDateFormat.format(calendar2.getTime()));</span><br><span class="line">//本月最后一天</span><br><span class="line">Calendar calendar3 = Calendar.getInstance();</span><br><span class="line">calendar3.set(Calendar.DAY_OF_MONTH, calendar3.getActualMaximum(Calendar.DAY_OF_MONTH));</span><br><span class="line">System.out.println(calendar3.getTime());</span><br><span class="line">System.out.println(&quot;本月最后一天：&quot;+EndDateFormat.format(calendar3.getTime()));</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Calendar获取月初月末日期。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="JAVA" scheme="https://lastsummer.top/blog/categories/JAVA/"/>
+    
+    
+      <category term="java" scheme="https://lastsummer.top/blog/tags/java/"/>
+    
+  </entry>
   
   <entry>
     <title>BigDecimal算法</title>
@@ -170,9 +192,9 @@
       <category term="hexo" scheme="https://lastsummer.top/blog/categories/hexo/"/>
     
     
-      <category term="Github" scheme="https://lastsummer.top/blog/tags/Github/"/>
-    
       <category term="Html" scheme="https://lastsummer.top/blog/tags/Html/"/>
+    
+      <category term="Github" scheme="https://lastsummer.top/blog/tags/Github/"/>
     
   </entry>
   
@@ -420,9 +442,9 @@
       <category term="hexo" scheme="https://lastsummer.top/blog/categories/hexo/"/>
     
     
-      <category term="Git" scheme="https://lastsummer.top/blog/tags/Git/"/>
-    
       <category term="Nodejs" scheme="https://lastsummer.top/blog/tags/Nodejs/"/>
+    
+      <category term="Git" scheme="https://lastsummer.top/blog/tags/Git/"/>
     
       <category term="Hexo" scheme="https://lastsummer.top/blog/tags/Hexo/"/>
     
