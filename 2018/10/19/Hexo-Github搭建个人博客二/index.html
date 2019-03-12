@@ -13,37 +13,37 @@
 <meta name="keywords" content="Github">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo-Github搭建个人博客二">
-<meta property="og:url" content="https://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/index.html">
+<meta property="og:url" content="http://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/index.html">
 <meta property="og:site_name" content="去年夏天">
 <meta property="og:description" content="本文主要介绍了域名解析绑定及SSH部署博客到Github。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/github1.png">
-<meta property="og:image" content="https://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/github2.png">
-<meta property="og:image" content="https://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/github5.png">
-<meta property="og:image" content="https://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/github4.png">
-<meta property="og:image" content="https://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/ssh00.png">
-<meta property="og:image" content="https://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/ssh.png">
-<meta property="og:image" content="https://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/ssh0.png">
-<meta property="og:image" content="https://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/ssh1.png">
-<meta property="og:image" content="https://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/ssh2.png">
-<meta property="og:image" content="https://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/github6.png">
-<meta property="og:image" content="https://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/github7.png">
-<meta property="og:image" content="https://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/github8.png">
-<meta property="og:image" content="https://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/aliyun1.png">
-<meta property="og:image" content="https://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/aliyun2.png">
-<meta property="og:image" content="https://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/aliyun3.png">
-<meta property="og:image" content="https://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/aliyun6.png">
-<meta property="og:image" content="https://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/aliyun7.png">
-<meta property="og:image" content="https://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/aliyun8.png">
-<meta property="og:image" content="https://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/ping1.png">
-<meta property="og:image" content="https://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/aliyun9.png">
-<meta property="og:image" content="https://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/github9.png">
-<meta property="og:image" content="https://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/github10.png">
+<meta property="og:image" content="http://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/github1.png">
+<meta property="og:image" content="http://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/github2.png">
+<meta property="og:image" content="http://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/github5.png">
+<meta property="og:image" content="http://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/github4.png">
+<meta property="og:image" content="http://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/ssh00.png">
+<meta property="og:image" content="http://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/ssh.png">
+<meta property="og:image" content="http://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/ssh0.png">
+<meta property="og:image" content="http://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/ssh1.png">
+<meta property="og:image" content="http://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/ssh2.png">
+<meta property="og:image" content="http://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/github6.png">
+<meta property="og:image" content="http://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/github7.png">
+<meta property="og:image" content="http://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/github8.png">
+<meta property="og:image" content="http://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/aliyun1.png">
+<meta property="og:image" content="http://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/aliyun2.png">
+<meta property="og:image" content="http://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/aliyun3.png">
+<meta property="og:image" content="http://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/aliyun6.png">
+<meta property="og:image" content="http://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/aliyun7.png">
+<meta property="og:image" content="http://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/aliyun8.png">
+<meta property="og:image" content="http://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/ping1.png">
+<meta property="og:image" content="http://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/aliyun9.png">
+<meta property="og:image" content="http://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/github9.png">
+<meta property="og:image" content="http://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/github10.png">
 <meta property="og:updated_time" content="2018-10-24T10:12:08.332Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo-Github搭建个人博客二">
 <meta name="twitter:description" content="本文主要介绍了域名解析绑定及SSH部署博客到Github。">
-<meta name="twitter:image" content="https://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/github1.png">
+<meta name="twitter:image" content="http://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/github1.png">
   
     <link rel="alternate" href="/atom.xml" title="去年夏天" type="application/atom+xml">
   
@@ -223,7 +223,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/" data-id="cjsv6xy2u0007rsvb9n17xdcr" class="article-share-link-test"></a>
+      <a data-url="http://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/" data-id="cjt5fsovw000dhcvbzvsp49xg" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Github/">Github</a></li></ul>
@@ -580,7 +580,7 @@ var searchFunc = function(path, search_id, content_id) {
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy;2019-03-05 Tu Wang Rui<br>
+      &copy;2019-03-12 Tu Wang Rui<br>
       个人专属 | 
       <a href="https://wangrui15034005712.github.io">博客-Wang Rui</a>
       
