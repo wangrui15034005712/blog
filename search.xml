@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Git基本命令]]></title>
     <url>%2Fblog%2F2019%2F03%2F04%2FGit%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%2F</url>
-    <content type="text"><![CDATA[Git命令行基本操作！ git config可以配置git的参数1234567git config --list 查看已经配置的git参数git config --system user.name &quot;Tocy&quot; 所有用户（本系统）git config --system user.email zyvj@qq.com 所有用户（本系统）git config --global user.name &quot;Tocy&quot; 当前用户（全局）git config --global user.email zyvj@qq.com 当前用户（全局）git config --local user.name &quot;Tocy&quot; 本地配置（当前目录）git config --local user.email zyvj@qq.com 本地配置（当前目录） 创建Git仓库1git init 初始化当前目录 克隆Git仓库1git clone https://git.oschina.net/Tocy/SampleCode.git 基本命令12345678910111213141516171819202122232425262728git status # 检查下修改了什么内容git log --stat # 仅显示摘要选项git log --pretty=oneline # 定制记录格式git log --graph # 图像化分支和版本更新git add . # 提交所有文件到暂存区git add Readme.mdgit add *.pnggit add /home/code/git diff # 查看当前目录的所有修改git commit -m &quot;注释备注&quot; # 提交代码到本地仓库git push # 提交代码到远程仓库git branch # 显示本地当前所有分支git branch -d test # 删除分支git branch -D test # 强制删除分支git checkout -b testing # 直接切换并创建分支git checkout master # 切换主分支git merge test # 合并分支的代码git branch -a # 查看远程仓库所有分支git push origin test # 推送本地分支到远程仓库git push origin --delete test # 删除远程分支git checkout &quot;git status项目文件路径&quot; # 还原某个文件git reset --hard &apos;git log中的commit id&apos; 还原所有文件到一个版本git pull # 更新远程仓库最新代码git reset HEAD~ # 撤回本地仓库中的代码到暂存区git reset # 撤回所有本地仓库中的代码到暂存区git rm --cached you_file_name # 撤回暂存区中的代码（暂未使用）git merge dev --合并分支dev的代码（Fast-forward表示快进模式，合并速度快，会直接将Master分支指向Develop分支）git merge --no-ff dev # 正常工作 master生成新节点，保证版本演变的清晰，建议此方法]]></content>
+    <content type="text"><![CDATA[Git命令行基本操作！ git config可以配置git的参数1234567git config --list 查看已经配置的git参数git config --system user.name &quot;Tocy&quot; 所有用户（本系统）git config --system user.email zyvj@qq.com 所有用户（本系统）git config --global user.name &quot;Tocy&quot; 当前用户（全局）git config --global user.email zyvj@qq.com 当前用户（全局）git config --local user.name &quot;Tocy&quot; 本地配置（当前目录）git config --local user.email zyvj@qq.com 本地配置（当前目录） 创建Git仓库1git init 初始化当前目录 克隆Git仓库1git clone https://git.oschina.net/Tocy/SampleCode.git 基本命令1234567891011121314151617181920212223242526272829git status # 检查下修改了什么内容git log --stat # 仅显示摘要选项git log --pretty=oneline # 定制记录格式git log --graph # 图像化分支和版本更新git add . # 提交所有文件到暂存区git add Readme.mdgit add *.pnggit add /home/code/git diff # 查看当前目录的所有修改git commit -m &quot;注释备注&quot; # 提交代码到本地仓库git push # 提交代码到远程仓库git branch # 显示本地当前所有分支git branch -d test # 删除分支git branch -D test # 强制删除分支git checkout -b testing # 直接切换并创建分支git checkout master # 切换主分支git merge test # 合并分支的代码git branch -a # 查看远程仓库所有分支git push origin test # 推送本地分支到远程仓库git push origin --delete test # 删除远程分支git checkout &quot;git status项目文件路径&quot; # 还原某个文件git reset --hard &apos;git log中的commit id&apos; 还原所有文件到一个版本git pull # 更新远程仓库最新代码git reset HEAD &quot;文件路径&quot; # 撤回暂存区的某个文件git reset HEAD~ # 撤回本地仓库中的代码到暂存区git reset # 撤回所有本地仓库中的代码到暂存区git rm --cached you_file_name # 撤回暂存区中的代码（暂未使用）git merge dev --合并分支dev的代码（Fast-forward表示快进模式，合并速度快，会直接将Master分支指向Develop分支）git merge --no-ff dev # 正常工作 master生成新节点，保证版本演变的清晰，建议此方法]]></content>
       <categories>
         <category>Git</category>
       </categories>
@@ -97,8 +97,8 @@
         <category>hexo</category>
       </categories>
       <tags>
-        <tag>Github</tag>
         <tag>Html</tag>
+        <tag>Github</tag>
       </tags>
   </entry>
   <entry>
@@ -155,8 +155,8 @@
         <category>hexo</category>
       </categories>
       <tags>
-        <tag>Nodejs</tag>
         <tag>Html</tag>
+        <tag>Nodejs</tag>
       </tags>
   </entry>
   <entry>
