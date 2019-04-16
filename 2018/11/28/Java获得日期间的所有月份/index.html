@@ -168,7 +168,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lastsummer.top/blog/2018/11/28/Java获得日期间的所有月份/" data-id="cjuji7j9d001dvkvbnjyvtsbb" class="article-share-link-test"></a>
+      <a data-url="http://lastsummer.top/blog/2018/11/28/Java获得日期间的所有月份/" data-id="cjujjou20001du4vbjtc4a1ae" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/JAVA/">JAVA</a></li></ul>
@@ -392,12 +392,21 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
 <div class="widget-wrap" style="width:225px;">
   <div class="widget">
     <h2><font style="font-size: 15px;font-weight: bold;padding: 10px 0px;">最新文章</font></h2>
-    <div class="tag-link" id="taglink" style="white-space:nowrap;text-overflow:ellipsis;overflow:hidden;">
+    <div class="tag-link" id="taglink">
 
     </div>
   </div>
 </div>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+<style>
+  .tag-link{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    white-space:nowrap;
+    width:100%;
+  }
+</style>
 <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script>
 var searchFunc = function(path, search_id, content_id) {
@@ -421,7 +430,7 @@ var searchFunc = function(path, search_id, content_id) {
                var title = data.title;
                if(count <= 20){
                 var url = 'https://lastsummer.top/' + data.url;
-                 string1 += "<li><a href='"+  url +"'>"+ title +"</a>";
+                 string1 += "<span><a title='"+title+"' href='"+  url +"'>"+ title +"</a></span><br>";
                }
              });
              $('#taglink').html(string1);
