@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://lastsummer.top/blog/"/>
-  <updated>2019-04-16T07:00:53.518Z</updated>
+  <updated>2019-04-16T09:06:37.387Z</updated>
   <id>http://lastsummer.top/blog/</id>
   
   <author>
@@ -21,12 +21,20 @@
     <link href="http://lastsummer.top/blog/2019/04/16/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
     <id>http://lastsummer.top/blog/2019/04/16/为什么使用消息队列/</id>
     <published>2019-04-16T07:00:53.000Z</published>
-    <updated>2019-04-16T07:00:53.518Z</updated>
+    <updated>2019-04-16T09:06:37.387Z</updated>
+    
+    <content type="html"><![CDATA[<p>栈：先进先出。<br>堆、队列：先进后出。<br>队列（常用数据结构之一）。<br>队列是一种特殊的线性表，特殊之处在于它只允许在表的前端（front）进行删除操作，而在表的后端（rear）进行插入操作，和栈一样，队列是一种操作受限制的线性表。进行插入操作的端称为队尾，进行删除操作的端称为队头。<br>消息被发送到队列中，“消息队列”是在消息的传输过程中保存消息的容器。<br>消息队列管理器在将消息从它的源中继到它的目标时充当中间人。<br>队列的主要目的是提供路由并保证消息的传递。<br>如果发送消息时接收者不可用，消息队列会保留消息，直到可以成功地传递它。《百度百科》<br><a id="more"></a></p>]]></content>
     
     <summary type="html">
     
+      &lt;p&gt;栈：先进先出。&lt;br&gt;堆、队列：先进后出。&lt;br&gt;队列（常用数据结构之一）。&lt;br&gt;队列是一种特殊的线性表，特殊之处在于它只允许在表的前端（front）进行删除操作，而在表的后端（rear）进行插入操作，和栈一样，队列是一种操作受限制的线性表。进行插入操作的端称为队尾，进行删除操作的端称为队头。&lt;br&gt;消息被发送到队列中，“消息队列”是在消息的传输过程中保存消息的容器。&lt;br&gt;消息队列管理器在将消息从它的源中继到它的目标时充当中间人。&lt;br&gt;队列的主要目的是提供路由并保证消息的传递。&lt;br&gt;如果发送消息时接收者不可用，消息队列会保留消息，直到可以成功地传递它。《百度百科》&lt;br&gt;&lt;/p&gt;
+    
     </summary>
     
+      <category term="queue" scheme="http://lastsummer.top/blog/categories/queue/"/>
+    
+    
+      <category term="Queue" scheme="http://lastsummer.top/blog/tags/Queue/"/>
     
   </entry>
   
