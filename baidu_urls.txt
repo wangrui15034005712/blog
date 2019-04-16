@@ -1,3 +1,4 @@
+http://lastsummer.top/blog/2019/04/16/为什么使用消息队列/
 http://lastsummer.top/blog/2019/03/04/Git基本命令/
 http://lastsummer.top/blog/2019/01/09/Calendar获取日期/
 http://lastsummer.top/blog/2018/12/24/BigDecimal算法/
