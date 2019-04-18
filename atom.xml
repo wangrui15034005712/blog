@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://lastsummer.top/blog/"/>
-  <updated>2019-04-16T09:36:15.934Z</updated>
+  <updated>2019-04-18T01:59:31.007Z</updated>
   <id>http://lastsummer.top/blog/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Window10安装RabbitMq中间件</title>
+    <link href="http://lastsummer.top/blog/2019/04/17/Window10%E5%AE%89%E8%A3%85RabbitMq%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    <id>http://lastsummer.top/blog/2019/04/17/Window10安装RabbitMq中间件/</id>
+    <published>2019-04-17T07:21:40.000Z</published>
+    <updated>2019-04-18T01:59:31.007Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Rabbit MQ是一个在AMQP协议标准基础上完整的，可服用的企业消息系统；<br>它遵循Mozilla Public License开源协议，采用 Erlang 实现的工业级的消息队列(MQ)服务器，Rabbit MQ 是建立在Erlang OTP平台上；<br>Erlang语言阻止了大量的 Java 工程师去深入研究和掌控它，对公司而言，几乎处于不可控的状态，但是是开源的，比较稳定的社区支持，活跃度也高。<br><a id="more"></a></p><h3 id="安装-Erlang-及-Rabbit-MQ（安装路径不允许出现空格）"><a href="#安装-Erlang-及-Rabbit-MQ（安装路径不允许出现空格）" class="headerlink" title="安装 Erlang 及 Rabbit MQ（安装路径不允许出现空格）"></a>安装 Erlang 及 Rabbit MQ<font color="red">（安装路径不允许出现空格）</font></h3><p>Erlang 小编使用的是 <code>otp_win64_21.3</code> ，需要其他版本或者32位系统的，可以去 <a href="http://www.erlang.org/downloads" target="_blank" rel="noopener">Erlang官网下载</a>。<br>全部点击“下一步”就行。（安装完成）<br>进入CMD窗口，<br>安装成功后，确认一下是否有系统环境变量。<br>打开Dos窗口,输入 <code>erl</code> 查看Erlang版本（如果可以查看版本，则掠过下方环境配置）<br>变量名：<code>ERLANG_HOME</code>，变量值：<code>Erlang安装路径</code>。<br><img src="/blog/2019/04/17/Window10安装RabbitMq中间件/rabbitmq1.png" alt="配置ERLANG_HOME环境变量"><br><img src="/blog/2019/04/17/Window10安装RabbitMq中间件/rabbitmq2.png" alt="配置PATH环境变量"><br>Rabbit MQ 小编使用的是 <code>rabbitmq-server-3.7.14</code>，需要其他版本或者32位系统的，可以去<a href="http://www.erlang.org/downloads" target="_blank" rel="noopener">Rabbit MQ官网下载</a>。<br><img src="/blog/2019/04/17/Window10安装RabbitMq中间件/rabbitmq3.png" alt="Rabbit MQ官网下载按需下载"><br>全部点击“下一步”就行。（安装完成）<br>激活 <code>RabbitMQ&#39;s Management Plugin</code> 管理界面<br>打开Dos窗口,输入命令：<br>`”D:\Program Files\RabbitMQ Server\rabbitmq_server-3.7.14\sbin\rabbitmq-plugins.bat” enable rabbitmq_management<br><img src="/blog/2019/04/17/Window10安装RabbitMq中间件/rabbitmq4.png" alt="RabbitMQ&#39;s Management Plugin启动成功（启动6个插件）"><br>rabbitmq必须用管理员用户启动（也可配置普通用户启动、暂未使用此方法）<br><img src="/blog/2019/04/17/Window10安装RabbitMq中间件/rabbitmq5.png" alt="普通管理员启动错误"><br>可以在Windows10系统的开始菜单上，单击鼠标右键，这时候出现的菜单中，我们选择命令提示符（管理员）点击打开这样即可。<br><img src="/blog/2019/04/17/Window10安装RabbitMq中间件/rabbitmq6.png" alt="管理员打开Dos窗口"><br><img src="/blog/2019/04/17/Window10安装RabbitMq中间件/rabbitmq7.png" alt="Rabbit MQ启动关闭命令"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">erl #查看Erlang版本</span><br><span class="line">net start rabbitmq #启动RabbitMQ命令</span><br><span class="line">net stop rabbitmq #关闭RabbitMQ命令</span><br><span class="line">127.0.0.1:15672 #访问RabbitMQ管理界面 默认用户名 guest 密码 guest</span><br></pre></td></tr></table></figure></p><p><img src="/blog/2019/04/17/Window10安装RabbitMq中间件/rabbitmq8.png" alt="Rabbit MQ管理员界面"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h3&gt;&lt;p&gt;Rabbit MQ是一个在AMQP协议标准基础上完整的，可服用的企业消息系统；&lt;br&gt;它遵循Mozilla Public License开源协议，采用 Erlang 实现的工业级的消息队列(MQ)服务器，Rabbit MQ 是建立在Erlang OTP平台上；&lt;br&gt;Erlang语言阻止了大量的 Java 工程师去深入研究和掌控它，对公司而言，几乎处于不可控的状态，但是是开源的，比较稳定的社区支持，活跃度也高。&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="RabbitMq" scheme="http://lastsummer.top/blog/categories/RabbitMq/"/>
+    
+    
+      <category term="RabbitMq" scheme="http://lastsummer.top/blog/tags/RabbitMq/"/>
+    
+      <category term="Queue" scheme="http://lastsummer.top/blog/tags/Queue/"/>
+    
+  </entry>
   
   <entry>
     <title>为什么使用消息队列</title>
@@ -237,9 +261,9 @@
       <category term="hexo" scheme="http://lastsummer.top/blog/categories/hexo/"/>
     
     
-      <category term="Html" scheme="http://lastsummer.top/blog/tags/Html/"/>
-    
       <category term="Github" scheme="http://lastsummer.top/blog/tags/Github/"/>
+    
+      <category term="Html" scheme="http://lastsummer.top/blog/tags/Html/"/>
     
   </entry>
   
@@ -327,9 +351,9 @@
       <category term="SOA" scheme="http://lastsummer.top/blog/categories/SOA/"/>
     
     
-      <category term="Zookeeper" scheme="http://lastsummer.top/blog/tags/Zookeeper/"/>
-    
       <category term="Dubbo" scheme="http://lastsummer.top/blog/tags/Dubbo/"/>
+    
+      <category term="Zookeeper" scheme="http://lastsummer.top/blog/tags/Zookeeper/"/>
     
       <category term="Maven" scheme="http://lastsummer.top/blog/tags/Maven/"/>
     
@@ -444,28 +468,6 @@
     
     
       <category term="Html" scheme="http://lastsummer.top/blog/tags/Html/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo-Github搭建个人博客二</title>
-    <link href="http://lastsummer.top/blog/2018/10/19/Hexo-Github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E4%BA%8C/"/>
-    <id>http://lastsummer.top/blog/2018/10/19/Hexo-Github搭建个人博客二/</id>
-    <published>2018-10-19T10:15:07.000Z</published>
-    <updated>2018-10-24T10:12:08.332Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文主要介绍了域名解析绑定及SSH部署博客到Github。<br><a id="more"></a></p><h2 id="Github绑定域名相关步骤"><a href="#Github绑定域名相关步骤" class="headerlink" title="Github绑定域名相关步骤"></a>Github绑定域名相关步骤</h2><h3 id="Github注册"><a href="#Github注册" class="headerlink" title="Github注册"></a>Github注册</h3><p>访问Github官方地址 <a href="https://github.com/" target="_blank" rel="noopener">Github</a><br>输入用户名、电子邮箱、密码,然后点击注册按钮.–&gt;之后验证邮箱（进入自己邮箱进行验证）<br>在github上面创建项目(借用github服务器)静态网站<br><img src="/blog/2018/10/19/Hexo-Github搭建个人博客二/github1.png" alt="注册"><br><img src="/blog/2018/10/19/Hexo-Github搭建个人博客二/github2.png" alt=""><br><img src="/blog/2018/10/19/Hexo-Github搭建个人博客二/github5.png" alt="创建仓库"><br>在git命令框中安装git插件(cnpm install hexo-deployer-git –save)<br>打开Hexo安装目录，编辑_config.yml文件<br><img src="/blog/2018/10/19/Hexo-Github搭建个人博客二/github4.png" alt=""><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repository: git@github.com:wangrui15034005712/wangrui15034005712.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p><h3 id="Git使用ssh密钥"><a href="#Git使用ssh密钥" class="headerlink" title="Git使用ssh密钥"></a>Git使用ssh密钥</h3><p>git支持https和git两种传输协议，github分享链接时会有两种协议可选：<br><img src="/blog/2018/10/19/Hexo-Github搭建个人博客二/ssh00.png" alt="https图例"><br><img src="/blog/2018/10/19/Hexo-Github搭建个人博客二/ssh.png" alt="ssh图例"><br>我们要想生成SSH key，首先就得先安装 SSH，对于 Linux 和 Mac 系统，其默认是安装 SSH 的，而对于 Windows 系统，其默认是不安装 SSH 的，不过由于我们安装了 Git Bash，其也应该自带了 SSH. 可以通过在 Git Bash 中输入ssh命令，查看本机是否安装 SSH：<br><img src="/blog/2018/10/19/Hexo-Github搭建个人博客二/ssh0.png" alt="查看是否安装ssh"><br>初次使用git的用户要使用git协议大概需要三个步骤：<br>一、生成密钥对<br>二、设置远程仓库（本文以github为例）上的公钥<br>三、把git的 remote url 修改为git协议（以上两个步骤初次设置过以后，以后使用都不需要再次设置，此步骤视以后项目的remote url而定，如果以后其他项目的协议为https则需要此步骤）<br>打开Hexo安装目录，右键git bash here点击<br><img src="/blog/2018/10/19/Hexo-Github搭建个人博客二/ssh1.png" alt="输入cd ~/.ssh回车-看你是否有了ssh key 密钥，有了就备份"><br><img src="/blog/2018/10/19/Hexo-Github搭建个人博客二/ssh2.png" alt="生成密钥"><br>打开你的id_rsa.pub文件，复制下里面的内容，然后登录进去你的github；<br><img src="/blog/2018/10/19/Hexo-Github搭建个人博客二/github6.png" alt="点击settings"><br><img src="/blog/2018/10/19/Hexo-Github搭建个人博客二/github7.png" alt="点击SSH and GPG keys-New SSH key"><br><img src="/blog/2018/10/19/Hexo-Github搭建个人博客二/github8.png" alt="把之前复制的公钥输入key-And SSH key"><br>至此，Github步骤结束。</p><h3 id="域名购买解析"><a href="#域名购买解析" class="headerlink" title="域名购买解析"></a>域名购买解析</h3><p>国内可以去几个大型的域名商去购买即可，直接搜域名购买，搜索引擎前几的都可以(万网、百度云、腾讯云、新网、西部数码、阿里云)，如果国外的可以去godday、name等站点去购买<br>访问阿里云官方地址 <a href="https://wanwang.aliyun.com/" target="_blank" rel="noopener">阿里云</a><br>输入会员名、手机号、密码,然后点击注册按钮.–&gt;之后验证手机(可通过淘宝或者支付宝进行登陆)<br><img src="/blog/2018/10/19/Hexo-Github搭建个人博客二/aliyun1.png" alt="登录成功后-点击产品-企业应用-域名注册"><br><img src="/blog/2018/10/19/Hexo-Github搭建个人博客二/aliyun2.png" alt="输入自己喜欢的域名点击查询-加入清单-立即结算"><br><img src="/blog/2018/10/19/Hexo-Github搭建个人博客二/aliyun3.png" alt="选择年限-其他服务不需要勾选-域名持有者按需配置-点击创建信息模板"><br><img src="/blog/2018/10/19/Hexo-Github搭建个人博客二/aliyun6.png" alt="点击立即购买"><br><img src="/blog/2018/10/19/Hexo-Github搭建个人博客二/aliyun7.png" alt="进入域名控制台-点击解析"><br><img src="/blog/2018/10/19/Hexo-Github搭建个人博客二/aliyun8.png" alt="点击新手引导"><br><img src="/blog/2018/10/19/Hexo-Github搭建个人博客二/ping1.png" alt="打开dos-ping 用户名.github.io-得到Github服务器IP"><br><img src="/blog/2018/10/19/Hexo-Github搭建个人博客二/aliyun9.png" alt="点击确定"><br><img src="/blog/2018/10/19/Hexo-Github搭建个人博客二/github9.png" alt="登陆github-点击username.github.io-找到settings"><br><img src="/blog/2018/10/19/Hexo-Github搭建个人博客二/github10.png" alt="找到GitHub Pages-Custom domain-把自己的域名绑定并保存"><br>至此，域名解析步骤结束，我们可以通过自己的域名进行访问了。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本文主要介绍了域名解析绑定及SSH部署博客到Github。&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="hexo" scheme="http://lastsummer.top/blog/categories/hexo/"/>
-    
-    
-      <category term="Github" scheme="http://lastsummer.top/blog/tags/Github/"/>
     
   </entry>
   
