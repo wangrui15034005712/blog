@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[RabbitMq入门及六种模式讲解]]></title>
+    <url>%2Fblog%2F2019%2F04%2F23%2FRabbitMq%E5%85%A5%E9%97%A8%E5%8F%8A%E5%85%AD%E7%A7%8D%E6%A8%A1%E5%BC%8F%E8%AE%B2%E8%A7%A3%2F</url>
+    <content type="text"><![CDATA[RabbitMQ 术语说明：Server(Broker):接收客户端连接，实现AMQP协议的消息队列和路由功能的进程；Virtual Host：虚拟主机的概念，类似权限控制组，一个Virtual Host里可以有多个Exchange和Queue,权限控制的最小丽都是Virtual Host；Exchange:交换机，接收生产者发送的消息，并根据Routing Key将消息路由到服务器中的队列Queue。ExchangeType:交换机类型决定了路由消息行为，RabbitMQ中有三种类型Exchange，分别是fanout、direct、topic；Message Queue：消息队列，用于存储还未被消费者消费的消息；Message：由Header和body组成，Header是由生产者添加的各种属性的集合，包括Message是否被持久化、优先级是多少、由哪个Message Queue接收等；body是真正需要发送的数据内容；BindingKey：绑定关键字，将一个特定的Exchange和一个特定的Queue绑定起来。 RabbitMQ 五种队列模式与（SpringBoot）实例简单模式 Hello World功能：一个生产者P发送消息到队列hello,一个消费者C接收 先在pom.xml中添加相关依赖12345&lt;!--消息队列模块--&gt;&lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-amqp&lt;/artifactId&gt;&lt;/dependency&gt; 在application.properties添加rabbitmq的相关信息（默认账号密码guest）：1234spring.rabbitmq.host=127.0.0.1spring.rabbitmq.port=5672spring.rabbitmq.username=guestspring.rabbitmq.password=guest]]></content>
+      <categories>
+        <category>RabbitMq</category>
+      </categories>
+      <tags>
+        <tag>简单模式 Hello World</tag>
+        <tag>工作模式 Work Queue</tag>
+        <tag>发布/订阅模式 Publish/Subscribe</tag>
+        <tag>路由模式 Routing</tag>
+        <tag>通配符模式 Topic</tag>
+        <tag>分布式 RPC</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Window10安装RabbitMq中间件]]></title>
     <url>%2Fblog%2F2019%2F04%2F17%2FWindow10%E5%AE%89%E8%A3%85RabbitMq%E4%B8%AD%E9%97%B4%E4%BB%B6%2F</url>
-    <content type="text"><![CDATA[简介Rabbit MQ是一个在AMQP协议标准基础上完整的，可服用的企业消息系统；它遵循Mozilla Public License开源协议，采用 Erlang 实现的工业级的消息队列(MQ)服务器，Rabbit MQ 是建立在Erlang OTP平台上；Erlang语言阻止了大量的 Java 工程师去深入研究和掌控它，对公司而言，几乎处于不可控的状态，但是是开源的，比较稳定的社区支持，活跃度也高。 安装 Erlang 及 Rabbit MQ（安装路径不允许出现空格）Erlang 小编使用的是 otp_win64_21.3 ，需要其他版本或者32位系统的，可以去 Erlang官网下载。全部点击“下一步”就行。（安装完成）进入CMD窗口，安装成功后，确认一下是否有系统环境变量。打开Dos窗口,输入 erl 查看Erlang版本（如果可以查看版本，则掠过下方环境配置）变量名：ERLANG_HOME，变量值：Erlang安装路径。Rabbit MQ 小编使用的是 rabbitmq-server-3.7.14，需要其他版本或者32位系统的，可以去Rabbit MQ官网下载。全部点击“下一步”就行。（安装完成）激活 RabbitMQ&#39;s Management Plugin 管理界面打开Dos窗口,输入命令：&quot;D:\Program Files\RabbitMQ Server\rabbitmq_server-3.7.14\sbin\rabbitmq-plugins.bat&quot; enable rabbitmq_managementrabbitmq必须用管理员用户启动（也可配置普通用户启动、暂未使用此方法）可以在Windows10系统的开始菜单上，单击鼠标右键，这时候出现的菜单中，我们选择命令提示符（管理员）点击打开这样即可。123456erl #查看Erlang版本rabbitmqctl status #查看了啊RabbitMQ版本net start rabbitmq #启动RabbitMQ命令net stop rabbitmq #关闭RabbitMQ命令127.0.0.1:15672 #访问RabbitMQ管理界面 默认用户名 guest 密码 guest默认监听端口：15672（在3.0版本之前是55672端口）]]></content>
+    <content type="text"><![CDATA[简介Rabbit MQ是一个在AMQP协议标准基础上完整的，可服用的企业消息系统；它遵循Mozilla Public License开源协议，采用 Erlang 实现的工业级的消息队列(MQ)服务器，Rabbit MQ 是建立在Erlang OTP平台上；Erlang语言阻止了大量的 Java 工程师去深入研究和掌控它，对公司而言，几乎处于不可控的状态，但是是开源的，比较稳定的社区支持，活跃度也高;AMQP（高级消息队列协议）是一个异步消息传递所使用应用层协议规范，为面向消息中间件设计，基于此协议的客户端与消息中间件可以无视消息来源传递消息，不受客户端、消息中间件、不同的开发语言环境等条件的限制；支持主流操作系统：Linux、Windows，MacOX等；支持多种客户端开发语言：Java、Python、Ruby、.NET，PHP、C/C++、Node.js等。 安装 Erlang 及 Rabbit MQ（安装路径不允许出现空格）Erlang 小编使用的是 otp_win64_21.3 ，需要其他版本或者32位系统的，可以去 Erlang官网下载。全部点击“下一步”就行。（安装完成）进入CMD窗口，安装成功后，确认一下是否有系统环境变量。打开Dos窗口,输入 erl 查看Erlang版本（如果可以查看版本，则掠过下方环境配置）变量名：ERLANG_HOME，变量值：Erlang安装路径。Rabbit MQ 小编使用的是 rabbitmq-server-3.7.14，需要其他版本或者32位系统的，可以去Rabbit MQ官网下载。全部点击“下一步”就行。（安装完成）激活 RabbitMQ&#39;s Management Plugin 管理界面打开Dos窗口,输入命令：&quot;D:\Program Files\RabbitMQ Server\rabbitmq_server-3.7.14\sbin\rabbitmq-plugins.bat&quot; enable rabbitmq_managementrabbitmq必须用管理员用户启动（也可配置普通用户启动、暂未使用此方法）可以在Windows10系统的开始菜单上，单击鼠标右键，这时候出现的菜单中，我们选择命令提示符（管理员）点击打开这样即可。1234567891011erl #查看Erlang版本rabbitmqctl status #查看了啊RabbitMQ版本net start rabbitmq #启动RabbitMQ命令net stop rabbitmq #关闭RabbitMQ命令127.0.0.1:15672 #访问RabbitMQ管理界面 默认用户名 guest 密码 guest默认监听端口：15672（在3.0版本之前是55672端口）rabbitmq-plugins enable rabbitmq_web_stomp rabbitmq_web_stomp_examplesrabbitmq-plugins enable rabbitmq_management rabbitmq_web_stomp rabbitmq_stomp rabbitmq_web_stomp_examples&quot;/d/Program Files/RabbitMQ Server/rabbitmq_server-3.7.14/sbin/rabbitmq-plugins.bat&quot; enable rabbitmq_web_stomp rabbitmq_web_stomp_examples&quot;/d/Program Files/RabbitMQ Server/rabbitmq_server-3.7.14/sbin/rabbitmqctl.bat&quot; startus&quot;/d/Program Files/RabbitMQ Server/rabbitmq_server-3.7.14/sbin/rabbitmqctl.bat&quot; list_queues]]></content>
       <categories>
         <category>RabbitMq</category>
       </categories>

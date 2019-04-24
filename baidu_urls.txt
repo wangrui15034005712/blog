@@ -1,3 +1,4 @@
+http://lastsummer.top/blog/2019/04/23/RabbitMq入门及六种模式讲解/
 http://lastsummer.top/blog/2019/04/17/Window10安装RabbitMq中间件/
 http://lastsummer.top/blog/2019/04/16/为什么使用消息队列/
 http://lastsummer.top/blog/2019/03/04/Git基本命令/

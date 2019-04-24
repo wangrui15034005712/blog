@@ -1477,6 +1477,7 @@ a.article-title:hover {
 .article-tag-list a {
   color: #fff;
   padding: 5px;
+  margin: 3px;
   border-radius: 5px;
 }
 .article-tag-list a:hover {

@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://lastsummer.top/blog/"/>
-  <updated>2019-04-22T02:40:03.198Z</updated>
+  <updated>2019-04-23T10:10:07.083Z</updated>
   <id>http://lastsummer.top/blog/</id>
   
   <author>
@@ -17,17 +17,49 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>RabbitMq入门及六种模式讲解</title>
+    <link href="http://lastsummer.top/blog/2019/04/23/RabbitMq%E5%85%A5%E9%97%A8%E5%8F%8A%E5%85%AD%E7%A7%8D%E6%A8%A1%E5%BC%8F%E8%AE%B2%E8%A7%A3/"/>
+    <id>http://lastsummer.top/blog/2019/04/23/RabbitMq入门及六种模式讲解/</id>
+    <published>2019-04-23T08:25:52.000Z</published>
+    <updated>2019-04-23T10:10:07.083Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="RabbitMQ-术语说明："><a href="#RabbitMQ-术语说明：" class="headerlink" title="RabbitMQ 术语说明："></a>RabbitMQ 术语说明：</h3><p>Server(Broker):接收客户端连接，实现AMQP协议的消息队列和路由功能的进程；<br>Virtual Host：虚拟主机的概念，类似权限控制组，一个Virtual Host里可以有多个Exchange和Queue,权限控制的最小丽都是Virtual Host；<br>Exchange:交换机，接收生产者发送的消息，并根据Routing Key将消息路由到服务器中的队列Queue。<br>ExchangeType:交换机类型决定了路由消息行为，RabbitMQ中有三种类型Exchange，分别是fanout、direct、topic；<br>Message Queue：消息队列，用于存储还未被消费者消费的消息；<br>Message：由Header和body组成，Header是由生产者添加的各种属性的集合，包括Message是否被持久化、优先级是多少、由哪个Message Queue接收等；body是真正需要发送的数据内容；<br>BindingKey：绑定关键字，将一个特定的Exchange和一个特定的Queue绑定起来。<br><a id="more"></a></p><h3 id="RabbitMQ-五种队列模式与（SpringBoot）实例"><a href="#RabbitMQ-五种队列模式与（SpringBoot）实例" class="headerlink" title="RabbitMQ 五种队列模式与（SpringBoot）实例"></a>RabbitMQ 五种队列模式与（SpringBoot）实例</h3><h4 id="简单模式-Hello-World"><a href="#简单模式-Hello-World" class="headerlink" title="简单模式 Hello World"></a>简单模式 Hello World</h4><p><img src="/blog/2019/04/23/RabbitMq入门及六种模式讲解/rabbitmq1.png" alt="简单模式 Hello World"><br>功能：一个生产者P发送消息到队列hello,一个消费者C接收</p><h6 id="先在pom-xml中添加相关依赖"><a href="#先在pom-xml中添加相关依赖" class="headerlink" title="先在pom.xml中添加相关依赖"></a>先在pom.xml中添加相关依赖</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--消息队列模块--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;spring-boot-starter-amqp&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure><h6 id="在application-properties添加rabbitmq的相关信息（默认账号密码guest）："><a href="#在application-properties添加rabbitmq的相关信息（默认账号密码guest）：" class="headerlink" title="在application.properties添加rabbitmq的相关信息（默认账号密码guest）："></a>在application.properties添加rabbitmq的相关信息（默认账号密码guest）：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">spring.rabbitmq.host=127.0.0.1</span><br><span class="line">spring.rabbitmq.port=5672</span><br><span class="line">spring.rabbitmq.username=guest</span><br><span class="line">spring.rabbitmq.password=guest</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;RabbitMQ-术语说明：&quot;&gt;&lt;a href=&quot;#RabbitMQ-术语说明：&quot; class=&quot;headerlink&quot; title=&quot;RabbitMQ 术语说明：&quot;&gt;&lt;/a&gt;RabbitMQ 术语说明：&lt;/h3&gt;&lt;p&gt;Server(Broker):接收客户端连接，实现AMQP协议的消息队列和路由功能的进程；&lt;br&gt;Virtual Host：虚拟主机的概念，类似权限控制组，一个Virtual Host里可以有多个Exchange和Queue,权限控制的最小丽都是Virtual Host；&lt;br&gt;Exchange:交换机，接收生产者发送的消息，并根据Routing Key将消息路由到服务器中的队列Queue。&lt;br&gt;ExchangeType:交换机类型决定了路由消息行为，RabbitMQ中有三种类型Exchange，分别是fanout、direct、topic；&lt;br&gt;Message Queue：消息队列，用于存储还未被消费者消费的消息；&lt;br&gt;Message：由Header和body组成，Header是由生产者添加的各种属性的集合，包括Message是否被持久化、优先级是多少、由哪个Message Queue接收等；body是真正需要发送的数据内容；&lt;br&gt;BindingKey：绑定关键字，将一个特定的Exchange和一个特定的Queue绑定起来。&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="RabbitMq" scheme="http://lastsummer.top/blog/categories/RabbitMq/"/>
+    
+    
+      <category term="简单模式 Hello World" scheme="http://lastsummer.top/blog/tags/%E7%AE%80%E5%8D%95%E6%A8%A1%E5%BC%8F-Hello-World/"/>
+    
+      <category term="工作模式 Work Queue" scheme="http://lastsummer.top/blog/tags/%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F-Work-Queue/"/>
+    
+      <category term="发布/订阅模式 Publish/Subscribe" scheme="http://lastsummer.top/blog/tags/%E5%8F%91%E5%B8%83-%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F-Publish-Subscribe/"/>
+    
+      <category term="路由模式 Routing" scheme="http://lastsummer.top/blog/tags/%E8%B7%AF%E7%94%B1%E6%A8%A1%E5%BC%8F-Routing/"/>
+    
+      <category term="通配符模式 Topic" scheme="http://lastsummer.top/blog/tags/%E9%80%9A%E9%85%8D%E7%AC%A6%E6%A8%A1%E5%BC%8F-Topic/"/>
+    
+      <category term="分布式 RPC" scheme="http://lastsummer.top/blog/tags/%E5%88%86%E5%B8%83%E5%BC%8F-RPC/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Window10安装RabbitMq中间件</title>
     <link href="http://lastsummer.top/blog/2019/04/17/Window10%E5%AE%89%E8%A3%85RabbitMq%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
     <id>http://lastsummer.top/blog/2019/04/17/Window10安装RabbitMq中间件/</id>
     <published>2019-04-17T07:21:40.000Z</published>
-    <updated>2019-04-22T02:40:03.198Z</updated>
+    <updated>2019-04-23T09:55:21.642Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Rabbit MQ是一个在AMQP协议标准基础上完整的，可服用的企业消息系统；<br>它遵循Mozilla Public License开源协议，采用 Erlang 实现的工业级的消息队列(MQ)服务器，Rabbit MQ 是建立在Erlang OTP平台上；<br>Erlang语言阻止了大量的 Java 工程师去深入研究和掌控它，对公司而言，几乎处于不可控的状态，但是是开源的，比较稳定的社区支持，活跃度也高。<br><a id="more"></a></p><h3 id="安装-Erlang-及-Rabbit-MQ（安装路径不允许出现空格）"><a href="#安装-Erlang-及-Rabbit-MQ（安装路径不允许出现空格）" class="headerlink" title="安装 Erlang 及 Rabbit MQ（安装路径不允许出现空格）"></a>安装 Erlang 及 Rabbit MQ<font color="red">（安装路径不允许出现空格）</font></h3><p>Erlang 小编使用的是 <code>otp_win64_21.3</code> ，需要其他版本或者32位系统的，可以去 <a href="http://www.erlang.org/downloads" target="_blank" rel="noopener">Erlang官网下载</a>。<br>全部点击“下一步”就行。（安装完成）<br>进入CMD窗口，<br>安装成功后，确认一下是否有系统环境变量。<br>打开Dos窗口,输入 <code>erl</code> 查看Erlang版本（如果可以查看版本，则掠过下方环境配置）<br>变量名：<code>ERLANG_HOME</code>，变量值：<code>Erlang安装路径</code>。<br><img src="/blog/2019/04/17/Window10安装RabbitMq中间件/rabbitmq1.png" alt="配置ERLANG_HOME环境变量"><br><img src="/blog/2019/04/17/Window10安装RabbitMq中间件/rabbitmq2.png" alt="配置PATH环境变量"><br>Rabbit MQ 小编使用的是 <code>rabbitmq-server-3.7.14</code>，需要其他版本或者32位系统的，可以去<a href="http://www.erlang.org/downloads" target="_blank" rel="noopener">Rabbit MQ官网下载</a>。<br><img src="/blog/2019/04/17/Window10安装RabbitMq中间件/rabbitmq3.png" alt="Rabbit MQ官网下载按需下载"><br>全部点击“下一步”就行。（安装完成）<br>激活 <code>RabbitMQ&#39;s Management Plugin</code> 管理界面<br>打开Dos窗口,输入命令：<br><code>&quot;D:\Program Files\RabbitMQ Server\rabbitmq_server-3.7.14\sbin\rabbitmq-plugins.bat&quot; enable rabbitmq_management</code><br><img src="/blog/2019/04/17/Window10安装RabbitMq中间件/rabbitmq4.png" alt="RabbitMQ&#39;s Management Plugin启动成功（启动6个插件）"><br>rabbitmq必须用管理员用户启动（也可配置普通用户启动、暂未使用此方法）<br><img src="/blog/2019/04/17/Window10安装RabbitMq中间件/rabbitmq5.png" alt="普通管理员启动错误"><br>可以在Windows10系统的开始菜单上，单击鼠标右键，这时候出现的菜单中，我们选择命令提示符（管理员）点击打开这样即可。<br><img src="/blog/2019/04/17/Window10安装RabbitMq中间件/rabbitmq6.png" alt="管理员打开Dos窗口"><br><img src="/blog/2019/04/17/Window10安装RabbitMq中间件/rabbitmq7.png" alt="Rabbit MQ启动关闭命令"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">erl #查看Erlang版本</span><br><span class="line">rabbitmqctl status #查看了啊RabbitMQ版本</span><br><span class="line">net start rabbitmq #启动RabbitMQ命令</span><br><span class="line">net stop rabbitmq #关闭RabbitMQ命令</span><br><span class="line">127.0.0.1:15672 #访问RabbitMQ管理界面 默认用户名 guest 密码 guest</span><br><span class="line">默认监听端口：15672（在3.0版本之前是55672端口）</span><br></pre></td></tr></table></figure></p><p><img src="/blog/2019/04/17/Window10安装RabbitMq中间件/rabbitmq8.png" alt="Rabbit MQ管理员界面"></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Rabbit MQ是一个在AMQP协议标准基础上完整的，可服用的企业消息系统；<br>它遵循Mozilla Public License开源协议，采用 Erlang 实现的工业级的消息队列(MQ)服务器，Rabbit MQ 是建立在Erlang OTP平台上；<br>Erlang语言阻止了大量的 Java 工程师去深入研究和掌控它，对公司而言，几乎处于不可控的状态，但是是开源的，比较稳定的社区支持，活跃度也高;<br>AMQP（高级消息队列协议）是一个异步消息传递所使用应用层协议规范，为面向消息中间件设计，基于此协议的客户端与消息中间件可以无视消息来源传递消息，不受客户端、消息中间件、不同的开发语言环境等条件的限制；<br>支持主流操作系统：Linux、Windows，MacOX等；<br>支持多种客户端开发语言：Java、Python、Ruby、.NET，PHP、C/C++、Node.js等。<br><a id="more"></a></p><h3 id="安装-Erlang-及-Rabbit-MQ（安装路径不允许出现空格）"><a href="#安装-Erlang-及-Rabbit-MQ（安装路径不允许出现空格）" class="headerlink" title="安装 Erlang 及 Rabbit MQ（安装路径不允许出现空格）"></a>安装 Erlang 及 Rabbit MQ<font color="red">（安装路径不允许出现空格）</font></h3><p>Erlang 小编使用的是 <code>otp_win64_21.3</code> ，需要其他版本或者32位系统的，可以去 <a href="http://www.erlang.org/downloads" target="_blank" rel="noopener">Erlang官网下载</a>。<br>全部点击“下一步”就行。（安装完成）<br>进入CMD窗口，<br>安装成功后，确认一下是否有系统环境变量。<br>打开Dos窗口,输入 <code>erl</code> 查看Erlang版本（如果可以查看版本，则掠过下方环境配置）<br>变量名：<code>ERLANG_HOME</code>，变量值：<code>Erlang安装路径</code>。<br><img src="/blog/2019/04/17/Window10安装RabbitMq中间件/rabbitmq1.png" alt="配置ERLANG_HOME环境变量"><br><img src="/blog/2019/04/17/Window10安装RabbitMq中间件/rabbitmq2.png" alt="配置PATH环境变量"><br>Rabbit MQ 小编使用的是 <code>rabbitmq-server-3.7.14</code>，需要其他版本或者32位系统的，可以去<a href="http://www.erlang.org/downloads" target="_blank" rel="noopener">Rabbit MQ官网下载</a>。<br><img src="/blog/2019/04/17/Window10安装RabbitMq中间件/rabbitmq3.png" alt="Rabbit MQ官网下载按需下载"><br>全部点击“下一步”就行。（安装完成）<br>激活 <code>RabbitMQ&#39;s Management Plugin</code> 管理界面<br>打开Dos窗口,输入命令：<br><code>&quot;D:\Program Files\RabbitMQ Server\rabbitmq_server-3.7.14\sbin\rabbitmq-plugins.bat&quot; enable rabbitmq_management</code><br><img src="/blog/2019/04/17/Window10安装RabbitMq中间件/rabbitmq4.png" alt="RabbitMQ&#39;s Management Plugin启动成功（启动6个插件）"><br>rabbitmq必须用管理员用户启动（也可配置普通用户启动、暂未使用此方法）<br><img src="/blog/2019/04/17/Window10安装RabbitMq中间件/rabbitmq5.png" alt="普通管理员启动错误"><br>可以在Windows10系统的开始菜单上，单击鼠标右键，这时候出现的菜单中，我们选择命令提示符（管理员）点击打开这样即可。<br><img src="/blog/2019/04/17/Window10安装RabbitMq中间件/rabbitmq6.png" alt="管理员打开Dos窗口"><br><img src="/blog/2019/04/17/Window10安装RabbitMq中间件/rabbitmq7.png" alt="Rabbit MQ启动关闭命令"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">erl #查看Erlang版本</span><br><span class="line">rabbitmqctl status #查看了啊RabbitMQ版本</span><br><span class="line">net start rabbitmq #启动RabbitMQ命令</span><br><span class="line">net stop rabbitmq #关闭RabbitMQ命令</span><br><span class="line">127.0.0.1:15672 #访问RabbitMQ管理界面 默认用户名 guest 密码 guest</span><br><span class="line">默认监听端口：15672（在3.0版本之前是55672端口）</span><br><span class="line">rabbitmq-plugins enable rabbitmq_web_stomp rabbitmq_web_stomp_examples</span><br><span class="line">rabbitmq-plugins enable rabbitmq_management rabbitmq_web_stomp rabbitmq_stomp rabbitmq_web_stomp_examples</span><br><span class="line">&quot;/d/Program Files/RabbitMQ Server/rabbitmq_server-3.7.14/sbin/rabbitmq-plugins.bat&quot; enable rabbitmq_web_stomp rabbitmq_web_stomp_examples</span><br><span class="line">&quot;/d/Program Files/RabbitMQ Server/rabbitmq_server-3.7.14/sbin/rabbitmqctl.bat&quot; startus</span><br><span class="line">&quot;/d/Program Files/RabbitMQ Server/rabbitmq_server-3.7.14/sbin/rabbitmqctl.bat&quot; list_queues</span><br></pre></td></tr></table></figure></p><p><img src="/blog/2019/04/17/Window10安装RabbitMq中间件/rabbitmq8.png" alt="Rabbit MQ管理员界面"></p>]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h3&gt;&lt;p&gt;Rabbit MQ是一个在AMQP协议标准基础上完整的，可服用的企业消息系统；&lt;br&gt;它遵循Mozilla Public License开源协议，采用 Erlang 实现的工业级的消息队列(MQ)服务器，Rabbit MQ 是建立在Erlang OTP平台上；&lt;br&gt;Erlang语言阻止了大量的 Java 工程师去深入研究和掌控它，对公司而言，几乎处于不可控的状态，但是是开源的，比较稳定的社区支持，活跃度也高。&lt;br&gt;&lt;/p&gt;
+      &lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h3&gt;&lt;p&gt;Rabbit MQ是一个在AMQP协议标准基础上完整的，可服用的企业消息系统；&lt;br&gt;它遵循Mozilla Public License开源协议，采用 Erlang 实现的工业级的消息队列(MQ)服务器，Rabbit MQ 是建立在Erlang OTP平台上；&lt;br&gt;Erlang语言阻止了大量的 Java 工程师去深入研究和掌控它，对公司而言，几乎处于不可控的状态，但是是开源的，比较稳定的社区支持，活跃度也高;&lt;br&gt;AMQP（高级消息队列协议）是一个异步消息传递所使用应用层协议规范，为面向消息中间件设计，基于此协议的客户端与消息中间件可以无视消息来源传递消息，不受客户端、消息中间件、不同的开发语言环境等条件的限制；&lt;br&gt;支持主流操作系统：Linux、Windows，MacOX等；&lt;br&gt;支持多种客户端开发语言：Java、Python、Ruby、.NET，PHP、C/C++、Node.js等。&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
@@ -439,28 +471,6 @@
     <summary type="html">
     
       &lt;p&gt;基本思路是将微信和支付宝的收款二维码放到每篇文章的最后，打赏的时候扫下二维码就可以了。&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="hexo" scheme="http://lastsummer.top/blog/categories/hexo/"/>
-    
-    
-      <category term="Html" scheme="http://lastsummer.top/blog/tags/Html/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo博客添加图片音乐及视频</title>
-    <link href="http://lastsummer.top/blog/2018/10/23/Hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%89%87%E9%9F%B3%E4%B9%90%E5%8F%8A%E8%A7%86%E9%A2%91/"/>
-    <id>http://lastsummer.top/blog/2018/10/23/Hexo博客添加图片音乐及视频/</id>
-    <published>2018-10-23T10:31:46.000Z</published>
-    <updated>2018-10-29T07:38:03.750Z</updated>
-    
-    <content type="html"><![CDATA[<p>Hexo博客添加图片音乐及视频。<br><a id="more"></a></p><h5 id="插入外部链接图片"><a href="#插入外部链接图片" class="headerlink" title="插入外部链接图片"></a>插入外部链接图片</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![“图片描述”](“图片地址”)</span><br></pre></td></tr></table></figure><h5 id="添加本地图片"><a href="#添加本地图片" class="headerlink" title="添加本地图片"></a>添加本地图片</h5><p>在\hexo\source目录下新建文件夹，命名为images或者其他你喜欢的名字，然后编辑你的md博文，插入下面的代码样式：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![“图片描述”](/images/你的图片名字.JPG)</span><br></pre></td></tr></table></figure></p><h5 id="插入音乐"><a href="#插入音乐" class="headerlink" title="插入音乐"></a>插入音乐</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe frameborder=<span class="string">"no"</span> border=<span class="string">"0"</span> marginwidth=<span class="string">"0"</span> marginheight=<span class="string">"0"</span> width=660 height=86 src=<span class="string">"//music.163.com/outchain/player?type=2&amp;id=1306515028&amp;auto=0&amp;height=66"</span>&gt;&lt;/iframe&gt;</span><br></pre></td></tr></table></figure><p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="660" height="86" src="//music.163.com/outchain/player?type=2&id=1306515028&auto=0&height=66"></iframe></p><h5 id="插入视频"><a href="#插入视频" class="headerlink" title="插入视频"></a>插入视频</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe height=498 width=660 src=<span class="string">'//player.youku.com/embed/XMzgyNTI5NTY1Mg=='</span> frameborder=0 <span class="string">'allowfullscreen'</span>&gt;&lt;/iframe&gt;</span><br></pre></td></tr></table></figure><p><iframe height="498" width="660" src="//player.youku.com/embed/XMzgyNTI5NTY1Mg==" frameborder="0" 'allowfullscreen'=""></iframe><br>个人博客：<a href="https://lastsummer.top">去年夏天</a><br>相关链接: <a href="https://lastsummer.top/blog/生活">去年夏天</a><br>参考博客：<a href="https://blog.csdn.net/qq_26891045/article/details/51693571" target="_blank" rel="noopener">hexo博客添加图片，音乐，视频</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Hexo博客添加图片音乐及视频。&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
