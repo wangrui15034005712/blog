@@ -122,14 +122,14 @@
           var target = src + (type === 'video' ? '.mp4' : '.jpg');
           src += '';
 			
-          liTmpl += '<div style="height:200px;"><div style="width:30%; height:auto; float:left; padding:10px;">\
+          liTmpl += '<div style="width:30%; height:auto; float:left; padding:10px;">\
                   <img data-type="' + type + '" data-src="' + minSrc + '" src="/blog/photos/../assets/img/empty.png" itemprop="thumbnail" onload="lzld(this)">\
-                <figcaption itemprop="caption description"><a href="'+src+'" target="_blank">' + data.text[i] + '</a></figcaption>\
+                <figcaption itemprop="caption description"><a onclick="imgshow(this)" href="'+src+'" target="_blank">' + data.text[i] + '</a></figcaption>\
             </div>';
         }
-        ulTmpl = ulTmpl + '<section><h3>' + data.year + '年' + data.month + '月</h3>\
+        ulTmpl = ulTmpl + '<div style="width:100%;height:auto;clear:both;"><h3>' + data.year + '年' + data.month + '月</h3>\
         <ul class="img-box-ul">' + liTmpl + '</ul>\
-        </section></div>';
+        </div>';
       }
       document.querySelector('.instagram').innerHTML = '<div class="photos" itemscope="" itemtype="http://schema.org/ImageGallery">' + ulTmpl + '</div>';
       createVideoIncon();

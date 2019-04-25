@@ -1334,7 +1334,8 @@ a.article-title:hover {
 .article-entry h4,
 .article-entry h5,
 .article-entry h6 {
-  margin: 1.64em 0;
+  line-height: 1.1em;
+  margin: 1.1em 0;
 }
 .article-entry a {
   color: #258fb8;
