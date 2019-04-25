@@ -383,9 +383,9 @@
       <category term="SOA" scheme="http://lastsummer.top/blog/categories/SOA/"/>
     
     
-      <category term="Zookeeper" scheme="http://lastsummer.top/blog/tags/Zookeeper/"/>
-    
       <category term="Dubbo" scheme="http://lastsummer.top/blog/tags/Dubbo/"/>
+    
+      <category term="Zookeeper" scheme="http://lastsummer.top/blog/tags/Zookeeper/"/>
     
       <category term="Maven" scheme="http://lastsummer.top/blog/tags/Maven/"/>
     
