@@ -121,17 +121,17 @@
           var type = data.type[i];
           var target = src + (type === 'video' ? '.mp4' : '.jpg');
           src += '';
-
-          liTmpl += '<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject">\
+			
+          liTmpl += '<div style="height:200px;"><div style="width:30%; height:auto; float:left; padding:10px;">\
                 <a href="' + src + '" itemprop="contentUrl" data-size="1080x1080" data-type="' + type + '" data-target="' + src + '">\
-                  <img class="reward-img" data-type="' + type + '" data-src="' + minSrc + '" src="/blog/photos/../assets/img/empty.png" itemprop="thumbnail" onload="lzld(this)">\
+                  <img data-type="' + type + '" data-src="' + minSrc + '" src="/blog/photos/../assets/img/empty.png" itemprop="thumbnail" onload="lzld(this)">\
                 </a>\
-                <figcaption style="display:none" itemprop="caption description">' + data.text[i] + '</figcaption>\
-            </figure>';
+                <figcaption itemprop="caption description">' + data.text[i] + '</figcaption>\
+            </div>';
         }
-        ulTmpl = ulTmpl + '<section class="archives album"><h1 class="year">' + data.year + '年<em>' + data.month + '月</em></h1>\
+        ulTmpl = ulTmpl + '<section><h3>' + data.year + '年' + data.month + '月</h3>\
         <ul class="img-box-ul">' + liTmpl + '</ul>\
-        </section>';
+        </section></div>';
       }
       document.querySelector('.instagram').innerHTML = '<div class="photos" itemscope="" itemtype="http://schema.org/ImageGallery">' + ulTmpl + '</div>';
       createVideoIncon();
