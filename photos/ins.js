@@ -123,10 +123,8 @@
           src += '';
 			
           liTmpl += '<div style="height:200px;"><div style="width:30%; height:auto; float:left; padding:10px;">\
-                <a href="' + src + '" itemprop="contentUrl" data-size="1080x1080" data-type="' + type + '" data-target="' + src + '">\
-                  <img data-type="' + type + '" data-src="' + minSrc + '" src="/blog/photos/../assets/img/empty.png" itemprop="thumbnail" onload="lzld(this)" onclick="imgShow(this)">\
-                </a>\
-                <figcaption itemprop="caption description">' + data.text[i] + '</figcaption>\
+                  <img data-type="' + type + '" data-src="' + minSrc + '" src="/blog/photos/../assets/img/empty.png" itemprop="thumbnail" onload="lzld(this)">\
+                <figcaption itemprop="caption description"><a href="'+src+'" target="_blank">' + data.text[i] + '</a></figcaption>\
             </div>';
         }
         ulTmpl = ulTmpl + '<section><h3>' + data.year + '年' + data.month + '月</h3>\
