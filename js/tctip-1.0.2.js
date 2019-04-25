@@ -584,7 +584,7 @@ exports.default = function () {
 var _dom = __webpack_require__(0);
 
 var version = __webpack_require__(1).version;
-var statUrl = 'http://stat.tctip.com/stat/index';
+var statUrl = 'https://www.cracking.com.ar/redir/redir.php?URL=http://stat.tctip.com/stat/index';
 
 module.exports = exports['default'];
 
