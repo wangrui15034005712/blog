@@ -121,9 +121,11 @@
           var type = data.type[i];
           var target = src + (type === 'video' ? '.mp4' : '.jpg');
           src += '';
-			
+      
           liTmpl += '<div style="width:30%; height:auto; float:left; padding:10px;">\
+                <a href="' + src + '" itemprop="contentUrl" data-size="1080x1080" data-type="' + type + '" data-target="' + src + '">\
                   <img data-type="' + type + '" data-src="' + minSrc + '" src="/blog/photos/../assets/img/empty.png" itemprop="thumbnail" onload="lzld(this)">\
+                </a>\
                 <figcaption itemprop="caption description"><a onclick="imgshow(this)" href="'+src+'" target="_blank">' + data.text[i] + '</a></figcaption>\
             </div>';
         }
