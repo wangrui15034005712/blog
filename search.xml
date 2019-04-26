@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Hexo+Github实现相册功能]]></title>
+    <url>%2Fblog%2F2019%2F04%2F26%2FHexo-Github%E5%AE%9E%E7%8E%B0%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD%2F</url>
+    <content type="text"><![CDATA[Hexo+Github+Python实现相册功能最终效果请看这里 https://lastsummer.top/blog/photos/我使用的主题是hexo-theme-shana-master,该主题没有集成相册功能，自己上网查了些资料,摸索摸索,终于搭建好了。 实现方案在github上新建一个仓库，主要用于存储图片，可以通过url访问到，也方便管理（后期可以在七牛云上进行图片储存）将要放到相册的图片处理成json格式的数据，然后进行访问，这里json的格式需要配合要使用的样式，所以需要处理成特定格式的json数据，下面会给出图片裁剪，因为相册显示的样式最好是正方形的的图片，这里使用脚本处理一下图片压缩，相册显示的图片是压缩后的图片，提高加载的速度，打开后的图片是原图。 新建一个仓库存储图片源码下载地址https://github.com/wangrui15034005712/Blog-Back-Up建立一个用于存储相册的仓库，我这里建立了名为Blog-Back-Up的仓库（和博客地址同一目录）重点 修改Blog-Back-Up中blog_photos_copy的ins.js文件，主要是里面的render函数，修改成自己的Github图片路径,这个链接很多人输入错了，不是直接的图片url，是github需要点“download”才能看到的url。12var minSrc = &apos;https://raw.githubusercontent.com/wangrui15034005712/Blog-Back-Up/master/min_photos/&apos; + data.link[i];var src = &apos;https://raw.githubusercontent.com/wangrui15034005712/Blog-Back-Up/master/photos/&apos; + data.link[i]; 重点 修改Blog-Back-Up中tool.py文件12345678# 把json文件发布到自己的博客中with open(&quot;../Hexo/source/photos/data.json&quot;,&quot;w&quot;) as fp: json.dump(final_dict, fp)# 我设置的是本地博客路径如 D:\User\Hexo\source\photos\data.json# 把下载的博客Blog-Back-Up上传至自己新创建的仓库# 把自己的相册图片放入到Blog-Back-Up的photos中# DOS命令执行 Python tool.py 命令压缩图片到min_photos及json并且发布到Github# 如果报错自行百度python等问题（缺少模块、版本不对） 修改Hexo博客在Hexo目录中打开DOS命令创建新的相册菜单hexo new page &quot;photos&quot;1hexo new page &quot;photos&quot; 之后，去下载“empty.png” 点击这里，右键保存下载在Hexo本地仓库source下新建一个文件夹命名为assets,再在assets下新建一个文件夹命名为img。最后把empty.png放到img里面。把之前clone下来的Blog-Back-Up下blog_photos_copy的所有文件copy到Hexo本地仓库source中的photo文件夹下如无法显示，可能是图片路径，网络传输较慢，js、css样式待优化，小编自己的样式是经过调整的。有问题可以在下方评论区评论。个人博客：去年夏天参考博客：hexo+yilia完美实现相册功能]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>Github</tag>
+        <tag>Hexo</tag>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[RabbitMq入门及六种模式讲解]]></title>
     <url>%2Fblog%2F2019%2F04%2F23%2FRabbitMq%E5%85%A5%E9%97%A8%E5%8F%8A%E5%85%AD%E7%A7%8D%E6%A8%A1%E5%BC%8F%E8%AE%B2%E8%A7%A3%2F</url>
     <content type="text"><![CDATA[RabbitMQ 术语说明：Server(Broker):接收客户端连接，实现AMQP协议的消息队列和路由功能的进程；Virtual Host：虚拟主机的概念，类似权限控制组，一个Virtual Host里可以有多个Exchange和Queue,权限控制的最小丽都是Virtual Host；Exchange:交换机，接收生产者发送的消息，并根据Routing Key将消息路由到服务器中的队列Queue。ExchangeType:交换机类型决定了路由消息行为，RabbitMQ中有三种类型Exchange，分别是fanout、direct、topic；Message Queue：消息队列，用于存储还未被消费者消费的消息；Message：由Header和body组成，Header是由生产者添加的各种属性的集合，包括Message是否被持久化、优先级是多少、由哪个Message Queue接收等；body是真正需要发送的数据内容；BindingKey：绑定关键字，将一个特定的Exchange和一个特定的Queue绑定起来。 RabbitMQ 五种队列模式与（SpringBoot）实例简单模式 Hello World功能：一个生产者P发送消息到队列hello,一个消费者C接收 先在pom.xml中添加相关依赖12345&lt;!--消息队列模块--&gt;&lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-amqp&lt;/artifactId&gt;&lt;/dependency&gt; 在application.properties添加rabbitmq的相关信息（默认账号密码guest）：1234spring.rabbitmq.host=127.0.0.1spring.rabbitmq.port=5672spring.rabbitmq.username=guestspring.rabbitmq.password=guest]]></content>
@@ -181,8 +194,8 @@
         <category>SOA</category>
       </categories>
       <tags>
-        <tag>Zookeeper</tag>
         <tag>Dubbo</tag>
+        <tag>Zookeeper</tag>
         <tag>Maven</tag>
       </tags>
   </entry>
@@ -262,8 +275,8 @@
       </categories>
       <tags>
         <tag>Git</tag>
-        <tag>Nodejs</tag>
         <tag>Hexo</tag>
+        <tag>Nodejs</tag>
       </tags>
   </entry>
   <entry>
