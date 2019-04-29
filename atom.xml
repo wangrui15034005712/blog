@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://lastsummer.top/blog/"/>
-  <updated>2019-04-26T06:01:39.602Z</updated>
+  <updated>2019-04-29T07:29:27.171Z</updated>
   <id>http://lastsummer.top/blog/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Nginx+Tomcat+Redis（负载均衡+session共享+动静分离）案例</title>
+    <link href="http://lastsummer.top/blog/2019/04/29/Nginx-Tomcat-Redis%EF%BC%88%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1-session%E5%85%B1%E4%BA%AB-%E5%8A%A8%E9%9D%99%E5%88%86%E7%A6%BB%EF%BC%89%E6%A1%88%E4%BE%8B/"/>
+    <id>http://lastsummer.top/blog/2019/04/29/Nginx-Tomcat-Redis（负载均衡-session共享-动静分离）案例/</id>
+    <published>2019-04-29T06:30:08.000Z</published>
+    <updated>2019-04-29T07:29:27.171Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天整合了一些资源，做了一个Nginx+Tomcat+Redis（负载均衡+session共享+动静分离）完整案例，使部署的web项目能够承载较大的访问压力，Nginx实现负载均衡及动静分离，并使用Redis实现session共享。<br><a id="more"></a><br><img src="/blog/2019/04/29/Nginx-Tomcat-Redis（负载均衡-session共享-动静分离）案例/nginx1.png" alt="各版本如图所示"></p><h4 id="警告注意"><a href="#警告注意" class="headerlink" title="警告注意"></a>警告注意</h4><p>redis实现session共享，需要三个jar包（如果报错就是版本不符合，放入tomcat文件夹下的lib中）<br>tomcat-redis-session-manager1.2.jar<br>commons-pool2-2.4.1.jar<br>jedis-2.6.2.jar</p><h4 id="完整步骤"><a href="#完整步骤" class="headerlink" title="完整步骤"></a>完整步骤</h4><h5 id="Tomcat集群"><a href="#Tomcat集群" class="headerlink" title="Tomcat集群"></a>Tomcat集群</h5><p>复制多个tomcat文件，修改server.xml，修改其中的8005、8080、8009端口号（nginx和tomcat解压路径最好再同一目录D:/User/nginxTest）<br>在多个tomcat的webapps下新建nginx文件夹，在nginx下新建index.jsp(多个jsp修改<code>&lt;h2&gt;Nginx动静分离2&lt;/h2&gt;</code>)，代码如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=utf-8&quot; pageEncoding=&quot;utf-8&quot;%&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;link href=&quot;/nginx/css/index.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;/nginx/js/index.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h2&gt;Nginx动静分离&lt;/h2&gt;</span><br><span class="line">&lt;% </span><br><span class="line">  out.println(&quot;[&quot;+request.getLocalAddr()+&quot;:&quot; +request.getLocalPort()+&quot;]&quot; + &quot;&lt;br/&gt;session id:&quot; + session.getId());  </span><br><span class="line">%&gt;</span><br><span class="line">&lt;!--当前的css、js、图片均来自nginx的静态文件--&gt;</span><br><span class="line">&lt;br/&gt;</span><br><span class="line">&lt;img alt=&quot;图片&quot; src=&quot;/nginx/img/1.png&quot; style=&quot;width:300px;height:300px&quot;&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">&lt;%</span><br><span class="line">  HttpSession mySession = request.getSession(false);</span><br><span class="line">  if(mySession.getAttribute(&quot;appname&quot;) == null)&#123;</span><br><span class="line">  mySession = request.getSession(true);</span><br><span class="line">  mySession.setAttribute(&quot;appname&quot;, &quot;AAA111&quot;);</span><br><span class="line">  out.println(&quot;new session:&quot;+mySession.getAttribute(&quot;appname&quot;));</span><br><span class="line">  &#125;else&#123;</span><br><span class="line">    out.println(&quot;old session:&quot;+mySession.getAttribute(&quot;appname&quot;));</span><br><span class="line">  &#125;</span><br><span class="line">%&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p><h5 id="动静分离的-Nginx-配置"><a href="#动静分离的-Nginx-配置" class="headerlink" title="动静分离的 Nginx 配置"></a>动静分离的 Nginx 配置</h5><p>安装Nginx：<br>我使用的Nginx为绿色版本，双击即可开启（安装路径 D:/User/nginxTest/nginx）<br><img src="/blog/2019/04/29/Nginx-Tomcat-Redis（负载均衡-session共享-动静分离）案例/nginx2.png" alt="nginx目录结构"><br>修改 conf nginx.conf 配置文件，多个Tomcat服务器都是在这里配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">upstream test &#123;</span><br><span class="line">server 127.0.0.1:8080 weight=2;</span><br><span class="line">server 127.0.0.1:8081 weight=1;</span><br><span class="line">#配置多个tomcat，负载均衡</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">  listen       80;</span><br><span class="line">server_namelocalhost;</span><br><span class="line"></span><br><span class="line">  #charset koi8-r;</span><br><span class="line"></span><br><span class="line">  #access_log  logs/host.access.log  main;</span><br><span class="line"></span><br><span class="line">location / &#123;</span><br><span class="line">    index  index.html index.htm;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"># 所有动态请求都转发给tomcat处理 </span><br><span class="line">location ~ \.(jsp|do)$ &#123; </span><br><span class="line">proxy_next_upstream http_502 http_504 error timeout invalid_header;</span><br><span class="line">proxy_pass http://test;</span><br><span class="line">&#125; </span><br><span class="line"> </span><br><span class="line">#静态文件交给nginx处理</span><br><span class="line">location ~ .*\.(htm|html|gif|jpg|jpeg|png|bmp|swf|ioc|rar|zip|txt|flv|mid|doc|ppt|pdf|xls|mp3|wma)$</span><br><span class="line">&#123;</span><br><span class="line"># 绝对路径</span><br><span class="line">root  D:/User/nginxTest/nginx/webapps;</span><br><span class="line">&#125;</span><br><span class="line">#静态文件交给nginx处理</span><br><span class="line">location ~ .*\.(js|css)?$</span><br><span class="line">&#123;</span><br><span class="line"># 绝对路径</span><br><span class="line">root D:/User/nginxTest/nginx/webapps;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>由于静态文件都在<code>D:/User/nginxTest/nginx/webapps</code>中，在nginx文件夹下新建webapps，继续新建jsp中的路径<code>/nginx/img/1.png</code>、<code>/nginx/css/index.css</code>、<code>/nginx/js/index.js</code><br>现在动静分离和负载均衡就配置成功了，下面开始redis共享session<br>把前文提到的三个包加入到所有tomcat的lib中。<br>修改tomcat的conf中的context.xml，添加代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;Valve className=&quot;com.orangefunction.tomcat.redissessions.RedisSessionHandlerValve&quot; /&gt;  </span><br><span class="line">   &lt;Manager className=&quot;com.orangefunction.tomcat.redissessions.RedisSessionManager&quot;  </span><br><span class="line">        host=&quot;localhost&quot;   </span><br><span class="line">        port=&quot;6379&quot;</span><br><span class="line">        password=&quot;admin&quot;&lt;!--redis密码，需要修改redis.window.conf文件--》</span><br><span class="line">        database=&quot;0&quot;</span><br><span class="line">        maxInactiveInterval=&quot;60&quot; /&gt;</span><br></pre></td></tr></table></figure></p><h5 id="redis共享session"><a href="#redis共享session" class="headerlink" title="redis共享session"></a>redis共享session</h5><p>安装redis：<br>我使用的redis为绿色版本，双击即可开启（安装路径 D:/User/nginxTest/redis）<br><img src="/blog/2019/04/29/Nginx-Tomcat-Redis（负载均衡-session共享-动静分离）案例/redis1.png" alt="redis目录结构"><br>修改redis.windows.conf文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># requirepass foobared redis密码</span><br><span class="line">requirepass admin</span><br></pre></td></tr></table></figure></p><p>启动redis，<code>redis-server.exe redis.windows.conf</code><br>大功告成！<br>session默认时间是30秒，可修改tomcat下的web.xml，根据实际情况调整<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;session-config&gt;</span><br><span class="line">  &lt;session-timeout&gt;60&lt;/session-timeout&gt;&lt;!--默认是30秒--&gt;</span><br><span class="line">&lt;/session-config&gt;</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天整合了一些资源，做了一个Nginx+Tomcat+Redis（负载均衡+session共享+动静分离）完整案例，使部署的web项目能够承载较大的访问压力，Nginx实现负载均衡及动静分离，并使用Redis实现session共享。&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="java" scheme="http://lastsummer.top/blog/categories/java/"/>
+    
+    
+      <category term="Nginx" scheme="http://lastsummer.top/blog/tags/Nginx/"/>
+    
+      <category term="Tomcat" scheme="http://lastsummer.top/blog/tags/Tomcat/"/>
+    
+      <category term="Redis" scheme="http://lastsummer.top/blog/tags/Redis/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo+Github实现相册功能</title>
@@ -92,9 +118,9 @@
       <category term="RabbitMq" scheme="http://lastsummer.top/blog/categories/RabbitMq/"/>
     
     
-      <category term="RabbitMq" scheme="http://lastsummer.top/blog/tags/RabbitMq/"/>
-    
       <category term="Queue" scheme="http://lastsummer.top/blog/tags/Queue/"/>
+    
+      <category term="RabbitMq" scheme="http://lastsummer.top/blog/tags/RabbitMq/"/>
     
   </entry>
   
@@ -409,9 +435,9 @@
       <category term="SOA" scheme="http://lastsummer.top/blog/categories/SOA/"/>
     
     
-      <category term="Zookeeper" scheme="http://lastsummer.top/blog/tags/Zookeeper/"/>
-    
       <category term="Dubbo" scheme="http://lastsummer.top/blog/tags/Dubbo/"/>
+    
+      <category term="Zookeeper" scheme="http://lastsummer.top/blog/tags/Zookeeper/"/>
     
       <category term="Maven" scheme="http://lastsummer.top/blog/tags/Maven/"/>
     
@@ -435,9 +461,9 @@
       <category term="hexo" scheme="http://lastsummer.top/blog/categories/hexo/"/>
     
     
-      <category term="Nodejs" scheme="http://lastsummer.top/blog/tags/Nodejs/"/>
-    
       <category term="Html" scheme="http://lastsummer.top/blog/tags/Html/"/>
+    
+      <category term="Nodejs" scheme="http://lastsummer.top/blog/tags/Nodejs/"/>
     
   </entry>
   
@@ -460,28 +486,6 @@
     
     
       <category term="Html" scheme="http://lastsummer.top/blog/tags/Html/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo博客用Leancloud统计文章阅读量</title>
-    <link href="http://lastsummer.top/blog/2018/10/26/Hexo%E5%8D%9A%E5%AE%A2%E7%94%A8Leancloud%E7%BB%9F%E8%AE%A1%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E9%87%8F/"/>
-    <id>http://lastsummer.top/blog/2018/10/26/Hexo博客用Leancloud统计文章阅读量/</id>
-    <published>2018-10-26T02:06:06.000Z</published>
-    <updated>2018-10-27T06:43:06.063Z</updated>
-    
-    <content type="html"><![CDATA[<p>Hexo博客用Leancloud统计文章阅读量，以 hexo-theme-shana-master 主题为例。<br><a id="more"></a></p><h3 id="第一步：注册LeanCloud账号-GitHub"><a href="#第一步：注册LeanCloud账号-GitHub" class="headerlink" title="第一步：注册LeanCloud账号(GitHub)"></a>第一步：注册<a href="https://leancloud.cn/dashboard/login.html#/signin" target="_blank" rel="noopener">LeanCloud</a>账号(GitHub)</h3><h3 id="第二步：LeanCloud应用配置"><a href="#第二步：LeanCloud应用配置" class="headerlink" title="第二步：LeanCloud应用配置"></a>第二步：LeanCloud应用配置</h3><p><img src="/blog/2018/10/26/Hexo博客用Leancloud统计文章阅读量/leancloud1.png" alt="创建应用"><br><img src="/blog/2018/10/26/Hexo博客用Leancloud统计文章阅读量/leancloud2.png" alt="新应用名称-开发版-创建"><br><img src="/blog/2018/10/26/Hexo博客用Leancloud统计文章阅读量/leancloud3.png" alt="点击存储"><br><img src="/blog/2018/10/26/Hexo博客用Leancloud统计文章阅读量/leancloud4.png" alt="存储-创建Class-Class名称-无限制-创建Class（等待2分钟初始化）"><br><img src="/blog/2018/10/26/Hexo博客用Leancloud统计文章阅读量/leancloud5.png" alt="设置-得到App ID及App Key"></p><h3 id="第三步：Hexo主题配置"><a href="#第三步：Hexo主题配置" class="headerlink" title="第三步：Hexo主题配置"></a>第三步：Hexo主题配置</h3><p>打开博客根目录/themes/next/下的_config.yml，查找leancloud，填写复制来的App ID和App Key，重新生成、步署博客即可正常统计文章阅读量。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># leadcloud访问次数统计</span></span><br><span class="line">leancloud_visitors:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  app_id: Your AppId</span><br><span class="line">  app_key: Your AppKey</span><br></pre></td></tr></table></figure></p><h3 id="第四步：域名附赠说明"><a href="#第四步：域名附赠说明" class="headerlink" title="第四步：域名附赠说明"></a>第四步：域名附赠说明</h3><p>因为AppID以及AppKey是暴露在外的，为了确保只用于我们自己的博客，建议设置Web安全域名，填入自己的博客域名。<br><img src="/blog/2018/10/26/Hexo博客用Leancloud统计文章阅读量/leancloud6.png" alt="设置-安全中心-Web安全域名-保存"><br>1.记录文章访问量的唯一标识符是文章的发布日期和文章的标题，因此请确保这两个数值组合的唯一性，如果更改了这两个数值，会造成文章阅读数值的清零重计。</p><p>2.初始的文章统计量显示为0。在配置好阅读量统计服务之后，第一次打开博文时，会自动向服务器发送数据，该数据会被记录在对应的应用的Counter表中。</p><p>3.修改Counter表中的time字段的数值，可以修改文章的访问量。双击具体的数值，修改之后回车即可保存。</p><p>大功告成！<br>个人博客：<a href="https://lastsummer.top">去年夏天</a><br>推荐博客：<a href="http://lastsummer.top/blog/2018/10/26/Hexo博客用Leancloud统计文章阅读量">NexT主题用Leancloud统计文章阅读量</a><br>参考博客：<a href="https://blog.csdn.net/weixin_39345384/article/details/80787998" target="_blank" rel="noopener">NexT主题下，用Leancloud统计文章阅读量</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Hexo博客用Leancloud统计文章阅读量，以 hexo-theme-shana-master 主题为例。&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="hexo" scheme="http://lastsummer.top/blog/categories/hexo/"/>
-    
-    
-      <category term="Leancloud" scheme="http://lastsummer.top/blog/tags/Leancloud/"/>
     
   </entry>
   
