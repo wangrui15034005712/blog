@@ -147,34 +147,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-		
-      <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-<style>
-/* 新添加的 */
-#container .show-toc-btn,#container .toc-article{display:block}
-.toc-article{z-index:100;background:#fff;border:1px solid #ccc;max-width:250px;min-width:150px;max-height:500px;overflow-y:auto;-webkit-box-shadow:5px 5px 2px #ccc;box-shadow:5px 5px 2px #ccc;font-size:12px;padding:10px;position:fixed;right:35px;top:129px}.toc-article .toc-close{font-weight:700;font-size:20px;cursor:pointer;float:right;color:#ccc}.toc-article .toc-close:hover{color:#000}.toc-article .toc{font-size:12px;padding:0;line-height:20px}.toc-article .toc .toc-number{color:#333}.toc-article .toc .toc-text:hover{text-decoration:underline;color:#2a6496}.toc-article li{list-style-type:none}.toc-article .toc-level-1{margin:4px 0}.toc-article .toc-child{}@-moz-keyframes cd-bounce-1{0%{opacity:0;-o-transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}60%{opacity:1;-o-transform:scale(1.01);-webkit-transform:scale(1.01);-moz-transform:scale(1.01);-ms-transform:scale(1.01);transform:scale(1.01)}100%{-o-transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}}@-webkit-keyframes cd-bounce-1{0%{opacity:0;-o-transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}60%{opacity:1;-o-transform:scale(1.01);-webkit-transform:scale(1.01);-moz-transform:scale(1.01);-ms-transform:scale(1.01);transform:scale(1.01)}100%{-o-transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}}@-o-keyframes cd-bounce-1{0%{opacity:0;-o-transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}60%{opacity:1;-o-transform:scale(1.01);-webkit-transform:scale(1.01);-moz-transform:scale(1.01);-ms-transform:scale(1.01);transform:scale(1.01)}100%{-o-transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}}@keyframes cd-bounce-1{0%{opacity:0;-o-transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}60%{opacity:1;-o-transform:scale(1.01);-webkit-transform:scale(1.01);-moz-transform:scale(1.01);-ms-transform:scale(1.01);transform:scale(1.01)}100%{-o-transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}}.show-toc-btn{display:none;z-index:10;width:30px;min-height:14px;overflow:hidden;padding:4px 6px 8px 5px;border:1px solid #ddd;border-right:none;position:fixed;right:40px;text-align:center;background-color:#f9f9f9}.show-toc-btn .btn-bg{margin-top:2px;display:block;width:16px;height:14px;background:url(http://7xtawy.com1.z0.glb.clouddn.com/show.png) no-repeat;-webkit-background-size:100%;-moz-background-size:100%;background-size:100%}.show-toc-btn .btn-text{color:#999;font-size:12px}.show-toc-btn:hover{cursor:pointer}.show-toc-btn:hover .btn-bg{background-position:0 -16px}.show-toc-btn:hover .btn-text{font-size:12px;color:#ea8010}
-.toc-article li ol, .toc-article li ul {
-    margin-left: 30px;
-}
-.toc-article ol, .toc-article ul {
-    margin: 10px 0;
-}
-
-</style>
         <p>在Matcher类中有matches、lookingAt和find都是匹配目标的方法，但容易混淆，整理它们的区别如下：</p>
 <ul>
 <li>matches:整个匹配，只有整个字符序列完全匹配成功，才返回True，否则返回False。但如果前部分匹配成功，将移动下次匹配的位置。</li>
 <li>lookingAt:部分匹配，总是从第一个字符进行匹配,匹配成功了不再继续匹配，匹配失败了,也不继续匹配。</li>
 <li>find:部分匹配，从当前位置开始匹配，找到一个匹配的子串，将移动下次匹配的位置。</li>
-<li>reset:给当前的Matcher对象配上个新的目标，目标是就该方法的参数；如果不给参数，reset会把Matcher设到当前字符串的开始处。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Pattern pattern = Pattern.compile(&quot;\\d&#123;3,5&#125;&quot;);</span><br><span class="line">String charSequence = &quot;123-34345-234-00&quot;;</span><br><span class="line">Matcher matcher = pattern.matcher(charSequence);</span><br><span class="line"></span><br><span class="line">//虽然匹配失败，由于charSequence里面的&quot;123&quot;和pattern是匹配的</span><br><span class="line">//下次的匹配从位置4开始</span><br><span class="line">print(matcher.matches());	/*false*/</span><br><span class="line">//测试匹配位置</span><br><span class="line">matcher.find();</span><br><span class="line">print(matcher.start());	/*4*/</span><br><span class="line"></span><br><span class="line">//使用reset方法重置匹配位置(从0开始)</span><br><span class="line">matcher.reset();</span><br><span class="line"></span><br><span class="line">//第一次find匹配以及匹配的目标和匹配的起始位置</span><br><span class="line">print(matcher.find());	/*true*/</span><br><span class="line">print(matcher.group()+&quot; - &quot;+matcher.start());	/*123---0*/</span><br><span class="line">//第二次find匹配以及匹配的目标和匹配的起始位置</span><br><span class="line">print(matcher.find());	/*true*/</span><br><span class="line">print(matcher.group()+&quot; - &quot;+matcher.start());	/*34345---4*/</span><br><span class="line"></span><br><span class="line">//第一次lookingAt匹配以及匹配的目标和匹配的起始位置</span><br><span class="line">print(matcher.lookingAt());	/*true*/</span><br><span class="line">print(matcher.group()+&quot; - &quot;+matcher.start());	/*123---0*/</span><br><span class="line"></span><br><span class="line">//第二次lookingAt匹配以及匹配的目标和匹配的起始位置</span><br><span class="line">print(matcher.lookingAt());	/*true*/</span><br><span class="line">print(matcher.group()+&quot; - &quot;+matcher.start());	/*123---0*/</span><br></pre></td></tr></table></figure></li>
-</ul>
-
+<li>reset:给当前的Matcher对象配上个新的目标，目标是就该方法的参数；如果不给参数，reset会把Matcher设到当前字符串的开始处。</li></ul>
+        
+          <p class="article-more-link">
+            <a href="/blog/2019/05/13/java-matcher中find-matches-lookingAt方法的区别/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lastsummer.top/blog/2019/05/13/java-matcher中find-matches-lookingAt方法的区别/" data-id="cjvni903i001zz0vbv2j7wet5" class="article-share-link-test"></a>
+      <a data-url="http://lastsummer.top/blog/2019/05/13/java-matcher中find-matches-lookingAt方法的区别/" data-id="cjvnluzne0031ekvb3pegzk5s" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/matcher/">matcher</a></li></ul>
@@ -254,7 +241,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lastsummer.top/blog/2019/04/29/Nginx-Tomcat-Redis（负载均衡-session共享-动静分离）案例/" data-id="cjvni9039001pz0vb46u5iz0w" class="article-share-link-test"></a>
+      <a data-url="http://lastsummer.top/blog/2019/04/29/Nginx-Tomcat-Redis（负载均衡-session共享-动静分离）案例/" data-id="cjvnluzn5002pekvbqtwqb28w" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Nginx/">Nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Redis/">Redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Tomcat/">Tomcat</a></li></ul>
@@ -334,7 +321,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lastsummer.top/blog/2019/04/26/Hexo-Github实现相册功能/" data-id="cjvni901m000cz0vbtgjrib5e" class="article-share-link-test"></a>
+      <a data-url="http://lastsummer.top/blog/2019/04/26/Hexo-Github实现相册功能/" data-id="cjvnluzl7000dekvbhxy4h6ww" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Python/">Python</a></li></ul>
@@ -414,7 +401,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lastsummer.top/blog/2019/04/23/RabbitMq入门及六种模式讲解/" data-id="cjvni906i004cz0vb0mofo21r" class="article-share-link-test"></a>
+      <a data-url="http://lastsummer.top/blog/2019/04/23/RabbitMq入门及六种模式讲解/" data-id="cjvnluzod0048ekvbbjh3557o" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/分布式-RPC/">分布式 RPC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/发布-订阅模式-Publish-Subscribe/">发布/订阅模式 Publish/Subscribe</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/工作模式-Work-Queue/">工作模式 Work Queue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/简单模式-Hello-World/">简单模式 Hello World</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/路由模式-Routing/">路由模式 Routing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/通配符模式-Topic/">通配符模式 Topic</a></li></ul>
@@ -494,7 +481,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lastsummer.top/blog/2019/04/17/Window10安装RabbitMq中间件/" data-id="cjvni903d001tz0vbltzmdueq" class="article-share-link-test"></a>
+      <a data-url="http://lastsummer.top/blog/2019/04/17/Window10安装RabbitMq中间件/" data-id="cjvnluzn9002wekvb0tgvsxmm" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Queue/">Queue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/RabbitMq/">RabbitMq</a></li></ul>
@@ -575,7 +562,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lastsummer.top/blog/2019/04/16/为什么使用消息队列/" data-id="cjvni903o0025z0vbmblrq2et" class="article-share-link-test"></a>
+      <a data-url="http://lastsummer.top/blog/2019/04/16/为什么使用消息队列/" data-id="cjvnluznf0032ekvbi9j8msxp" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Queue/">Queue</a></li></ul>
@@ -655,7 +642,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lastsummer.top/blog/2019/03/04/Git基本命令/" data-id="cjvni901f0008z0vbcfh0y7gj" class="article-share-link-test"></a>
+      <a data-url="http://lastsummer.top/blog/2019/03/04/Git基本命令/" data-id="cjvnluzkx0007ekvbr9kc037v" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Git/">Git</a></li></ul>
@@ -735,7 +722,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lastsummer.top/blog/2019/01/09/Calendar获取日期/" data-id="cjvni90100002z0vblz2litok" class="article-share-link-test"></a>
+      <a data-url="http://lastsummer.top/blog/2019/01/09/Calendar获取日期/" data-id="cjvnluzkg0002ekvbomtisorl" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java/">java</a></li></ul>
@@ -815,7 +802,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lastsummer.top/blog/2018/12/24/BigDecimal算法/" data-id="cjvni90160004z0vb7zo4dq22" class="article-share-link-test"></a>
+      <a data-url="http://lastsummer.top/blog/2018/12/24/BigDecimal算法/" data-id="cjvnluzkt0004ekvbdkbrjck3" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java/">java</a></li></ul>
@@ -895,7 +882,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lastsummer.top/blog/2018/12/13/Oracle表恢复到特定时间点/" data-id="cjvni9033001lz0vb7ol6su8n" class="article-share-link-test"></a>
+      <a data-url="http://lastsummer.top/blog/2018/12/13/Oracle表恢复到特定时间点/" data-id="cjvnluzn7002sekvbc9yb6ayf" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/SQL/">SQL</a></li></ul>

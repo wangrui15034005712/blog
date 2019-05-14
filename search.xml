@@ -7,7 +7,7 @@
       <link href="/blog/2019/05/13/java-matcher%E4%B8%ADfind-matches-lookingAt%E6%96%B9%E6%B3%95%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
       <url>/blog/2019/05/13/java-matcher%E4%B8%ADfind-matches-lookingAt%E6%96%B9%E6%B3%95%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
       
-        <content type="html"><![CDATA[<p>在Matcher类中有matches、lookingAt和find都是匹配目标的方法，但容易混淆，整理它们的区别如下：</p><ul><li>matches:整个匹配，只有整个字符序列完全匹配成功，才返回True，否则返回False。但如果前部分匹配成功，将移动下次匹配的位置。</li><li>lookingAt:部分匹配，总是从第一个字符进行匹配,匹配成功了不再继续匹配，匹配失败了,也不继续匹配。</li><li>find:部分匹配，从当前位置开始匹配，找到一个匹配的子串，将移动下次匹配的位置。</li><li>reset:给当前的Matcher对象配上个新的目标，目标是就该方法的参数；如果不给参数，reset会把Matcher设到当前字符串的开始处。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Pattern pattern = Pattern.compile(&quot;\\d&#123;3,5&#125;&quot;);</span><br><span class="line">String charSequence = &quot;123-34345-234-00&quot;;</span><br><span class="line">Matcher matcher = pattern.matcher(charSequence);</span><br><span class="line"></span><br><span class="line">//虽然匹配失败，由于charSequence里面的&quot;123&quot;和pattern是匹配的</span><br><span class="line">//下次的匹配从位置4开始</span><br><span class="line">print(matcher.matches());/*false*/</span><br><span class="line">//测试匹配位置</span><br><span class="line">matcher.find();</span><br><span class="line">print(matcher.start());/*4*/</span><br><span class="line"></span><br><span class="line">//使用reset方法重置匹配位置(从0开始)</span><br><span class="line">matcher.reset();</span><br><span class="line"></span><br><span class="line">//第一次find匹配以及匹配的目标和匹配的起始位置</span><br><span class="line">print(matcher.find());/*true*/</span><br><span class="line">print(matcher.group()+&quot; - &quot;+matcher.start());/*123---0*/</span><br><span class="line">//第二次find匹配以及匹配的目标和匹配的起始位置</span><br><span class="line">print(matcher.find());/*true*/</span><br><span class="line">print(matcher.group()+&quot; - &quot;+matcher.start());/*34345---4*/</span><br><span class="line"></span><br><span class="line">//第一次lookingAt匹配以及匹配的目标和匹配的起始位置</span><br><span class="line">print(matcher.lookingAt());/*true*/</span><br><span class="line">print(matcher.group()+&quot; - &quot;+matcher.start());/*123---0*/</span><br><span class="line"></span><br><span class="line">//第二次lookingAt匹配以及匹配的目标和匹配的起始位置</span><br><span class="line">print(matcher.lookingAt());/*true*/</span><br><span class="line">print(matcher.group()+&quot; - &quot;+matcher.start());/*123---0*/</span><br></pre></td></tr></table></figure></li></ul>]]></content>
+        <content type="html"><![CDATA[<p>在Matcher类中有matches、lookingAt和find都是匹配目标的方法，但容易混淆，整理它们的区别如下：</p><ul><li>matches:整个匹配，只有整个字符序列完全匹配成功，才返回True，否则返回False。但如果前部分匹配成功，将移动下次匹配的位置。</li><li>lookingAt:部分匹配，总是从第一个字符进行匹配,匹配成功了不再继续匹配，匹配失败了,也不继续匹配。</li><li>find:部分匹配，从当前位置开始匹配，找到一个匹配的子串，将移动下次匹配的位置。</li><li>reset:给当前的Matcher对象配上个新的目标，目标是就该方法的参数；如果不给参数，reset会把Matcher设到当前字符串的开始处。<a id="more"></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Pattern pattern = Pattern.compile(&quot;\\d&#123;3,5&#125;&quot;);</span><br><span class="line">String charSequence = &quot;123-34345-234-00&quot;;</span><br><span class="line">Matcher matcher = pattern.matcher(charSequence);</span><br><span class="line"></span><br><span class="line">//虽然匹配失败，由于charSequence里面的&quot;123&quot;和pattern是匹配的</span><br><span class="line">//下次的匹配从位置4开始</span><br><span class="line">print(matcher.matches());/*false*/</span><br><span class="line">//测试匹配位置</span><br><span class="line">matcher.find();</span><br><span class="line">print(matcher.start());/*4*/</span><br><span class="line"></span><br><span class="line">//使用reset方法重置匹配位置(从0开始)</span><br><span class="line">matcher.reset();</span><br><span class="line"></span><br><span class="line">//第一次find匹配以及匹配的目标和匹配的起始位置</span><br><span class="line">print(matcher.find());/*true*/</span><br><span class="line">print(matcher.group()+&quot; - &quot;+matcher.start());/*123---0*/</span><br><span class="line">//第二次find匹配以及匹配的目标和匹配的起始位置</span><br><span class="line">print(matcher.find());/*true*/</span><br><span class="line">print(matcher.group()+&quot; - &quot;+matcher.start());/*34345---4*/</span><br><span class="line"></span><br><span class="line">//第一次lookingAt匹配以及匹配的目标和匹配的起始位置</span><br><span class="line">print(matcher.lookingAt());/*true*/</span><br><span class="line">print(matcher.group()+&quot; - &quot;+matcher.start());/*123---0*/</span><br><span class="line"></span><br><span class="line">//第二次lookingAt匹配以及匹配的目标和匹配的起始位置</span><br><span class="line">print(matcher.lookingAt());/*true*/</span><br><span class="line">print(matcher.group()+&quot; - &quot;+matcher.start());/*123---0*/</span><br></pre></td></tr></table></figure></li></ul>]]></content>
       
       
       <categories>
@@ -69,9 +69,9 @@
       
         <tags>
             
-            <tag> Github </tag>
-            
             <tag> Hexo </tag>
+            
+            <tag> Github </tag>
             
             <tag> Python </tag>
             
@@ -457,9 +457,9 @@
       
         <tags>
             
-            <tag> Zookeeper </tag>
-            
             <tag> Dubbo </tag>
+            
+            <tag> Zookeeper </tag>
             
             <tag> Maven </tag>
             
@@ -626,9 +626,9 @@
             
             <tag> Git </tag>
             
-            <tag> Hexo </tag>
-            
             <tag> Nodejs </tag>
+            
+            <tag> Hexo </tag>
             
         </tags>
       
