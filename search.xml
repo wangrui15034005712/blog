@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Jquery data()方法]]></title>
+    <url>%2Fblog%2F2019%2F05%2F22%2FJquery-data-%E6%96%B9%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[jQuery.extend 与 jQuery.fn.extend 的区别在于：jQuery.extend 是在 jQuery 这个构造函数上扩展的方法，调用的时候写成 $.xxx 或者 jQuery.xxxjQuery.fn.extend 是在 jQuery 原型上扩展的方法，方法被所有 jQuery 对象共享，调用的时候为 $().xxx$.data()可以用来设置DOM元素的data-属性，也可以用来获取DOM元素的data-的值Jquery.data()方法作用：给普通对象或DOM元素附加（及获取） 数据。12345678910111213141516171819202122232425&lt;script src=&quot;http://libs.baidu.com/jquery/1.9.0/jquery.js&quot;&gt;&lt;/script&gt;&lt;div id=&apos;testDiv&apos; data-test=&quot;111&quot;&gt;&lt;/div&gt;&lt;script&gt; $(&apos;#testDiv&apos;).data(&quot;test1&quot;,&quot;1111&quot;)&lt;/script&gt;&lt;div&gt; 存储的值为 &lt;span&gt;&lt;/span&gt; 和 &lt;span&gt;&lt;/span&gt;&lt;/div&gt;&lt;script&gt;$(function () &#123; var div = $( &quot;div&quot; )[ 0 ]; jQuery.data( div, &quot;test2&quot;, &#123; first: 16, last: &quot;pizza!&quot; &#125;); $( &quot;span:first&quot; ).text( jQuery.data( div, &quot;test2&quot; ).first ); $( &quot;span:last&quot; ).text( jQuery.data( div, &quot;test2&quot; ).last ); console.dir($( &quot;span:last&quot; ));&#125;)var obj = &#123;&#125;;jQuery.data(obj, &apos;name&apos;, &apos;王麻子&apos;);&lt;/script&gt; 源码解读12345678910111213141516171819202122232425262728$ = function() &#123; var expando = &quot;jQuery&quot; + (&quot;1.6&quot; + Math.random()).replace(/\D/g, &apos;&apos;); function getData(cache, name) &#123; return cache[name]; &#125; function setData(cache, name, value) &#123; cache[name] = value; &#125; function getCache(obj) &#123; obj[expando] = obj[expando] || &#123;&#125;; return obj[expando]; &#125; return &#123; data : function(obj, name, value) &#123; var cache = getCache(obj); if (value === undefined) &#123; return getData(cache, name); &#125; else &#123; setData(cache, name, value); &#125; &#125; &#125; &#125;();]]></content>
+      <categories>
+        <category>Jquery</category>
+      </categories>
+      <tags>
+        <tag>Jquery</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[java matcher中find,matches,lookingAt方法的区别]]></title>
     <url>%2Fblog%2F2019%2F05%2F13%2Fjava-matcher%E4%B8%ADfind-matches-lookingAt%E6%96%B9%E6%B3%95%E7%9A%84%E5%8C%BA%E5%88%AB%2F</url>
     <content type="text"><![CDATA[在Matcher类中有matches、lookingAt和find都是匹配目标的方法，但容易混淆，整理它们的区别如下： matches:整个匹配，只有整个字符序列完全匹配成功，才返回True，否则返回False。但如果前部分匹配成功，将移动下次匹配的位置。 lookingAt:部分匹配，总是从第一个字符进行匹配,匹配成功了不再继续匹配，匹配失败了,也不继续匹配。 find:部分匹配，从当前位置开始匹配，找到一个匹配的子串，将移动下次匹配的位置。 reset:给当前的Matcher对象配上个新的目标，目标是就该方法的参数；如果不给参数，reset会把Matcher设到当前字符串的开始处。 12345678910111213141516171819202122232425262728Pattern pattern = Pattern.compile(&quot;\\d&#123;3,5&#125;&quot;);String charSequence = &quot;123-34345-234-00&quot;;Matcher matcher = pattern.matcher(charSequence);//虽然匹配失败，由于charSequence里面的&quot;123&quot;和pattern是匹配的//下次的匹配从位置4开始print(matcher.matches()); /*false*///测试匹配位置matcher.find();print(matcher.start()); /*4*///使用reset方法重置匹配位置(从0开始)matcher.reset();//第一次find匹配以及匹配的目标和匹配的起始位置print(matcher.find()); /*true*/print(matcher.group()+&quot; - &quot;+matcher.start()); /*123---0*///第二次find匹配以及匹配的目标和匹配的起始位置print(matcher.find()); /*true*/print(matcher.group()+&quot; - &quot;+matcher.start()); /*34345---4*///第一次lookingAt匹配以及匹配的目标和匹配的起始位置print(matcher.lookingAt()); /*true*/print(matcher.group()+&quot; - &quot;+matcher.start()); /*123---0*///第二次lookingAt匹配以及匹配的目标和匹配的起始位置print(matcher.lookingAt()); /*true*/print(matcher.group()+&quot; - &quot;+matcher.start()); /*123---0*/]]></content>
@@ -79,7 +90,7 @@
   <entry>
     <title><![CDATA[Git基本命令]]></title>
     <url>%2Fblog%2F2019%2F03%2F04%2FGit%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%2F</url>
-    <content type="text"><![CDATA[Git命令行基本操作！ git config可以配置git的参数1234567git config --list 查看已经配置的git参数git config --system user.name &quot;Tocy&quot; 所有用户（本系统）git config --system user.email zyvj@qq.com 所有用户（本系统）git config --global user.name &quot;Tocy&quot; 当前用户（全局）git config --global user.email zyvj@qq.com 当前用户（全局）git config --local user.name &quot;Tocy&quot; 本地配置（当前目录）git config --local user.email zyvj@qq.com 本地配置（当前目录） 创建Git仓库1git init 初始化当前目录 克隆Git仓库1git clone https://git.oschina.net/Tocy/SampleCode.git 基本命令1234567891011121314151617181920212223242526272829git status # 检查下修改了什么内容git log --stat # 仅显示摘要选项git log --pretty=oneline # 定制记录格式git log --graph # 图像化分支和版本更新git add . # 提交所有文件到暂存区git add Readme.mdgit add *.pnggit add /home/code/git diff # 查看当前目录的所有修改git commit -m &quot;注释备注&quot; # 提交代码到本地仓库git push # 提交代码到远程仓库git branch # 显示本地当前所有分支git branch -d test # 删除分支git branch -D test # 强制删除分支git checkout -b testing # 直接切换并创建分支git checkout master # 切换主分支git merge test # 合并分支的代码git branch -a # 查看远程仓库所有分支git push origin test # 推送本地分支到远程仓库git push origin --delete test # 删除远程分支git checkout &quot;git status项目文件路径&quot; # 还原某个文件git reset --hard &apos;git log中的commit id&apos; 还原所有文件到一个版本git pull # 更新远程仓库最新代码git reset HEAD &quot;文件路径&quot; # 撤回暂存区的某个文件git reset HEAD~ # 撤回本地仓库中的代码到暂存区git reset # 撤回所有本地仓库中的代码到暂存区git rm --cached you_file_name # 撤回暂存区中的代码（暂未使用）git merge dev --合并分支dev的代码（Fast-forward表示快进模式，合并速度快，会直接将Master分支指向Develop分支）git merge --no-ff dev # 正常工作 master生成新节点，保证版本演变的清晰，建议此方法]]></content>
+    <content type="text"><![CDATA[Git命令行基本操作！ git config可以配置git的参数1234567git config --list 查看已经配置的git参数git config --system user.name &quot;Tocy&quot; 所有用户（本系统）git config --system user.email zyvj@qq.com 所有用户（本系统）git config --global user.name &quot;Tocy&quot; 当前用户（全局）git config --global user.email zyvj@qq.com 当前用户（全局）git config --local user.name &quot;Tocy&quot; 本地配置（当前目录）git config --local user.email zyvj@qq.com 本地配置（当前目录） 创建Git仓库1git init 初始化当前目录 克隆Git仓库1git clone https://git.oschina.net/Tocy/SampleCode.git 基本命令1234567891011121314151617181920212223242526272829303132333435363738git status # 检查下修改了什么内容git log --stat # 仅显示摘要选项git log --pretty=oneline # 定制记录格式git log --graph # 图像化分支和版本更新git add . # 提交所有文件到暂存区git add Readme.mdgit add *.pnggit add /home/code/git diff # 查看当前目录的所有修改git commit -m &quot;注释备注&quot; # 提交代码到本地仓库git push # 提交代码到远程仓库git branch # 显示本地当前所有分支git branch -d test # 删除分支git branch -D test # 强制删除分支git checkout -b testing # 直接切换并创建分支git checkout master # 切换主分支git merge test # 合并分支的代码git branch -a # 查看远程仓库所有分支git push origin test # 推送本地分支到远程仓库git push origin --delete test # 删除远程分支git checkout &quot;git status项目文件路径&quot; # 还原某个文件git reset --hard &apos;git log中的commit id&apos; 还原所有文件到一个版本git pull # 更新远程仓库最新代码git reset HEAD &quot;文件路径&quot; # 撤回暂存区的某个文件git reset HEAD~ # 撤回本地仓库中的代码到暂存区git reset # 撤回所有本地仓库中的代码到暂存区git rm --cached you_file_name # 撤回暂存区中的代码（暂未使用）git merge dev --合并分支dev的代码（Fast-forward表示快进模式，合并速度快，会直接将Master分支指向Develop分支）git merge --no-ff dev # 正常工作 master生成新节点，保证版本演变的清晰，建议此方法g&apos;g# 回退一个版本,且会将暂存区的内容和本地已提交的内容全部恢复到未暂存的状态,不影响原来本地文件(未提交的也不受影响) git reset (–mixed) HEAD~1 # 回退一个版本,不清空暂存区,将已提交的内容恢复到暂存区,不影响原来本地的文件(未提交的也不受影响) git reset –soft HEAD~1 # 回退一个版本,清空暂存区,将已提交的内容的版本恢复到本地,本地的文件也将被恢复的版本替换git reset –hard HEAD~1 # 强制覆盖远程仓库，从提交记录上还很难查到是谁进行了强制覆盖git push origin v1.0.0 --force]]></content>
       <categories>
         <category>Git</category>
       </categories>
@@ -218,8 +229,8 @@
         <category>SOA</category>
       </categories>
       <tags>
-        <tag>Zookeeper</tag>
         <tag>Dubbo</tag>
+        <tag>Zookeeper</tag>
         <tag>Maven</tag>
       </tags>
   </entry>
@@ -298,8 +309,8 @@
         <category>hexo</category>
       </categories>
       <tags>
-        <tag>Git</tag>
         <tag>Hexo</tag>
+        <tag>Git</tag>
         <tag>Nodejs</tag>
       </tags>
   </entry>
