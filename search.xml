@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Linux常用命令]]></title>
+    <url>%2Fblog%2F2019%2F06%2F24%2FLinux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[Linux常用命令 12345netstat -tunlp|grep 端口号 #查看指定端口被哪个进程占用的情况ps -ef|grep nginx #查看进程号kill -9 pid #强制杀死进程nohup java -jar aaa.jar &gt; spring.log &amp; #后台启动jar包打印日志到springtail -f spring.log #动态查看日志 登录mysql查看默认字符集1show variables like &apos;%char%&apos;; mysql乱码123456789vim /etc/mysql/my.cnf [client]default-character-set=utf8[mysqld]default-storage-engine=INNODBcharacter-set-server=utf8collation-server=utf8_general_ci 重启msyql1service mysql restart nginx命令12nginx -s reload #重新启动nginx -s stop #停止]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Jquery data()方法]]></title>
     <url>%2Fblog%2F2019%2F05%2F22%2FJquery-data-%E6%96%B9%E6%B3%95%2F</url>
     <content type="text"><![CDATA[jQuery.extend 与 jQuery.fn.extend 的区别在于：jQuery.extend 是在 jQuery 这个构造函数上扩展的方法，调用的时候写成 $.xxx 或者 jQuery.xxxjQuery.fn.extend 是在 jQuery 原型上扩展的方法，方法被所有 jQuery 对象共享，调用的时候为 $().xxx$.data()可以用来设置DOM元素的data-属性，也可以用来获取DOM元素的data-的值Jquery.data()方法作用：给普通对象或DOM元素附加（及获取） 数据。12345678910111213141516171819202122232425&lt;script src=&quot;http://libs.baidu.com/jquery/1.9.0/jquery.js&quot;&gt;&lt;/script&gt;&lt;div id=&apos;testDiv&apos; data-test=&quot;111&quot;&gt;&lt;/div&gt;&lt;script&gt; $(&apos;#testDiv&apos;).data(&quot;test1&quot;,&quot;1111&quot;)&lt;/script&gt;&lt;div&gt; 存储的值为 &lt;span&gt;&lt;/span&gt; 和 &lt;span&gt;&lt;/span&gt;&lt;/div&gt;&lt;script&gt;$(function () &#123; var div = $( &quot;div&quot; )[ 0 ]; jQuery.data( div, &quot;test2&quot;, &#123; first: 16, last: &quot;pizza!&quot; &#125;); $( &quot;span:first&quot; ).text( jQuery.data( div, &quot;test2&quot; ).first ); $( &quot;span:last&quot; ).text( jQuery.data( div, &quot;test2&quot; ).last ); console.dir($( &quot;span:last&quot; ));&#125;)var obj = &#123;&#125;;jQuery.data(obj, &apos;name&apos;, &apos;王麻子&apos;);&lt;/script&gt; 源码解读12345678910111213141516171819202122232425262728$ = function() &#123; var expando = &quot;jQuery&quot; + (&quot;1.6&quot; + Math.random()).replace(/\D/g, &apos;&apos;); function getData(cache, name) &#123; return cache[name]; &#125; function setData(cache, name, value) &#123; cache[name] = value; &#125; function getCache(obj) &#123; obj[expando] = obj[expando] || &#123;&#125;; return obj[expando]; &#125; return &#123; data : function(obj, name, value) &#123; var cache = getCache(obj); if (value === undefined) &#123; return getData(cache, name); &#125; else &#123; setData(cache, name, value); &#125; &#125; &#125; &#125;();]]></content>
@@ -229,8 +240,8 @@
         <category>SOA</category>
       </categories>
       <tags>
-        <tag>Zookeeper</tag>
         <tag>Dubbo</tag>
+        <tag>Zookeeper</tag>
         <tag>Maven</tag>
       </tags>
   </entry>
@@ -309,8 +320,8 @@
         <category>hexo</category>
       </categories>
       <tags>
-        <tag>Nodejs</tag>
         <tag>Git</tag>
+        <tag>Nodejs</tag>
         <tag>Hexo</tag>
       </tags>
   </entry>
