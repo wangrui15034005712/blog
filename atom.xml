@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://lastsummer.top/blog/"/>
-  <updated>2019-06-24T13:09:48.021Z</updated>
+  <updated>2019-07-06T05:50:05.424Z</updated>
   <id>http://lastsummer.top/blog/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Nginx配置Https遇到的问题</title>
+    <link href="http://lastsummer.top/blog/2019/07/06/Nginx%E9%85%8D%E7%BD%AEHttps%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://lastsummer.top/blog/2019/07/06/Nginx配置Https遇到的问题/</id>
+    <published>2019-07-06T04:44:44.000Z</published>
+    <updated>2019-07-06T05:50:05.424Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Nginx配置Https-开启例外443端口"><a href="#Nginx配置Https-开启例外443端口" class="headerlink" title="Nginx配置Https 开启例外443端口"></a>Nginx配置Https 开启例外443端口</h3><a id="more"></a><h4 id="Nginx如果未开启SSL模块，配置Https时提示错误"><a href="#Nginx如果未开启SSL模块，配置Https时提示错误" class="headerlink" title="Nginx如果未开启SSL模块，配置Https时提示错误"></a>Nginx如果未开启SSL模块，配置Https时提示错误</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx: [emerg] the &quot;ssl&quot; parameter requires ngx_http_ssl_module in /usr/local/nginx/conf/nginx.conf:37</span><br></pre></td></tr></table></figure><p>nginx缺少http_ssl_module模块，编译安装的时候带上–with-http_ssl_module配置就行了</p><h4 id="Nginx开启SSL模块（重新编译）"><a href="#Nginx开启SSL模块（重新编译）" class="headerlink" title="Nginx开启SSL模块（重新编译）"></a>Nginx开启SSL模块（重新编译）</h4><p>Nginx源码包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/nginx-1.8.1</span><br></pre></td></tr></table></figure></p><p>查看Nginx已安装的模块<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx -V</span><br></pre></td></tr></table></figure></p><p>重新编译安装nginx（必须停止Nginx）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 停止Nginx</span><br><span class="line">/usr/local/nginx/sbin/nginx -s stop</span><br><span class="line"></span><br><span class="line"># 重新编译Nginx</span><br><span class="line">./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module</span><br><span class="line"></span><br><span class="line"># Nginx编译(不要进行make install，否则就是覆盖安装Nginx)</span><br><span class="line">make</span><br><span class="line"></span><br><span class="line"># 然后备份原有已安装好的nginx</span><br><span class="line">cp /usr/local/nginx/sbin/nginx /usr/local/nginx/sbin/nginx.bak</span><br><span class="line"></span><br><span class="line"># 然后将刚刚编译好的nginx覆盖掉原有的nginx（这个时候nginx要停止状态）</span><br><span class="line">cp ./objs/nginx /usr/local/nginx/sbin/</span><br><span class="line"></span><br><span class="line"># 然后启动nginx，仍可以通过命令查看是否已经加入成功</span><br><span class="line">/usr/local/nginx/sbin/nginx -V</span><br></pre></td></tr></table></figure></p><p><img src="/blog/2019/07/06/Nginx配置Https遇到的问题/nginx.png" alt="nginx -V"></p><h4 id="Nginx配置Https"><a href="#Nginx配置Https" class="headerlink" title="Nginx配置Https"></a>Nginx配置Https</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  web.tset.com;# 改为绑定证书的域名</span><br><span class="line">return 301 https://$server_name$request_uri;# 重定向https</span><br><span class="line">&#125;    </span><br><span class="line">server &#123;</span><br><span class="line">    listen       443;</span><br><span class="line">    server_name  web.tset.com;# 改为绑定证书的域名</span><br><span class="line">ssl on;</span><br><span class="line"># Nginx SSL性能调优</span><br><span class="line">ssl_certificate  cert/web.tset.com.pem;# 改为自己申请得到的 crt 文件的名称(新建cert目录)</span><br><span class="line">ssl_certificate_key cert/web.tset.com.key;# 改为自己申请得到的 key 文件的名称(新建cert目录)</span><br><span class="line">ssl_session_timeout 5m;</span><br><span class="line">ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;</span><br><span class="line">ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">ssl_prefer_server_ciphers on;</span><br><span class="line">location / &#123;</span><br><span class="line">root html;</span><br><span class="line">index  index.html index.htm;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>重启Nginx<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure></p><h4 id="阿里云开启服务器443端口及80端口（https默认端口）"><a href="#阿里云开启服务器443端口及80端口（https默认端口）" class="headerlink" title="阿里云开启服务器443端口及80端口（https默认端口）"></a>阿里云开启服务器443端口及80端口（https默认端口）</h4><p>阿里云控制台=》云计算基础服务=》云服务器ECS=》网络和安全=》安全组，没有安全组的创建一个安全组，有的直接选择相应安全组，点击配置规则=》添加安全组规则（把80端口和443端口添加进安全组，授权对象填0.0.0.0/0）<br><img src="/blog/2019/07/06/Nginx配置Https遇到的问题/aliyun.png" alt="阿里云开启服务器443端口"></p><h4 id="阿里云申请SSL证书"><a href="#阿里云申请SSL证书" class="headerlink" title="阿里云申请SSL证书"></a>阿里云申请SSL证书</h4><p><a href="https://jingyan.baidu.com/article/6c67b1d6431a872787bb1ece.html" target="_blank" rel="noopener">教大家怎么申请阿里云的免费版 SSL证书</a></p><p>配置完成！！！</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Nginx配置Https-开启例外443端口&quot;&gt;&lt;a href=&quot;#Nginx配置Https-开启例外443端口&quot; class=&quot;headerlink&quot; title=&quot;Nginx配置Https 开启例外443端口&quot;&gt;&lt;/a&gt;Nginx配置Https 开启例外443端口&lt;/h3&gt;
+    
+    </summary>
+    
+      <category term="Nginx" scheme="http://lastsummer.top/blog/categories/Nginx/"/>
+    
+    
+      <category term="Nginx" scheme="http://lastsummer.top/blog/tags/Nginx/"/>
+    
+      <category term="SSL" scheme="http://lastsummer.top/blog/tags/SSL/"/>
+    
+      <category term="HTTPS" scheme="http://lastsummer.top/blog/tags/HTTPS/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux常用命令</title>
@@ -131,9 +157,9 @@
       <category term="hexo" scheme="http://lastsummer.top/blog/categories/hexo/"/>
     
     
-      <category term="Hexo" scheme="http://lastsummer.top/blog/tags/Hexo/"/>
-    
       <category term="Github" scheme="http://lastsummer.top/blog/tags/Github/"/>
+    
+      <category term="Hexo" scheme="http://lastsummer.top/blog/tags/Hexo/"/>
     
       <category term="Python" scheme="http://lastsummer.top/blog/tags/Python/"/>
     
@@ -463,28 +489,6 @@
     
     
       <category term="Html" scheme="http://lastsummer.top/blog/tags/Html/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>zookeeper安装和使用 windows环境</title>
-    <link href="http://lastsummer.top/blog/2018/10/30/zookeeper%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8-windows%E7%8E%AF%E5%A2%83/"/>
-    <id>http://lastsummer.top/blog/2018/10/30/zookeeper安装和使用-windows环境/</id>
-    <published>2018-10-30T09:37:43.000Z</published>
-    <updated>2018-11-02T02:19:39.947Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>1、ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，是Google的Chubby一个开源的实现，是Hadoop和Hbase的重要组件。它是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护、域名服务、分布式同步、组服务等。<a id="more"></a><br>2、ZooKeeper的目标就是封装好复杂易出错的关键服务，将简单易用的接口和性能高效、功能稳定的系统提供给用户。<br>3、ZooKeeper包含一个简单的原语集，提供Java和C的接口。<br>4、ZooKeeper代码版本中，提供了分布式独享锁、选举、队列的接口，代码在zookeeper-3.4.12\src\recipes。其中分布锁和队列有Java和C两个版本，选举只有Java版本。</p><h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>Apache官方最新版本为：3.4.12<br>下载地址：<a href="http://mirror.bit.edu.cn/apache/zookeeper/stable/zookeeper-3.4.12.tar.gz" target="_blank" rel="noopener">http://mirror.bit.edu.cn/apache/zookeeper/stable/zookeeper-3.4.12.tar.gz</a></p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>解压到指定目录下    D:\dubbo\zookeeper-3.4.12<br>修改zoo_sample.cfg 文件名(D:\dubbo\zookeeper-3.4.12\conf) 为 zoo.cfg<br>主要修改一下日志位置，具体配置文件如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"># The number of milliseconds of each tick</span><br><span class="line">#tickTime：这个时间是作为 Zookeeper 服务器之间或客户端与服务器之间维持心跳的时间间隔，也就是每个 tickTime 时间就会发送一个心跳。  </span><br><span class="line">#默认情况下最小的会话超时时间为两倍的tickTime  </span><br><span class="line">tickTime=2000</span><br><span class="line"># The number of ticks that the initial   </span><br><span class="line"># synchronization phase can take  </span><br><span class="line">#zookeeper集群中的包含多台server, 其中一台为leader, 集群中其余的server为follower. initLimit参数配置初始化连接时,   </span><br><span class="line">#follower和leader之间的最长心跳时间. 此时该参数设置为5, 说明时间限制为5倍tickTime, 即5*2000=10000ms=10s.  </span><br><span class="line">initLimit=10</span><br><span class="line"># The number of ticks that can pass between </span><br><span class="line"># sending a request and getting an acknowledgement</span><br><span class="line">#该参数配置leader和follower之间发送消息, 请求和应答的最大时间长度. 此时该参数设置为2, 说明时间限制为2倍tickTime, 即4000ms.  </span><br><span class="line">syncLimit=5</span><br><span class="line"># the directory where the snapshot is stored.</span><br><span class="line"># do not use /tmp for storage, /tmp here is just </span><br><span class="line"># example sakes.</span><br><span class="line">#dataDir：顾名思义就是 Zookeeper 保存数据的目录，默认情况下，Zookeeper 将写数据的日志文件也保存在这个目录里。  </span><br><span class="line">dataDir=D:\\dubbo\\zookeeper-3.4.12-1\\data</span><br><span class="line">#dataLogDir：顾名思义就是 Zookeeper 保存日志文件的目录  </span><br><span class="line">dataLogDir=D:\\dubbo\\zookeeper-3.4.12-1\\log</span><br><span class="line"># the port at which the clients will connect</span><br><span class="line">#clientPort：这个端口就是客户端连接 Zookeeper 服务器的端口，Zookeeper 会监听这个端口，接受客户端的访问请求。  </span><br><span class="line">clientPort=2181</span><br><span class="line"># the maximum number of client connections.</span><br><span class="line"># increase this if you need to handle more clients</span><br><span class="line">#maxClientCnxns：限制连接到 ZooKeeper 的客户端的数量  </span><br><span class="line">#maxClientCnxns=60</span><br><span class="line">#</span><br><span class="line"># Be sure to read the maintenance section of the </span><br><span class="line"># administrator guide before turning on autopurge.</span><br><span class="line">#</span><br><span class="line"># http://zookeeper.apache.org/doc/current/zookeeperAdmin.html#sc_maintenance</span><br><span class="line">#</span><br><span class="line"># The number of snapshots to retain in dataDir</span><br><span class="line">#autopurge.snapRetainCount=3</span><br><span class="line"># Purge task interval in hours</span><br><span class="line"># Set to &quot;0&quot; to disable auto purge feature</span><br><span class="line">#autopurge.purgeInterval=1</span><br></pre></td></tr></table></figure></p><p>配置文件简单解析<br>1、tickTime：这个时间是作为 Zookeeper 服务器之间或客户端与服务器之间维持心跳的时间间隔，也就是每个 tickTime 时间就会发送一个心跳。<br>2、dataDir：顾名思义就是 Zookeeper 保存数据的目录，默认情况下，Zookeeper 将写数据的日志文件也保存在这个目录里。<br>3、dataLogDir：顾名思义就是 Zookeeper 保存日志文件的目录<br>4、clientPort：这个端口就是客户端连接 Zookeeper 服务器的端口，Zookeeper 会监听这个端口，接受客户端的访问请求。</p><h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><p>进入到bin目录，并且启动zkServer.cmd，这个脚本中会启动一个java进程(不可关闭，造成客户端无法访问)<br><img src="/blog/2018/10/30/zookeeper安装和使用-windows环境/zookeeper1.png" alt=""><br>启动后jps可以看到QuorumPeerMain的进程<br><img src="/blog/2018/10/30/zookeeper安装和使用-windows环境/zookeeper2.png" alt=""><br>也可以启动客户端连接一下<br><img src="/blog/2018/10/30/zookeeper安装和使用-windows环境/zookeeper3.png" alt=""><br>OK，安装成功，很简单。</p><p>个人博客：<a href="https://lastsummer.top">去年夏天</a><br>参考博客：<a href="https://blog.csdn.net/tlk20071/article/details/52028945" target="_blank" rel="noopener">zookeeper安装和使用 windows环境</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;1、ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，是Google的Chubby一个开源的实现，是Hadoop和Hbase的重要组件。它是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护、域名服务、分布式同步、组服务等。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="RPC" scheme="http://lastsummer.top/blog/categories/RPC/"/>
-    
-    
-      <category term="Zookeeper" scheme="http://lastsummer.top/blog/tags/Zookeeper/"/>
     
   </entry>
   
