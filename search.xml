@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[JAVA基础面试题一]]></title>
+    <url>%2Fblog%2F2019%2F10%2F04%2FJAVA%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98%E4%B8%80%2F</url>
+    <content type="text"><![CDATA[本文主要JAVA基础面试题一 1、如何跳出的多重嵌套循环？12345678910111213141516171819202122232425（1）在Java中，要想跳出多重循环，可以在外面的循环语句前定义一个标号public static void method1()&#123; ok:for(int i=0;i&lt;10;i++)&#123; for(int j=0;j&lt;10;j++)&#123; System.out.println(&quot;i=&quot;+i+&quot;,j=&quot;+j); if(j==5)&#123; break ok;//跳到循环外的ok出，即终止整个循环 &#125; &#125; &#125;&#125;（2）也可以在里层循环体的代码中使用带有标号的break语句，即可跳出外层循环public static void method2()&#123; int[][] arr = &#123;&#123;1,2,3&#125;,&#123;4,5,6,7&#125;,&#123;9&#125;&#125;; boolean found = false; for(int i=0;i&lt;arr.length &amp;&amp; !found;i++)&#123; for(int j=0;j&lt;arr[i].length;j++)&#123; System.out.println(&quot;i=&quot;+i+&quot;,j=&quot;+j); if(arr[i][j]==5)&#123; found = true;//找到5，使外层循环判断条件变为false则终止整个循环 break;//跳出当前循环 &#125; &#125; &#125;&#125; 2、静态变量和实例变量的区别？1234（1）：首先在语法定义上区别：静态变量前面要加static，实例变量不用（2）：在程序运行时：实例变量输入对象的属性，必须创建了实例对象（如 new）才会被分配空间，才可以使用实例变量， 静态变量不属于某个实例对象，而是属于类，也叫类变量，只要程序加载了类的字节码，不用创建任何实例对象就会被分配空间，就可以被使用（3）：总之，实例变量必须创建对象后才可以通过这个对象来使用，静态变量则可以直接使用类名来引用。 3、堆和栈的区别在什么地方？123456堆（一般存放对象本身，block的copy等）（1）Java的堆是一个运行时数据区，类的对象从堆中分配空间。这些对象通过new等指令建立，通过垃圾回收器来销毁。（2）堆的优势是可以动态地分配内存空间，需要多少内存空间不必事先告诉编译器，因为它是在运行时动态分配的。但缺点是，由于需要在运行时动态分配内存，所以存取速度较慢。栈:后进先出（一般存储基本数据类型，对象的地址）（1）栈中主要存放一些基本数据类型的变量（byte，short，int，long，float，double，boolean，char）和对象的引用。（2）栈的优势是，存取速度比堆快，栈数据可以共享。但缺点是，存放在栈中的数据占用多少内存空间需要在编译时确定下来，缺乏灵活性。 4、类的实例化顺序?12345678父类静态代变量父类静态代码块子类静态变量子类静态代码块父类非静态变量（父类实例成员变量）父类构造函数子类非静态变量（子类实例成员变量）子类构造函数 5、集合区别？ 6、http,https协议？123456789HTTP：是互联网上应用最为广泛的一种网络协议，是一个客户端和服务器端请求和应答的标准（TCP），用于从WWW服务器传输超文本到本地浏览器的传输协议，它可以使浏览器更加高效，使网络传输减少。HTTPS：是以安全为目标的HTTP通道，简单讲是HTTP的安全版，即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。区别：1、https协议需要到ca申请证书，一般免费证书较少，因而需要一定费用。2、http是超文本传输协议，信息是明文传输，https则是具有安全性的ssl加密传输协议。3、http和https使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。4、http的连接很简单，是无状态的；HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，比http协议安全。 7、常见到的runtime exception？12345678空指针：NullPointerException类型转换失败：ClassCastException文件找不到：FileNotFoundException数组下标越界：ArrayIndexOutOfBoundsException类找不到：ClassNotFoundException字符串转换为数字异常：NumberFormatException方法未找到异常：NoSuchMethodException字符串索引越界异常：StringIndexOutOfBoundsException 8、类型转换1Java的基本数据类型转换规则，大的数据类型转换为小的数据类型需要强制转换，反之可以自动转换 9、char能存贮一个中文汉字?为什么1char型变量是用来存储Unicode编码的字符的，unicode编码字符集中包含了汉字，所以，char型变量中当然可以存储汉字啦。不过，如果某个特殊的汉字没有被包含在unicode编码字符集中，那么，这个char型变量中就不能存储这个特殊汉字。补充说明：unicode编码占用两个字节，所以，char类型的变量也是占用两个字节。 10、abstractclass和interface区别]]></content>
+      <categories>
+        <category>JAVA</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Nginx日志切割]]></title>
     <url>%2Fblog%2F2019%2F07%2F08%2FNginx%E6%97%A5%E5%BF%97%E5%88%87%E5%89%B2%2F</url>
     <content type="text"><![CDATA[Nginx日志切割nginx版本：1.8.1nginx目录：/usr/local/nginx/nginx日志：/usr/local/nginx/logs acces.log #访问量 error.log #错误日志 pid.log #NGINX进程ID 1234# 获取昨天的access日志mv access.log &apos;date +%F -d -1day&apos;_access.log# 重新打开日志文件/usr/local/nginx/sbin/nginx -s reopen 完整代码/usr/local/nginx/logs新建backup.sh命令并且vim编辑/usr/local/nginx/logs/新建oldLogs文件夹1234567891011121314#!/bin/bash# 备份日志文件夹（旧的日志）LOGS_PATH=/usr/local/nginx/logs/oldLogs# 当前日志文件夹（新的日志）CUR_LOGS_PATH=/usr/local/nginx/logs# 昨天的日期YESTERDAY=$(date +%F -d -1day)# 备份access.logmv $CUR_LOGS_PATH/access.log $LOGS_PATH/$&#123;YESTERDAY&#125;_access.log# 备份error.logmv $CUR_LOGS_PATH/error.log $LOGS_PATH/$&#123;YESTERDAY&#125;_error.log# 重新打开日志文件kill -USR1 $(cat /usr/local/nginx/logs/nginx.pid)# USR1 通常被用来告知应用程序重载配置文件 执行sh backup.sh即可在oldLogs下生成昨天日志（完成） 定时任务自动执行shell脚本crontab -e #编辑定时任务10 0 * * * /bin/bash /usr/local/nginx/logs/backup.sh crontab -l #查看编辑任务0 0 * * *每天执行一次生成昨天的日志]]></content>
@@ -264,8 +275,8 @@
         <category>SOA</category>
       </categories>
       <tags>
-        <tag>Dubbo</tag>
         <tag>Zookeeper</tag>
+        <tag>Dubbo</tag>
         <tag>Maven</tag>
       </tags>
   </entry>
@@ -345,8 +356,8 @@
       </categories>
       <tags>
         <tag>Git</tag>
-        <tag>Hexo</tag>
         <tag>Nodejs</tag>
+        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
