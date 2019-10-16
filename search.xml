@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[JAVA基础面试题四]]></title>
+    <url>%2Fblog%2F2019%2F10%2F10%2FJAVA%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98%E5%9B%9B%2F</url>
+    <content type="text"><![CDATA[本文主要JAVA基础面试题四 Class.forName的作用?为什么要用?12345678910111213141516171819202122Class.forName(&quot;&quot;)返回的是类Class.forName(&quot;&quot;).newInstance()返回的是objectA a = (A)Class.forName(&quot;pacage.A&quot;).newInstance(); 动态加载和创建Class 对象，比如想根据用户输入的字符串来创建对象。jvm会执行静态代码段，你要记住一个概念，静态代码是和class绑定的，class装载成功就表示执行了你的静态代码了。而且以后不会再走这段静态代码了。第一是CLASSPATH下指定名字的.class文件加载到Java虚拟机内存中第二是初始化这个类一.首先你要明白在java里面任何class都要装载在虚拟机上才能运行。 1.forName这句话就是装载类用的(new是根据加载到内存中的类创建一个实例，要分清楚)。 2.至于什么时候用，可以考虑一下这个问题，给你一个字符串变量，它代表一个类的包名和类名，你怎么实例化它？ A a = (A)Class.forName(&quot;pacage.A&quot;).newInstance();这和 A a =new A();是一样的效果。 3.jvm在装载类时会执行类的静态代码段，要记住静态代码是和class绑定的，class装载成功就表示执行了你的静态代码了，而且以后不会再执行这段静态代码了。 4.Class.forName(xxx.xx.xx)的作用是要求JVM查找并加载指定的类，也就是说JVM会执行该类的静态代码段。 5. 动态加载和创建Class 对象，比如想根据用户输入的字符串来创建对象二.在初始化一个类，生成一个实例的时候，newInstance()方法和new关键字除了一个是方法，一个是关键字外，最主要有什么区别？ 1.它们的区别在于创建对象的方式不一样，前者是使用类加载机制，后者是创建一个新类。 2.那么为什么会有两种创建对象方式？ 这主要考虑到软件的可伸缩、可扩展和可重用等软件设计思想。 3.从JVM的角度看，我们使用关键字new创建一个类的时候，这个类可以没有被加载。 但是使用newInstance()方法的时候，必须保证这个类已经加载且这个类已经连接了。三.最后用最简单的描述来区分new关键字和newInstance()方法的区别： 1. newInstance: 弱类型。低效率。只能调用无参构造。 2. new: 强类型。相对高效。能调用任何public构造。 Servlet介绍？(单例多线程)1234567891011servlet的生命周期由servlet容器控制，该容器创建servlet的实例。servlet的生命周期就是指servlet实例在创建之后响应客户端请求直至销毁的全过程。servlet实例的首次创建取决于servlet的首次调用。servlet接口定义了servlet生命周期的三个方法，这些方法就是init(),service(),destroy().（1）init()方法用来把servlet导入和初始化。这个方法在servlet被预加载或在第一次请求时执行。（2）servlet处理0个或多个请求。servlet对每个方法都用service()方法来处理。（3）当web应用声明servlet被关闭、servlet被销毁、垃圾收集器对资源进行收集时，用destroy()方法来关闭servlet。 高并发、不安全只存在一个servlet、多个线程同时请求实例变量、非线程安全如何做到线程安全？1.实现SingleThreadModel接口2.synchronized关键字加锁lock3.尽量不使用实例变量 Volatile关键字1234Java语言中关键字 volatile 被称作轻量级的 synchronized用volatile修饰的变量，线程在每次使用变量的时候，都会读取变量修改后的最新的值。volatile很容易被误用，用来进行原子性操作，它不能保证多个线程修改的安全性。Java可以使用volatile关键字，确保每个线程对本地变量的访问和修改都直接与主内存交互，而不是与本地线程的工作内存交互的，保证每个线程都能获得最新的值。 ==和equals的区别？123456(1)对于==，比较的是值是否相等 如果作用于基本数据类型的变量，则直接比较其存储的 “值”是否相等； 如果作用于引用类型的变量，则比较的是所指向的对象的地址(2)对于equals方法，注意：equals方法不能作用于基本数据类型的变量，equals继承Object类，比较的是是否是同一个对象 如果没有对equals方法进行重写，则比较的是引用类型的变量所指向的对象的地址； 诸如String、Date等类对equals方法进行了重写的话，比较的是所指向的对象的内容。 数组有没有length()方法？string没有lenght()方法？12数据没有length()，但有length属性string有length()方法 服务代理后获取真实ip地址1234java获取客户端IP地址的方法为request.getRemoteAddr()。request.getHeader(&quot;x-forwarded-for&quot;)request.getHeader(&quot;Proxy-Client-IP&quot;)request.getHeader(&quot;WL-Proxy-Client-IP&quot;); Oracle和Mysql的区别123451、关系型数据库2、Oracle收费、Mysql开源3、Oracle一个实例对应多个用户 Mysql一个用户对应多个数据库4、与Oracle相比，MySQL没有表空间，角色管理，快照，同义词和包以及自动存储管理。 Vue和JQuery区别12341、Vue比JQuery减少了 DOM 操作2、Vue支持双向数据绑定及组件化3、jquery 是javacript库，封装了一些js常用的方法。（动态效果） vue 是一个前端框架，vue有成熟的生态链，mvvm模式，是一个真正的web框架（单页面开发）。 JWT和Token区别12345678token一个字符串。每次客户端保存localstore，每次请求放入到http head请求头中进行访问（Bearer），服务器查询数据库验证信息是否正确相同： 都是访问资源的令牌， 都可以记录用户信息，都是只有验证成功后区别：​服务端验证客户端发来的token信息要进行数据的查询操作；JWT验证客户端发来的token信息就不用， 在服务端使用密钥校验就可以，不用数据库的查询。JWT（请求头【类型jwt+hs256算法加密】、载荷【预定义声明+自定义声明userid+签名】、签名）base64请求头+base64载荷+签名【(base64请求头+base64载荷)hash算法】组成两个点的字符串（secret解密） shell脚本12启动jar包nginx日志切割 Git冲突处理方案12当Git merge无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。把修改的文件复制出来、先pull在修改。]]></content>
+      <categories>
+        <category>JAVA</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Web相关优化]]></title>
     <url>%2Fblog%2F2019%2F10%2F09%2FWeb%E7%9B%B8%E5%85%B3%E4%BC%98%E5%8C%96%2F</url>
     <content type="text"><![CDATA[Web相关优化 表现层页面的优化12345678尽量使用静态HTML页面不使用FLASH、图片尽量使用DIV、不将整个页面放入TABLE中将javascript放入到js文件中使用IFrame嵌套另一个页面，和主页面分开加载，不影响页面加载速度CSS放在头部、JS脚本放在底部加载对于访问量高的页面，设计缓存方案，经常访问的数据缓存起来优化重要的公共模块、高度集成提示信息 缓存1234redis分布式缓存ehcache、oscache缓存hibernate二级缓存前端静态js、css、样式文件缓存 数据库的优化12数据库的优化(读写分离、分区、分表、缓存、索引、视图、存储过程等)sql优化 服务器的优化123456789101112131415161718192021外部环境优化：（1）java虚拟机的优化、尽量采用最新的版本、设置java虚拟机的内存参数服务器自身的优化：（1）Tomcat 例如：设置线程数量、JSP编译速度、防止恶意攻击、压缩 1、优化Tomcat的JVM环境内存优化 2、优化tomcat线程池 3、禁用DNS查询 enableLookups=&quot;false&quot; 4、session过期时间 5、Apr插件提高Tomcat性能 6、压缩 7、文字转码UTF-8（2）Nginx 1、expires缓存模块、网页缓存 2、gzip压缩模块 3、隐藏版本号 4、日志切割 5、设置连接超时、进程数、配置防盗链 6、动静分离 7、代理http跳转https这块配置 8、nginx添加用户组 9、最多可以打开文件数 硬件优化1234负载均衡：是大型网站解决高负荷访问和大量并发请求采用的最终解决办法与图片服务器分离：设置独立的图片服务器，可以降低web应用的服务器的压力，保证系统不会因为图片问题二奔溃(优化) 减少外部http协议CDN加速12CDN的全称是Content Delivery Network，即内容分发网络。其基本思路是尽可能避开互联网上有可能影响数据传输速度和稳定性的瓶颈和环节，使内容传输的更快、更稳定。简单的来说，就是把原服务器上数据复制到其他服务器上，用户访问时，那台服务器近访问到的就是那台服务器上的数据。CDN加速优点是成本低，速度快。适合访问量比较大的网站。 echarts简单优化？12345678模块复用缓存关闭动画（3D）SQL优化可选择 dataZoomtype为line时可选择sampling懒加载（逐步加载）echarts模块或图片lazyload清理不用的图表、clear和dispose]]></content>
@@ -93,7 +104,7 @@
   <entry>
     <title><![CDATA[java matcher中find,matches,lookingAt方法的区别]]></title>
     <url>%2Fblog%2F2019%2F05%2F13%2Fjava-matcher%E4%B8%ADfind-matches-lookingAt%E6%96%B9%E6%B3%95%E7%9A%84%E5%8C%BA%E5%88%AB%2F</url>
-    <content type="text"><![CDATA[在Matcher类中有matches、lookingAt和find都是匹配目标的方法，但容易混淆，整理它们的区别如下： matches:整个匹配，只有整个字符序列完全匹配成功，才返回True，否则返回False。但如果前部分匹配成功，将移动下次匹配的位置。 lookingAt:部分匹配，总是从第一个字符进行匹配,匹配成功了不再继续匹配，匹配失败了,也不继续匹配。 find:部分匹配，从当前位置开始匹配，找到一个匹配的子串，将移动下次匹配的位置。 reset:给当前的Matcher对象配上个新的目标，目标是就该方法的参数；如果不给参数，reset会把Matcher设到当前字符串的开始处。 12345678910111213141516171819202122232425262728Pattern pattern = Pattern.compile(&quot;\\d&#123;3,5&#125;&quot;);String charSequence = &quot;123-34345-234-00&quot;;Matcher matcher = pattern.matcher(charSequence);//虽然匹配失败，由于charSequence里面的&quot;123&quot;和pattern是匹配的//下次的匹配从位置4开始print(matcher.matches()); /*false*///测试匹配位置matcher.find();print(matcher.start()); /*4*///使用reset方法重置匹配位置(从0开始)matcher.reset();//第一次find匹配以及匹配的目标和匹配的起始位置print(matcher.find()); /*true*/print(matcher.group()+&quot; - &quot;+matcher.start()); /*123---0*///第二次find匹配以及匹配的目标和匹配的起始位置print(matcher.find()); /*true*/print(matcher.group()+&quot; - &quot;+matcher.start()); /*34345---4*///第一次lookingAt匹配以及匹配的目标和匹配的起始位置print(matcher.lookingAt()); /*true*/print(matcher.group()+&quot; - &quot;+matcher.start()); /*123---0*///第二次lookingAt匹配以及匹配的目标和匹配的起始位置print(matcher.lookingAt()); /*true*/print(matcher.group()+&quot; - &quot;+matcher.start()); /*123---0*/]]></content>
+    <content type="text"><![CDATA[在Matcher类中有matches、lookingAt和find都是匹配目标的方法，但容易混淆，整理它们的区别如下： matches:整个匹配，只有整个字符序列完全匹配成功，才返回True，否则返回False。但如果前部分匹配成功，将移动下次匹配的位置。 lookingAt:部分匹配，总是从第一个字符进行匹配,匹配成功了不再继续匹配，匹配失败了,也不继续匹配。 find:部分匹配，从当前位置开始匹配，找到一个匹配的子串，将移动下次匹配的位置。 reset:给当前的Matcher对象配上个新的目标，目标是就该方法的参数；如果不给参数，reset会把Matcher设到当前字符串的开始处。12345678910111213141516171819202122232425262728Pattern pattern = Pattern.compile(&quot;\\d&#123;3,5&#125;&quot;);String charSequence = &quot;123-34345-234-00&quot;;Matcher matcher = pattern.matcher(charSequence);//虽然匹配失败，由于charSequence里面的&quot;123&quot;和pattern是匹配的//下次的匹配从位置4开始print(matcher.matches()); /*false*///测试匹配位置matcher.find();print(matcher.start()); /*4*///使用reset方法重置匹配位置(从0开始)matcher.reset();//第一次find匹配以及匹配的目标和匹配的起始位置print(matcher.find()); /*true*/print(matcher.group()+&quot; - &quot;+matcher.start()); /*123---0*///第二次find匹配以及匹配的目标和匹配的起始位置print(matcher.find()); /*true*/print(matcher.group()+&quot; - &quot;+matcher.start()); /*34345---4*///第一次lookingAt匹配以及匹配的目标和匹配的起始位置print(matcher.lookingAt()); /*true*/print(matcher.group()+&quot; - &quot;+matcher.start()); /*123---0*///第二次lookingAt匹配以及匹配的目标和匹配的起始位置print(matcher.lookingAt()); /*true*/print(matcher.group()+&quot; - &quot;+matcher.start()); /*123---0*/]]></content>
       <categories>
         <category>java</category>
       </categories>
@@ -122,8 +133,8 @@
         <category>hexo</category>
       </categories>
       <tags>
-        <tag>Hexo</tag>
         <tag>Github</tag>
+        <tag>Hexo</tag>
         <tag>Python</tag>
       </tags>
   </entry>
@@ -389,8 +400,8 @@
       </categories>
       <tags>
         <tag>Git</tag>
-        <tag>Nodejs</tag>
         <tag>Hexo</tag>
+        <tag>Nodejs</tag>
       </tags>
   </entry>
   <entry>

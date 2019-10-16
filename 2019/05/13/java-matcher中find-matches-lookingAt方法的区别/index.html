@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="去年夏天">
 <meta property="og:description" content="在Matcher类中有matches、lookingAt和find都是匹配目标的方法，但容易混淆，整理它们的区别如下：  matches:整个匹配，只有整个字符序列完全匹配成功，才返回True，否则返回False。但如果前部分匹配成功，将移动下次匹配的位置。 lookingAt:部分匹配，总是从第一个字符进行匹配,匹配成功了不再继续匹配，匹配失败了,也不继续匹配。 find:部分匹配，从当前位置开">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-14T09:40:47.558Z">
+<meta property="og:updated_time" content="2019-10-16T08:56:37.519Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java matcher中find,matches,lookingAt方法的区别">
 <meta name="twitter:description" content="在Matcher类中有matches、lookingAt和find都是匹配目标的方法，但容易混淆，整理它们的区别如下：  matches:整个匹配，只有整个字符序列完全匹配成功，才返回True，否则返回False。但如果前部分匹配成功，将移动下次匹配的位置。 lookingAt:部分匹配，总是从第一个字符进行匹配,匹配成功了不再继续匹配，匹配失败了,也不继续匹配。 find:部分匹配，从当前位置开">
@@ -62,7 +62,7 @@
     <h2 class="author">Wang Rui</h2>
     <h3 class="description">做自己爱做的事，爱自己在做的事！</h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>35</strong><br>文章</div></a>
+      <a href="/archives"><div><strong>36</strong><br>文章</div></a>
       <a href="/categories"><div><strong>14</strong><br>分类</div></a>
       <a href="/tags"><div><strong>32</strong><br>标签</div></a>
     </div>
@@ -197,14 +197,13 @@
 <li>matches:整个匹配，只有整个字符序列完全匹配成功，才返回True，否则返回False。但如果前部分匹配成功，将移动下次匹配的位置。</li>
 <li>lookingAt:部分匹配，总是从第一个字符进行匹配,匹配成功了不再继续匹配，匹配失败了,也不继续匹配。</li>
 <li>find:部分匹配，从当前位置开始匹配，找到一个匹配的子串，将移动下次匹配的位置。</li>
-<li>reset:给当前的Matcher对象配上个新的目标，目标是就该方法的参数；如果不给参数，reset会把Matcher设到当前字符串的开始处。<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Pattern pattern = Pattern.compile(&quot;\\d&#123;3,5&#125;&quot;);</span><br><span class="line">String charSequence = &quot;123-34345-234-00&quot;;</span><br><span class="line">Matcher matcher = pattern.matcher(charSequence);</span><br><span class="line"></span><br><span class="line">//虽然匹配失败，由于charSequence里面的&quot;123&quot;和pattern是匹配的</span><br><span class="line">//下次的匹配从位置4开始</span><br><span class="line">print(matcher.matches());	/*false*/</span><br><span class="line">//测试匹配位置</span><br><span class="line">matcher.find();</span><br><span class="line">print(matcher.start());	/*4*/</span><br><span class="line"></span><br><span class="line">//使用reset方法重置匹配位置(从0开始)</span><br><span class="line">matcher.reset();</span><br><span class="line"></span><br><span class="line">//第一次find匹配以及匹配的目标和匹配的起始位置</span><br><span class="line">print(matcher.find());	/*true*/</span><br><span class="line">print(matcher.group()+&quot; - &quot;+matcher.start());	/*123---0*/</span><br><span class="line">//第二次find匹配以及匹配的目标和匹配的起始位置</span><br><span class="line">print(matcher.find());	/*true*/</span><br><span class="line">print(matcher.group()+&quot; - &quot;+matcher.start());	/*34345---4*/</span><br><span class="line"></span><br><span class="line">//第一次lookingAt匹配以及匹配的目标和匹配的起始位置</span><br><span class="line">print(matcher.lookingAt());	/*true*/</span><br><span class="line">print(matcher.group()+&quot; - &quot;+matcher.start());	/*123---0*/</span><br><span class="line"></span><br><span class="line">//第二次lookingAt匹配以及匹配的目标和匹配的起始位置</span><br><span class="line">print(matcher.lookingAt());	/*true*/</span><br><span class="line">print(matcher.group()+&quot; - &quot;+matcher.start());	/*123---0*/</span><br></pre></td></tr></table></figure></li>
+<li>reset:给当前的Matcher对象配上个新的目标，目标是就该方法的参数；如果不给参数，reset会把Matcher设到当前字符串的开始处。<a id="more"></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Pattern pattern = Pattern.compile(&quot;\\d&#123;3,5&#125;&quot;);</span><br><span class="line">String charSequence = &quot;123-34345-234-00&quot;;</span><br><span class="line">Matcher matcher = pattern.matcher(charSequence);</span><br><span class="line"></span><br><span class="line">//虽然匹配失败，由于charSequence里面的&quot;123&quot;和pattern是匹配的</span><br><span class="line">//下次的匹配从位置4开始</span><br><span class="line">print(matcher.matches());	/*false*/</span><br><span class="line">//测试匹配位置</span><br><span class="line">matcher.find();</span><br><span class="line">print(matcher.start());	/*4*/</span><br><span class="line"></span><br><span class="line">//使用reset方法重置匹配位置(从0开始)</span><br><span class="line">matcher.reset();</span><br><span class="line"></span><br><span class="line">//第一次find匹配以及匹配的目标和匹配的起始位置</span><br><span class="line">print(matcher.find());	/*true*/</span><br><span class="line">print(matcher.group()+&quot; - &quot;+matcher.start());	/*123---0*/</span><br><span class="line">//第二次find匹配以及匹配的目标和匹配的起始位置</span><br><span class="line">print(matcher.find());	/*true*/</span><br><span class="line">print(matcher.group()+&quot; - &quot;+matcher.start());	/*34345---4*/</span><br><span class="line"></span><br><span class="line">//第一次lookingAt匹配以及匹配的目标和匹配的起始位置</span><br><span class="line">print(matcher.lookingAt());	/*true*/</span><br><span class="line">print(matcher.group()+&quot; - &quot;+matcher.start());	/*123---0*/</span><br><span class="line"></span><br><span class="line">//第二次lookingAt匹配以及匹配的目标和匹配的起始位置</span><br><span class="line">print(matcher.lookingAt());	/*true*/</span><br><span class="line">print(matcher.group()+&quot; - &quot;+matcher.start());	/*123---0*/</span><br></pre></td></tr></table></figure></li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lastsummer.top/blog/2019/05/13/java-matcher中find-matches-lookingAt方法的区别/" data-id="ck1iws0nx003ki8vb5hmynpr6" class="article-share-link-test"></a>
+      <a data-url="http://lastsummer.top/blog/2019/05/13/java-matcher中find-matches-lookingAt方法的区别/" data-id="ck1t1kk9y0037v4vbp99d10s3" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/matcher/">matcher</a></li></ul>
@@ -367,7 +366,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
     <h2 class="author">Wang Rui</h2>
     <h3 class="description">做自己爱做的事，爱自己在做的事！</h3>
     <div class="count-box">
-      <a href="/blog/archives"><div><strong>35</strong><br>文章</div></a>
+      <a href="/blog/archives"><div><strong>36</strong><br>文章</div></a>
       <a href="/blog/categories"><div><strong>14</strong><br>分类</div></a>
       <a href="/blog/tags"><div><strong>32</strong><br>标签</div></a>
     </div>
@@ -421,7 +420,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
   <div class="widget tag">
     <h2><font style="font-size: 15px;font-weight: bold;padding: 10px 0px;">归档</font></h2>
 	<div style="margin-top:6px;"></div>
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/10/">2019年10月</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/07/">2019年07月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/06/">2019年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/05/">2019年05月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/04/">2019年04月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/03/">2019年03月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/01/">2019年01月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/12/">2018年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/11/">2018年11月</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/10/">2018年10月</a><span class="archive-list-count">10</span></li></ul>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/10/">2019年10月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/07/">2019年07月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/06/">2019年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/05/">2019年05月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/04/">2019年04月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/03/">2019年03月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/01/">2019年01月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/12/">2018年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/11/">2018年11月</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/10/">2018年10月</a><span class="archive-list-count">10</span></li></ul>
   </div>
 
 
@@ -565,7 +564,7 @@ var searchFunc = function(path, search_id, content_id) {
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy;2019-10-09 We Wang Rui<br>
+      &copy;2019-10-16 We Wang Rui<br>
       个人专属 | 
       <a href="https://wangrui15034005712.github.io">博客-Wang Rui</a>
       
