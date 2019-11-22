@@ -1,3 +1,4 @@
+http://lastsummer.top/blog/2019/11/14/Java代理模式/
 http://lastsummer.top/blog/2019/11/06/Java8中抽象类与接口的异同/
 http://lastsummer.top/blog/2019/10/10/JAVA基础面试题四/
 http://lastsummer.top/blog/2019/10/09/Web相关优化/

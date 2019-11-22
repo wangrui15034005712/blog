@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://lastsummer.top/blog/"/>
-  <updated>2019-11-06T10:47:32.843Z</updated>
+  <updated>2019-11-22T04:31:53.985Z</updated>
   <id>http://lastsummer.top/blog/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java代理模式</title>
+    <link href="http://lastsummer.top/blog/2019/11/14/Java%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://lastsummer.top/blog/2019/11/14/Java代理模式/</id>
+    <published>2019-11-14T05:50:03.000Z</published>
+    <updated>2019-11-22T04:31:53.985Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Java代理模式"><a href="#Java代理模式" class="headerlink" title="Java代理模式"></a>Java代理模式</h3><a id="more"></a><p>代理模式主要为其他对象提供一种代理以控制这个对象的访问。在某些情况下，一个对象不想或者不能直接引用另一个对象，而代理对象可以在客户端和目标对象之间起到中介的作用，好比你将一些繁琐的事情交给第三方去管理，那么第三方就是你的代理，其他人只会去找这个代理，而不会去找你，<b>AOP本身就是基于动态代理实现的</b>，所以掌握了代理模式对AOP的学习很有帮助的哦。<br><b>代理模式的三种种实现方式(静态代理、jdk动态代理、CGLib代理)</b></p><h4 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h4><p>代理类在程序运行前就已经存在,那么这种代理方式被成为静态代理(接口、实现类、代理类都存在)</p><h4 id="jdk动态代理"><a href="#jdk动态代理" class="headerlink" title="jdk动态代理"></a>jdk动态代理</h4><p>代理类在程序运行时创建的代理方式被称为 动态代理<br>如果目标对象实现了接口,采用JDK的动态代理(接口、实现类存在，代理类运行后创建)<br>如果目标对象没有实现接口,必须采用cglib动态代理(实现类，代理类运行后创建)</p><h4 id="CGLib代理"><a href="#CGLib代理" class="headerlink" title="CGLib代理"></a>CGLib代理</h4><p>目标类不能为final,目标对象的方法如果为final / static，那么就不会被拦截，即不会执行目标对象额外的业务方法</p><h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><p>静态代理：<br>(1)可以做到在不修改目标对象的功能前提下,对目标功能扩展<br>(2)代理对象需要与目标对象实现一样的接口,所以会有很多代理类,类太多.同时,一旦接口增加方法,目标对象与代理对象都要维护<br>JDK动态代理:<br>(1)代理对象不需要实现接口, 利用JDK的API,动态的在内存中构建代理对象(需要我们指定创建代理对象/目标对象实现的接口的类型)<br>(2)目标对象一定要实现接口,否则不能用动态代理<br>CGLib代理:<br>(1)静态代理和动态代理模式都是要求目标对象是实现一个接口的目标对象,但是有时候目标对象只是一个单独的对象,并没有实现任何的接口,这个时候就可以使用以目标对象类实现代理</p><p>JDK动态代理使用Java的反射技术生成代理类，只能代理实现了接口的类，没有实现接口的类不能实现动态代理，CGLib会在运行时动态的生成一个被代理类的子类，子类重写了被代理类中所有非final的方法，在子类中采用方法拦截的技术拦截所有父类方法的调用，不需要被代理类对象实现接口，从而CGLIB动态代理效率比Jdk动态代理反射技术效率要高</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Java代理模式&quot;&gt;&lt;a href=&quot;#Java代理模式&quot; class=&quot;headerlink&quot; title=&quot;Java代理模式&quot;&gt;&lt;/a&gt;Java代理模式&lt;/h3&gt;
+    
+    </summary>
+    
+      <category term="JAVA" scheme="http://lastsummer.top/blog/categories/JAVA/"/>
+    
+    
+      <category term="java" scheme="http://lastsummer.top/blog/tags/java/"/>
+    
+  </entry>
   
   <entry>
     <title>Java8中抽象类与接口的异同</title>
@@ -461,28 +483,6 @@
     
     
       <category term="java" scheme="http://lastsummer.top/blog/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Oracle表恢复到特定时间点</title>
-    <link href="http://lastsummer.top/blog/2018/12/13/Oracle%E8%A1%A8%E6%81%A2%E5%A4%8D%E5%88%B0%E7%89%B9%E5%AE%9A%E6%97%B6%E9%97%B4%E7%82%B9/"/>
-    <id>http://lastsummer.top/blog/2018/12/13/Oracle表恢复到特定时间点/</id>
-    <published>2018-12-13T02:36:35.000Z</published>
-    <updated>2018-12-13T02:51:47.446Z</updated>
-    
-    <content type="html"><![CDATA[<p>Oracle数据库表恢复到特定时间点。<a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">-- Create table</span><br><span class="line">create table TEST</span><br><span class="line">(</span><br><span class="line">  id    NUMBER(4),</span><br><span class="line">  name  VARCHAR2(20),</span><br><span class="line">  class VARCHAR2(20),</span><br><span class="line">  score NUMBER</span><br><span class="line">);</span><br><span class="line">-- Insert table</span><br><span class="line">insert into test values (11,&apos;测试10&apos;,&apos;一年三班&apos;,80);</span><br><span class="line">insert into test values (12,&apos;测试11&apos;,&apos;一年二班&apos;,90);</span><br><span class="line">insert into test values (13,&apos;测试12&apos;,&apos;一年一班&apos;,100);</span><br><span class="line">-- 数据库表恢复到特定时间点。</span><br><span class="line">select * from test as of timestamp </span><br><span class="line">  to_timestamp(&apos;2018-12-13 10:18:00&apos;, &apos;yyyy-mm-dd hh24:mi:ss&apos;);</span><br><span class="line">-- 临时表恢复之前的数据</span><br><span class="line">create table 临时表 as</span><br><span class="line">  select * from 你的那个数据被删除的表 as of </span><br><span class="line">  timestamp to_timestamp(&apos;2013-08-13 14:00:00&apos;,  &apos;yyyy-mm-dd hh24:mi:ss&apos;);</span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Oracle数据库表恢复到特定时间点。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="ORACLE" scheme="http://lastsummer.top/blog/categories/ORACLE/"/>
-    
-    
-      <category term="SQL" scheme="http://lastsummer.top/blog/tags/SQL/"/>
     
   </entry>
   
