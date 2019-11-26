@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://lastsummer.top/blog/"/>
-  <updated>2019-11-22T04:31:53.985Z</updated>
+  <updated>2019-11-26T03:30:45.923Z</updated>
   <id>http://lastsummer.top/blog/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux常用命令详解</title>
+    <link href="http://lastsummer.top/blog/2019/11/26/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://lastsummer.top/blog/2019/11/26/Linux常用命令详解/</id>
+    <published>2019-11-26T01:54:23.000Z</published>
+    <updated>2019-11-26T03:30:45.923Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Linux常用命令详解"><a href="#Linux常用命令详解" class="headerlink" title="Linux常用命令详解"></a>Linux常用命令详解</h3><a id="more"></a><h4 id="关机及重启"><a href="#关机及重启" class="headerlink" title="关机及重启"></a>关机及重启</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">shutdown -h now 立刻关机</span><br><span class="line">shutdown -h 5 5分钟后关机</span><br><span class="line">poweroff 立刻关机</span><br><span class="line"></span><br><span class="line">shutdown -r now</span><br><span class="line">shutdown -r 5 5分钟后重启</span><br><span class="line">reboot 立刻重启</span><br></pre></td></tr></table></figure><h4 id="帮助命令"><a href="#帮助命令" class="headerlink" title="帮助命令"></a>帮助命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shutdown --help：</span><br><span class="line">ifconfig  --help：查看网卡信息</span><br></pre></td></tr></table></figure><h4 id="目录操作指令"><a href="#目录操作指令" class="headerlink" title="目录操作指令"></a>目录操作指令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">cd 切换目录</span><br><span class="line">ls 目录查看</span><br><span class="line">mkdir aaa 创建目录</span><br><span class="line">rm -f aaa 删除当前目录下的aaa目录（不询问）</span><br><span class="line">rm -r aaa 递归删除当前下的aaa目录</span><br><span class="line">rm -rf aaa 递归删除当前目录下的aaa目录（不询问，谨慎使用，避免全部删除）</span><br><span class="line">rm可以删除文件、目录、压缩包、</span><br><span class="line">mv 移动文件或者重命名文件或目录</span><br><span class="line">cp -r 目录名称 目录拷贝的目标位置   -r代表递归</span><br><span class="line">find 目录 参数 文件名称 搜索目录 find /usr/tmp -name &apos;a*&apos; </span><br><span class="line">touch aaa.txt 创建文件</span><br><span class="line">pwd 查看当前目录</span><br><span class="line">vim及vi编辑器命令模式底行模式及插入模式</span><br><span class="line">cat 文件的查看 看最后一屏</span><br><span class="line">more 百分比查看</span><br><span class="line">less 翻页查看</span><br><span class="line">head 显示文件头数据</span><br><span class="line">tail 指定行数或者动态查看</span><br><span class="line">echo 创建带有内容的文件</span><br></pre></td></tr></table></figure><h4 id="安装下载解压操作"><a href="#安装下载解压操作" class="headerlink" title="安装下载解压操作"></a>安装下载解压操作</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">yum 应用市场安装</span><br><span class="line">wegt 加地址 表示下载</span><br><span class="line">tar -zvxf</span><br><span class="line">-A 新增文件到已压缩文件中</span><br><span class="line">-c 新建新压缩文件</span><br><span class="line">-r 将新文件添加到已压缩文件的末尾</span><br><span class="line">-x 解压缩文件</span><br><span class="line">-k 保留原压缩文件</span><br><span class="line">-f 待压缩或待解压缩文件</span><br><span class="line">-j bzip2格式</span><br><span class="line">-z gzip格式</span><br><span class="line">-v 显示过程</span><br></pre></td></tr></table></figure><h4 id="权限修改"><a href="#权限修改" class="headerlink" title="权限修改"></a>权限修改</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">chmod</span><br><span class="line">权限分为三种：读（r=4），写（w=2），执行（x=1）</span><br><span class="line">可读可执行 rx=5=4+1</span><br><span class="line">可读可写 rw=6=4+2</span><br><span class="line">可执行可写 wx=3=2+1</span><br><span class="line">可读可写可执行 rwx=7=4+1+2</span><br><span class="line">常用数字权限</span><br><span class="line">-rw------- (600) 只有拥有者有读写权限。</span><br><span class="line">-rw-r--r-- (644) 只有拥有者有读写权限；而属组用户和其他用户只有读权限。</span><br><span class="line">-rwx------ (700) 只有拥有者有读、写、执行权限。</span><br><span class="line">-rwxr-xr-x (755) 拥有者有读、写、执行权限；而属组用户和其他用户只有读、执行权限。</span><br><span class="line">-rwx--x--x (711) 拥有者有读、写、执行权限；而属组用户和其他用户只有执行权限。</span><br><span class="line">-rw-rw-rw- (666) 所有用户都有文件读、写权限。</span><br><span class="line">-rwxrwxrwx (777) 所有用户都有读、写、执行权限。</span><br><span class="line">创建sh文件后需要赋予可执行权限</span><br></pre></td></tr></table></figure><h4 id="进程命令"><a href="#进程命令" class="headerlink" title="进程命令"></a>进程命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep java 查看进程</span><br><span class="line">su 默认切换root用户</span><br><span class="line">ps -ef 查看所有正在运行的进程</span><br><span class="line">kill pid 杀死进程</span><br><span class="line">kill -9 pid 强制杀死进程</span><br><span class="line">ifconfig 查看你网卡信息</span><br><span class="line">ping 查看与某台机器的连接情况</span><br><span class="line">netstat 显示网络状态信息</span><br><span class="line">netstat -an 查看当前系统接口</span><br><span class="line">netstat -an | grep 8080 搜索指定端口8080</span><br><span class="line">clear 清屏</span><br><span class="line">usermod 修改用户</span><br><span class="line">useradd 添加用户</span><br><span class="line">userdel 删除用户</span><br><span class="line">passwd 修改密码</span><br><span class="line">groupadd 添加用户组</span><br><span class="line">groupmod 修改用户组</span><br><span class="line">groupdel 删除用户组</span><br></pre></td></tr></table></figure><h4 id="环境变量路径配置"><a href="#环境变量路径配置" class="headerlink" title="环境变量路径配置"></a>环境变量路径配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/etc/profile java环境变量</span><br><span class="line">/etc/sysconfig/network-scripts/ifcfg-eno 网卡配置</span><br><span class="line">source /etc/profile 刷新环境变量</span><br><span class="line">uname -a 查看系统版本</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Linux常用命令详解&quot;&gt;&lt;a href=&quot;#Linux常用命令详解&quot; class=&quot;headerlink&quot; title=&quot;Linux常用命令详解&quot;&gt;&lt;/a&gt;Linux常用命令详解&lt;/h3&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://lastsummer.top/blog/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://lastsummer.top/blog/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>Java代理模式</title>
@@ -333,9 +355,9 @@
       <category term="hexo" scheme="http://lastsummer.top/blog/categories/hexo/"/>
     
     
-      <category term="Github" scheme="http://lastsummer.top/blog/tags/Github/"/>
-    
       <category term="Hexo" scheme="http://lastsummer.top/blog/tags/Hexo/"/>
+    
+      <category term="Github" scheme="http://lastsummer.top/blog/tags/Github/"/>
     
       <category term="Python" scheme="http://lastsummer.top/blog/tags/Python/"/>
     
@@ -454,28 +476,6 @@
     <summary type="html">
     
       &lt;p&gt;Calendar获取月初月末日期。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="JAVA" scheme="http://lastsummer.top/blog/categories/JAVA/"/>
-    
-    
-      <category term="java" scheme="http://lastsummer.top/blog/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>BigDecimal算法</title>
-    <link href="http://lastsummer.top/blog/2018/12/24/BigDecimal%E7%AE%97%E6%B3%95/"/>
-    <id>http://lastsummer.top/blog/2018/12/24/BigDecimal算法/</id>
-    <published>2018-12-24T02:02:29.000Z</published>
-    <updated>2018-12-24T08:01:29.307Z</updated>
-    
-    <content type="html"><![CDATA[<p>BigDecimal算法。<a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">BigDecimal bignum1 = new BigDecimal(&quot;10&quot;);  </span><br><span class="line">BigDecimal bignum2 = new BigDecimal(&quot;5&quot;);  </span><br><span class="line">BigDecimal bignum3 = null;  </span><br><span class="line">  </span><br><span class="line">//加法  </span><br><span class="line">bignum3 =  bignum1.add(bignum2);       </span><br><span class="line">System.out.println(&quot;和 是：&quot; + bignum3);  </span><br><span class="line">  </span><br><span class="line">//减法  </span><br><span class="line">bignum3 = bignum1.subtract(bignum2);  </span><br><span class="line">System.out.println(&quot;差  是：&quot; + bignum3);  </span><br><span class="line">  </span><br><span class="line">//乘法  </span><br><span class="line">bignum3 = bignum1.multiply(bignum2);  </span><br><span class="line">System.out.println(&quot;积  是：&quot; + bignum3);  </span><br><span class="line">  </span><br><span class="line">//除法  </span><br><span class="line">bignum3 = bignum1.divide(bignum2);  </span><br><span class="line">System.out.println(&quot;商  是：&quot; + bignum3);  </span><br><span class="line"></span><br><span class="line">//比较</span><br><span class="line">int bignum = bignum1.compareTo(bignum2);</span><br><span class="line">返回的结果是int类型，-1表示小于，0是等于，1是大于。</span><br><span class="line"></span><br><span class="line">BigDecimal decimal = new BigDecimal(&quot;1.12345&quot;);</span><br><span class="line"></span><br><span class="line">//保留四位小数，默认四舍五入</span><br><span class="line">BigDecimal setScale = decimal.setScale(4);</span><br><span class="line">System.out.println(setScale);</span><br><span class="line"></span><br><span class="line">//保留四位小数，直接删除多余的小数</span><br><span class="line">BigDecimal setScale = decimal.setScale(4,BigDecimal.ROUND_DOWN);</span><br><span class="line">System.out.println(setScale);</span><br><span class="line"></span><br><span class="line">//保留四位小数，进位处理</span><br><span class="line">BigDecimal setScale = decimal.setScale(4,BigDecimal.ROUND_UP);</span><br><span class="line">System.out.println(setScale);</span><br><span class="line"></span><br><span class="line">//保留四位小数，四舍五入（2.35变成2.4）</span><br><span class="line">BigDecimal setScale1= decimal.setScale(4,BigDecimal.ROUND_HALF_UP);</span><br><span class="line">System.out.println(setScale);</span><br><span class="line"></span><br><span class="line">//保留四位小数，四舍五入（2.35变成2.3）</span><br><span class="line">BigDecimal setScale = decimal.setScale(4,BigDecimal.ROUND_HALF_DOWN);</span><br><span class="line">System.out.println(setScale);</span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;BigDecimal算法。&lt;/p&gt;
     
     </summary>
     
