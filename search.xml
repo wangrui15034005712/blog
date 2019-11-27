@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[SpringCloud基础]]></title>
+    <url>%2Fblog%2F2019%2F11%2F26%2FSpringCloud%E5%9F%BA%E7%A1%80%2F</url>
+    <content type="text"><![CDATA[SpringCloud基础 微服务的优缺点12345678910111213微服务是一种架构模式，叫微服务架构更合理，把一个系统的各个功能点都拆开为一个个的应用单独部署优点：1.每个服务直接足够内聚，代码容易理解2.开发效率高，一个服务只做一件事，适合小团队开发3.松耦合，有功能意义的服务4.可以用不同语言开发，面向接口编程5.易于第三方集成6.微服务只是业务逻辑的代码，不会和HTML,CSS或其他界面结合7.可以灵活搭配，连接公共库/连接独立库缺点：1.分布式系统的责任性2.多服务运维难度加大3.系统部署依赖，服务间通信成本，数据一致性，系统集成测试，性能监控 springCloud?123Spring cloud流应用程序启动器是基于Spring Boot的Spring集成应用程序，提供与外部系统的集成Spring cloud Task，一个生命周期短暂的微服务框架，用于快速构建执行有限数据处理的应用程序相比Dubbo等RPC框架,Spring Cloud提供的全套的分布式系统解决方案 springCloud和Dubbo区别?12341.服务调用方式 dubbo基于RPC springcloud基于Rest Api2.注册中心,dubbo 是zookeeper springcloud是eureka，也可以是zookeeper3.服务网关,dubbo本身没有实现，只能通过其他第三方技术整合springcloud有Zuul路由网关，进行消费者的请求分发,springcloud支持断路器，与git完美集成配置文件支持版本控制，事物总线实现配置文件的更新与服务自动装配等等一系列的微服务架构要素 RPC和REST区别？12345REST是一种架构风格，REST规范把所有内容都视为资源，网络上一切皆资源REST并没有创造新的技术，组件或服务，只是使用Web的现有特征和能力完全通过HTTP协议实现，使用 HTTP 协议处理数据通信REST架构对资源的操作CRTUD的操作正好对应HTTP协议提供的GET、POST、PUT和DELETE方法RPC远程方法调用，就是像调用本地方法一样调用远程方法 微服务通信方式？1234561.RestTemplate（1）restTemplate.getForObject(&quot;http://localhost:8773/hi&quot;,String.class);（2）loadBalancerClient（3）server_id服务调用2.远程调用，比如feign接口调用，直接通过远程过程调用来访问别的service。3.消息中间件rabbitmq Eureka和Zookeeper区别?1234561.Eureka取CAP的AP，注重可用性，Zookeeper取CAP的CP注重一致性2.Zookeeper在选举期间注册服务瘫痪，虽然服务最终会恢复，但选举期间不可用3.eureka的自我保护机制，会导致一个结果就是不会再从注册列表移除因长时间没收到心跳而过期的服务。依然能接受新服务的注册和查询请求，但不会被同步到其他节点。不会服务瘫痪4.Zookeeper有Leader和Follower角色，Eureka各个节点平等5.Zookeeper采用过半数存活原则，Eureka采用自我保护机制解决分区问题6.eureka本质是一个工程，Zookeeper只是一个进程 Eureka和Zookeeper中CAP区别？12345678910CAP理论1.C（Consistency）：数据一致性2.A（Availability）：可用性3.P（Partition Tolerance）：分区容错性当向注册中心查询服务列表时，我们可以容忍注册中心返回的是几分钟以前的注册信息，单不能接受服务直接down掉不可用,服务注册功能对可用性的要求要高于一致性Eureka看明白了这点，因此在设计师就有限保证可用性，Eureka各个节点都是平等的，几个节点挂掉不会影响正常节点的工作，剩余的节点依然可以提供注册和查询服务。而Eureka的客户端在向某个Eureka注册时如果发现连接失败，会自动切换至其他节点，只要有一台Eureka还在，就能保证注册服务可用（保证可用性），只不过查到的信息可能不是最新的（不保证强一致性）,Eureka还有一种自我保护机制Eureka基于AP原则，Eureka可以很好的应对因网络故障导致部分节点失去联系的情况，而不会像Zookeeper 那样使整个注册服务瘫痪Zookeeper基于CP原则，不是强一致的，并且选举时间在30-120秒在选举期间集群不可用，服务瘫痪作为注册中心，最主要得到就是保证可用性，可以接受短时间内数据不一致的情况个人觉得Eureka做i为单纯的服务注册中心来说比Zookeeper更专业一点 Eureka的自我保护机制？123456Eureka还有一种自我保护机制，如果在15分钟内超过85%的节点都没有正常的心跳，那么Eureka就认为客户端与注册中心出现了网络故障当Eureka Server 节点在短时间内丢失了过多实例的连接时（比如网络故障或频繁启动关闭客户端）节点会进入自我保护模式，保护注册信息，不再删除注册数据，故障恢复时，自动退出自我保护模式。1、Eureka不再从注册列表中溢出因为长时间没有收到心跳而应该过期的服务2、Eureka仍然能够接受新服务的注册和查询请求，但是不会被同步到其他节点上（即保证当前节点依然可用）3、当网络稳定是，当前实例新的注册信息会被同步到其他节点中因此，Eureka可以很好的应对网络故障导致部分节点失去联系的情况，而不会像zookeeper那样使整个注册服务瘫痪]]></content>
+      <categories>
+        <category>SpringCloud</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
+        <tag>SpringBoot</tag>
+        <tag>SpringCloud</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Linux常用命令详解]]></title>
     <url>%2Fblog%2F2019%2F11%2F26%2FLinux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3%2F</url>
     <content type="text"><![CDATA[Linux常用命令详解 关机及重启1234567shutdown -h now 立刻关机shutdown -h 5 5分钟后关机poweroff 立刻关机shutdown -r nowshutdown -r 5 5分钟后重启reboot 立刻重启 帮助命令12shutdown --help：ifconfig --help：查看网卡信息 目录操作指令12345678910111213141516171819cd 切换目录ls 目录查看mkdir aaa 创建目录rm -f aaa 删除当前目录下的aaa目录（不询问）rm -r aaa 递归删除当前下的aaa目录rm -rf aaa 递归删除当前目录下的aaa目录（不询问，谨慎使用，避免全部删除）rm可以删除文件、目录、压缩包、mv 移动文件或者重命名文件或目录cp -r 目录名称 目录拷贝的目标位置 -r代表递归find 目录 参数 文件名称 搜索目录 find /usr/tmp -name &apos;a*&apos; touch aaa.txt 创建文件pwd 查看当前目录vim及vi编辑器命令模式底行模式及插入模式cat 文件的查看 看最后一屏more 百分比查看less 翻页查看head 显示文件头数据tail 指定行数或者动态查看echo 创建带有内容的文件 安装下载解压操作123456789101112yum 应用市场安装wegt 加地址 表示下载tar -zvxf-A 新增文件到已压缩文件中-c 新建新压缩文件-r 将新文件添加到已压缩文件的末尾-x 解压缩文件-k 保留原压缩文件-f 待压缩或待解压缩文件-j bzip2格式-z gzip格式-v 显示过程 权限修改123456789101112131415chmod权限分为三种：读（r=4），写（w=2），执行（x=1）可读可执行 rx=5=4+1可读可写 rw=6=4+2可执行可写 wx=3=2+1可读可写可执行 rwx=7=4+1+2常用数字权限-rw------- (600) 只有拥有者有读写权限。-rw-r--r-- (644) 只有拥有者有读写权限；而属组用户和其他用户只有读权限。-rwx------ (700) 只有拥有者有读、写、执行权限。-rwxr-xr-x (755) 拥有者有读、写、执行权限；而属组用户和其他用户只有读、执行权限。-rwx--x--x (711) 拥有者有读、写、执行权限；而属组用户和其他用户只有执行权限。-rw-rw-rw- (666) 所有用户都有文件读、写权限。-rwxrwxrwx (777) 所有用户都有读、写、执行权限。创建sh文件后需要赋予可执行权限 进程命令123456789101112131415161718ps -ef | grep java 查看进程su 默认切换root用户ps -ef 查看所有正在运行的进程kill pid 杀死进程kill -9 pid 强制杀死进程ifconfig 查看你网卡信息ping 查看与某台机器的连接情况netstat 显示网络状态信息netstat -an 查看当前系统接口netstat -an | grep 8080 搜索指定端口8080clear 清屏usermod 修改用户useradd 添加用户userdel 删除用户passwd 修改密码groupadd 添加用户组groupmod 修改用户组groupdel 删除用户组 环境变量路径配置1234/etc/profile java环境变量/etc/sysconfig/network-scripts/ifcfg-eno 网卡配置source /etc/profile 刷新环境变量uname -a 查看系统版本]]></content>
@@ -166,8 +179,8 @@
         <category>hexo</category>
       </categories>
       <tags>
-        <tag>Hexo</tag>
         <tag>Github</tag>
+        <tag>Hexo</tag>
         <tag>Python</tag>
       </tags>
   </entry>
@@ -433,8 +446,8 @@
       </categories>
       <tags>
         <tag>Git</tag>
-        <tag>Nodejs</tag>
         <tag>Hexo</tag>
+        <tag>Nodejs</tag>
       </tags>
   </entry>
   <entry>

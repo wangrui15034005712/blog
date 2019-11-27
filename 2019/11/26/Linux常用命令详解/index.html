@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="去年夏天">
 <meta property="og:description" content="Linux常用命令详解">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-26T03:30:45.923Z">
+<meta property="og:updated_time" content="2019-11-27T06:08:02.243Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux常用命令详解">
 <meta name="twitter:description" content="Linux常用命令详解">
@@ -62,9 +62,9 @@
     <h2 class="author">Wang Rui</h2>
     <h3 class="description">做自己爱做的事，爱自己在做的事！</h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>39</strong><br>文章</div></a>
-      <a href="/categories"><div><strong>14</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>32</strong><br>标签</div></a>
+      <a href="/archives"><div><strong>40</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>15</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>34</strong><br>标签</div></a>
     </div>
     <ul class="blog-link">
      
@@ -148,8 +148,37 @@
     <div class="article-entry" itemprop="articleBody">
       
 		
+      <div id="toc" class="toc-article">
+      <strong class="toc-title">文章目录</strong>
+      
+      </div>
+    
       <!-- 目录内容 -->
 
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+    <div id="toc-article" class="toc-article">
+        <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+        <strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux常用命令详解"><span class="toc-number">1.</span> <span class="toc-text">Linux常用命令详解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#关机及重启"><span class="toc-number">1.1.</span> <span class="toc-text">关机及重启</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#帮助命令"><span class="toc-number">1.2.</span> <span class="toc-text">帮助命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#目录操作指令"><span class="toc-number">1.3.</span> <span class="toc-text">目录操作指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装下载解压操作"><span class="toc-number">1.4.</span> <span class="toc-text">安装下载解压操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#权限修改"><span class="toc-number">1.5.</span> <span class="toc-text">权限修改</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#进程命令"><span class="toc-number">1.6.</span> <span class="toc-text">进程命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#环境变量路径配置"><span class="toc-number">1.7.</span> <span class="toc-text">环境变量路径配置</span></a></li></ol></li></ol>
+         </div>
+   <script type="text/javascript">
+    function showToc(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:block");
+        show_toc_btn.setAttribute("style","display:none");
+        };
+    function showBtn(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:none");
+        show_toc_btn.setAttribute("style","display:block");
+        };
+   </script>
+   
 <!-- 目录内容结束 -->
 <style>
 /* 新添加的 */
@@ -175,7 +204,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lastsummer.top/blog/2019/11/26/Linux常用命令详解/" data-id="ck3fpfidm001ztgvbvzoty80x" class="article-share-link-test"></a>
+      <a data-url="http://lastsummer.top/blog/2019/11/26/Linux常用命令详解/" data-id="ck3gw45ga002bl8vbn9los1pd" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Linux/">Linux</a></li></ul>
@@ -219,6 +248,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/blog/2019/11/26/SpringCloud基础/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          SpringCloud基础
+        
+      </div>
+    </a>
   
   
     <a href="/blog/2019/11/14/Java代理模式/" id="article-nav-older" class="article-nav-link-wrap">
@@ -329,9 +367,9 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
     <h2 class="author">Wang Rui</h2>
     <h3 class="description">做自己爱做的事，爱自己在做的事！</h3>
     <div class="count-box">
-      <a href="/blog/archives"><div><strong>39</strong><br>文章</div></a>
-      <a href="/blog/categories"><div><strong>14</strong><br>分类</div></a>
-      <a href="/blog/tags"><div><strong>32</strong><br>标签</div></a>
+      <a href="/blog/archives"><div><strong>40</strong><br>文章</div></a>
+      <a href="/blog/categories"><div><strong>15</strong><br>分类</div></a>
+      <a href="/blog/tags"><div><strong>34</strong><br>标签</div></a>
     </div>
 	<div id="site_search" align="center" style="margin:15px 0 0 0;">
 	  <input type="text" id="local-search-input" name="q" results="0" placeholder="本站搜索" style="width:180px;height:25px;">
@@ -383,7 +421,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
   <div class="widget tag">
     <h2><font style="font-size: 15px;font-weight: bold;padding: 10px 0px;">归档</font></h2>
 	<div style="margin-top:6px;"></div>
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/11/">2019年11月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/10/">2019年10月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/07/">2019年07月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/06/">2019年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/05/">2019年05月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/04/">2019年04月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/03/">2019年03月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/01/">2019年01月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/12/">2018年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/11/">2018年11月</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/10/">2018年10月</a><span class="archive-list-count">10</span></li></ul>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/11/">2019年11月</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/10/">2019年10月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/07/">2019年07月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/06/">2019年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/05/">2019年05月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/04/">2019年04月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/03/">2019年03月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/01/">2019年01月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/12/">2018年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/11/">2018年11月</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/10/">2018年10月</a><span class="archive-list-count">10</span></li></ul>
   </div>
 
 
@@ -527,7 +565,7 @@ var searchFunc = function(path, search_id, content_id) {
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy;2019-11-26 Tu Wang Rui<br>
+      &copy;2019-11-27 We Wang Rui<br>
       个人专属 | 
       <a href="https://wangrui15034005712.github.io">博客-Wang Rui</a>
       
