@@ -390,8 +390,8 @@
         <category>SOA</category>
       </categories>
       <tags>
-        <tag>Dubbo</tag>
         <tag>Zookeeper</tag>
+        <tag>Dubbo</tag>
         <tag>Maven</tag>
       </tags>
   </entry>
