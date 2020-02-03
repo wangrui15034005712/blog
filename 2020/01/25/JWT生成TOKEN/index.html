@@ -9,18 +9,18 @@
   
   <title>JWT生成TOKEN | 去年夏天</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="简介:Jwt 是一种生成token,或者解析token 返回对象的工具，现在流行的都是前后端分离项目，用之前的shiro,或者sercurity 去做权限是会遇到无法做前端的权限，所以就采用token 这种方式，服务器返回token  给前端，前端通过token 访问资源，前端通过cookie保存。">
+  <meta name="description" content="简介Jwt 是一种生成token,或者解析token 返回对象的工具，现在流行的都是前后端分离项目，用之前的shiro,或者sercurity 去做权限是会遇到无法做前端的权限，所以就采用token 这种方式，服务器返回token  给前端，前端通过token 访问资源，前端通过cookie保存。">
 <meta name="keywords" content="java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JWT生成TOKEN">
 <meta property="og:url" content="http://lastsummer.top/blog/2020/01/25/JWT生成TOKEN/index.html">
 <meta property="og:site_name" content="去年夏天">
-<meta property="og:description" content="简介:Jwt 是一种生成token,或者解析token 返回对象的工具，现在流行的都是前后端分离项目，用之前的shiro,或者sercurity 去做权限是会遇到无法做前端的权限，所以就采用token 这种方式，服务器返回token  给前端，前端通过token 访问资源，前端通过cookie保存。">
+<meta property="og:description" content="简介Jwt 是一种生成token,或者解析token 返回对象的工具，现在流行的都是前后端分离项目，用之前的shiro,或者sercurity 去做权限是会遇到无法做前端的权限，所以就采用token 这种方式，服务器返回token  给前端，前端通过token 访问资源，前端通过cookie保存。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-25T04:04:55.556Z">
+<meta property="og:updated_time" content="2020-02-03T09:04:37.336Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JWT生成TOKEN">
-<meta name="twitter:description" content="简介:Jwt 是一种生成token,或者解析token 返回对象的工具，现在流行的都是前后端分离项目，用之前的shiro,或者sercurity 去做权限是会遇到无法做前端的权限，所以就采用token 这种方式，服务器返回token  给前端，前端通过token 访问资源，前端通过cookie保存。">
+<meta name="twitter:description" content="简介Jwt 是一种生成token,或者解析token 返回对象的工具，现在流行的都是前后端分离项目，用之前的shiro,或者sercurity 去做权限是会遇到无法做前端的权限，所以就采用token 这种方式，服务器返回token  给前端，前端通过token 访问资源，前端通过cookie保存。">
   
     <link rel="alternate" href="/atom.xml" title="去年夏天" type="application/atom+xml">
   
@@ -62,9 +62,9 @@
     <h2 class="author">Wang Rui</h2>
     <h3 class="description">做自己爱做的事，爱自己在做的事！</h3>
     <div class="count-box">
-      <a href="/archives"><div><strong>42</strong><br>文章</div></a>
-      <a href="/categories"><div><strong>15</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>35</strong><br>标签</div></a>
+      <a href="/archives"><div><strong>43</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>16</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>36</strong><br>标签</div></a>
     </div>
     <ul class="blog-link">
      
@@ -163,17 +163,110 @@
 }
 
 </style>
-        <h3 id="简介"><a href="#简介" class="headerlink" title="简介:"></a>简介:</h3><p>Jwt 是一种生成token,或者解析token 返回对象的工具，现在流行的都是前后端分离项目，用之前的shiro,或者sercurity 去做权限是会遇到无法做前端的权限，所以就采用token 这种方式，服务器返回token  给前端，前端通过token 访问资源，前端通过cookie保存。<br><a id="more"></a></p>
+        <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Jwt 是一种生成token,或者解析token 返回对象的工具，现在流行的都是前后端分离项目，用之前的shiro,或者sercurity 去做权限是会遇到无法做前端的权限，所以就采用token 这种方式，服务器返回token  给前端，前端通过token 访问资源，前端通过cookie保存。<br><a id="more"></a></p>
 <h3 id="什么是jwt"><a href="#什么是jwt" class="headerlink" title="什么是jwt"></a>什么是jwt</h3><p>WT本质上是一个字符串，一个完整的JWT由三部分组成，头部(header), 荷载(Payload), 和签名(Signature)，中间用.隔开，如下是一个典型的JWT：eyJhbGciOiJIUzUxMiJ9.iIxMjM0NSIsInN1YiI6InhsIn0.5MSq92FV7vneEo9IrrZw9XH6g<br><b>注意：保存的信息越多，生成的token长度越长<b></b></b></p>
 <h3 id="JWT-头部（Header）"><a href="#JWT-头部（Header）" class="headerlink" title="JWT 头部（Header）"></a>JWT 头部（Header）</h3><p>用于描述关于该JWT的最基本的信息，例如其类型以及签名所用的算法等。这也可以被表示成一个JSON对象。<br>{“typ”:”JWT”,”alg”:”HS256”}</p>
 <h3 id="载荷（playload）"><a href="#载荷（playload）" class="headerlink" title="载荷（playload）"></a>载荷（playload）</h3><p>载荷就是存放有效信息的地方（自定义变量+标准变量）。</p>
 <h3 id="签证（signature）"><a href="#签证（signature）" class="headerlink" title="签证（signature）"></a>签证（signature）</h3><p>jwt的第三部分是一个签证信息，这个签证信息由三部分组成：<br>这个部分需要base64加密后的header和base64加密后的payload使用.连接组成的字符串，然后通过header中声明的加密方式进行加盐secret组合加密，然后就构成了jwt的第三部分。<br>eyJhbGciOiJIUzUxMiJ9.iIxMjM0NSIsInN1YiI6InhsIn0.5MSq92FV7vneEo9IrrZw9XH6g</p>
-<h3 id="引入依赖包"><a href="#引入依赖包" class="headerlink" title="引入依赖包"></a>引入依赖包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;jjwt&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;0.6.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="JWT工具类"><a href="#JWT工具类" class="headerlink" title="JWT工具类"></a>JWT工具类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br></pre></td><td class="code"><pre><span class="line">package com.zes.utils;</span><br><span class="line"></span><br><span class="line">import com.zexx.springcloudcommon.exception.WebException;</span><br><span class="line">import com.zexx.springcloudcommon.utils.StringUtil;</span><br><span class="line">import io.jsonwebtoken.Claims;</span><br><span class="line">import io.jsonwebtoken.Jwts;</span><br><span class="line">import io.jsonwebtoken.SignatureAlgorithm;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.beans.factory.annotation.Value;</span><br><span class="line">import org.springframework.data.redis.core.RedisTemplate;</span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line">import java.io.Serializable;</span><br><span class="line">import java.util.Date;</span><br><span class="line">import java.util.HashMap;</span><br><span class="line">import java.util.Map;</span><br><span class="line">import java.util.concurrent.TimeUnit;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Description: JWT生成token相关的工具类</span><br><span class="line"> *</span><br><span class="line"> * @author wangrui</span><br><span class="line"> * @date 2019/12/18</span><br><span class="line"> */</span><br><span class="line">@Component</span><br><span class="line">public class JwtTokenUtil implements Serializable &#123;</span><br><span class="line"></span><br><span class="line">    private static final long serialVersionUID = -4324967L;</span><br><span class="line"></span><br><span class="line">    //用户名称</span><br><span class="line">    private static final String CLAIM_KEY_USERNAME = &quot;CLAIM_KEY_USERNAME&quot;;</span><br><span class="line">    //创建时间</span><br><span class="line">    private static final String CLAIM_KEY_CREATE_TIME = &quot;CLAIM_KEY_CREATE_TIME&quot;;</span><br><span class="line">    //结束时间</span><br><span class="line">    private static final String CLAIM_KEY_END_TIME = &quot;CLAIM_KEY_END_TIME&quot;;</span><br><span class="line"></span><br><span class="line">    //注入redis</span><br><span class="line">    @Autowired</span><br><span class="line">    private RedisTemplate redisTemplate;</span><br><span class="line"></span><br><span class="line">    // JWT 密钥（服务器密钥加密解密 application.yml配置）</span><br><span class="line">    @Value(&quot;$&#123;jwt.secret&#125;&quot;)</span><br><span class="line">    private String secret;</span><br><span class="line"></span><br><span class="line">    // redis存储时间 分钟 一般24小时</span><br><span class="line">    @Value(&quot;$&#123;jwt.redisexpiration&#125;&quot;)</span><br><span class="line">    private Long redisExpiration;</span><br><span class="line"></span><br><span class="line">    //签发人</span><br><span class="line">    @Value(&quot;$&#123;jwt.issuer&#125;&quot;)</span><br><span class="line">    private String issuer;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Description: 解析token，从token中获取信息</span><br><span class="line">     *</span><br><span class="line">     * @param token</span><br><span class="line">     */</span><br><span class="line">    private Claims getClaimsFromToken(String token) &#123;</span><br><span class="line">        Claims claims;</span><br><span class="line">        try &#123;</span><br><span class="line">            claims = Jwts.parser()</span><br><span class="line">                    .setSigningKey(secret)</span><br><span class="line">                    .parseClaimsJws(token)</span><br><span class="line">                    .getBody();</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            claims = null;</span><br><span class="line">        &#125;</span><br><span class="line">        return claims;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Description:获取用户名</span><br><span class="line">     *</span><br><span class="line">     * @param token</span><br><span class="line">     */</span><br><span class="line">    public String getUserNameFromToken(String token) &#123;</span><br><span class="line">        String userName;</span><br><span class="line">        try &#123;</span><br><span class="line">            final Claims claims = getClaimsFromToken(token);</span><br><span class="line">            userName = claims.get(CLAIM_KEY_USERNAME) == null ? &quot;&quot; : claims.get(CLAIM_KEY_USERNAME).toString();</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            userName = null;</span><br><span class="line">        &#125;</span><br><span class="line">        return userName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Description:获取token创建时间</span><br><span class="line">     *</span><br><span class="line">     * @param token</span><br><span class="line">     */</span><br><span class="line">    public Date getCreatedDateFromToken(String token) &#123;</span><br><span class="line">        Date created;</span><br><span class="line">        try &#123;</span><br><span class="line">            final Claims claims = getClaimsFromToken(token);</span><br><span class="line">            created = new Date((Long) claims.get(CLAIM_KEY_CREATE_TIME));</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            created = null;</span><br><span class="line">        &#125;</span><br><span class="line">        return created;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Description: 获取token过期时间</span><br><span class="line">     *</span><br><span class="line">     * @param token</span><br><span class="line">     */</span><br><span class="line">    public Date getExpirationDateFromToken(String token) &#123;</span><br><span class="line">        Date expiration;</span><br><span class="line">        try &#123;</span><br><span class="line">            final Claims claims = getClaimsFromToken(token);</span><br><span class="line">            expiration = claims.getExpiration();</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            expiration = null;</span><br><span class="line">        &#125;</span><br><span class="line">        return expiration;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Description:token生成过期时间</span><br><span class="line">     */</span><br><span class="line">    private Date generateExpirationDate() &#123;</span><br><span class="line">        return new Date(System.currentTimeMillis() + redisExpiration * 60 * 1000);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Description:token是否过期</span><br><span class="line">     *</span><br><span class="line">     * @param token</span><br><span class="line">     */</span><br><span class="line">    private Boolean isTokenExpired(String token) &#123;</span><br><span class="line">        final Date expiration = getExpirationDateFromToken(token);</span><br><span class="line">        return expiration.before(new Date());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Description: 创建token</span><br><span class="line">     */</span><br><span class="line">    public String generateToken(String userName, String mac) &#123;</span><br><span class="line">        Map&lt;String, Object&gt; claims = new HashMap&lt;&gt;();</span><br><span class="line">        claims.put(CLAIM_KEY_USERNAME, userName);</span><br><span class="line">        claims.put(CLAIM_KEY_CREATE_TIME, new Date());</span><br><span class="line">        claims.put(CLAIM_KEY_END_TIME, generateExpirationDate());</span><br><span class="line">        return generateToken(claims);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Description:使用Rs256签名</span><br><span class="line">     */</span><br><span class="line">    private String generateToken(Map&lt;String, Object&gt; claims) &#123;</span><br><span class="line">        return Jwts.builder()</span><br><span class="line">                .setClaims(claims)//自定义变量</span><br><span class="line">                .setIssuer(issuer)</span><br><span class="line">                .setIssuedAt(new Date())//发行时间</span><br><span class="line">                .setAudience((String) claims.get(CLAIM_KEY_USERNAME))</span><br><span class="line">                .setExpiration(generateExpirationDate())//过期时间</span><br><span class="line">                .signWith(SignatureAlgorithm.HS512, secret)//签名密钥</span><br><span class="line">                .compact();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Description:验证token</span><br><span class="line">     *</span><br><span class="line">     * @param token</span><br><span class="line">     * @param userName</span><br><span class="line">     * @param mac</span><br><span class="line">     */</span><br><span class="line">    public boolean validateToken(String token, String userName, String mac) &#123;</span><br><span class="line">        String tokenName = &quot;&quot;;</span><br><span class="line">        try &#123;</span><br><span class="line">            if (redisTemplate.hasKey(&quot;token_&quot; + userName)) &#123;</span><br><span class="line">                tokenName = (String) redisTemplate.opsForValue().get(&quot;token_&quot; + userName);</span><br><span class="line">                if (tokenName.equals(token)) &#123;</span><br><span class="line">                    return true;</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    //自定义异常</span><br><span class="line">                    throw new WebException(&quot;无效令牌&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (WebException e) &#123;</span><br><span class="line">            throw new WebException(e.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="引入依赖包"><a href="#引入依赖包" class="headerlink" title="引入依赖包"></a>引入依赖包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;jjwt&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;0.6.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">``` </span><br><span class="line">### JWT工具类</span><br></pre></td></tr></table></figure>
+<p>package com.zes.utils;</p>
+<p>import com.zexx.springcloudcommon.exception.WebException;<br>import com.zexx.springcloudcommon.utils.StringUtil;<br>import io.jsonwebtoken.Claims;<br>import io.jsonwebtoken.Jwts;<br>import io.jsonwebtoken.SignatureAlgorithm;<br>import org.springframework.beans.factory.annotation.Autowired;<br>import org.springframework.beans.factory.annotation.Value;<br>import org.springframework.data.redis.core.RedisTemplate;<br>import org.springframework.stereotype.Component;</p>
+<p>import java.io.Serializable;<br>import java.util.Date;<br>import java.util.HashMap;<br>import java.util.Map;<br>import java.util.concurrent.TimeUnit;</p>
+<p>/**</p>
+<ul>
+<li>Description: JWT生成token相关的工具类<br>*</li>
+<li>@author wangrui</li>
+<li><p>@date 2019/12/18<br>*/<br>@Component<br>public class JwtTokenUtil implements Serializable {</p>
+<p> private static final long serialVersionUID = -4324967L;</p>
+<p> //用户名称<br> private static final String CLAIM_KEY_USERNAME = “CLAIM_KEY_USERNAME”;<br> //创建时间<br> private static final String CLAIM_KEY_CREATE_TIME = “CLAIM_KEY_CREATE_TIME”;<br> //结束时间<br> private static final String CLAIM_KEY_END_TIME = “CLAIM_KEY_END_TIME”;</p>
+<p> //注入redis<br> @Autowired<br> private RedisTemplate redisTemplate;</p>
+<p> // JWT 密钥（服务器密钥加密解密 application.yml配置）<br> @Value(“${jwt.secret}”)<br> private String secret;</p>
+<p> // redis存储时间 分钟 一般24小时<br> @Value(“${jwt.redisexpiration}”)<br> private Long redisExpiration;</p>
+<p> //签发人<br> @Value(“${jwt.issuer}”)<br> private String issuer;</p>
+<p> /**</p>
+<ul>
+<li>Description: 解析token，从token中获取信息<br>*</li>
+<li><p>@param token<br>*/<br>private Claims getClaimsFromToken(String token) {<br> Claims claims;<br> try {</p>
+<pre><code>claims = Jwts.parser()
+        .setSigningKey(secret)
+        .parseClaimsJws(token)
+        .getBody();
+</code></pre><p> } catch (Exception e) {</p>
+<pre><code>e.printStackTrace();
+claims = null;
+</code></pre><p> }<br> return claims;<br>}</p>
+<p>/**</p>
+</li>
+<li>Description:获取用户名<br>*</li>
+<li><p>@param token<br>*/<br>public String getUserNameFromToken(String token) {<br> String userName;<br> try {</p>
+<pre><code>final Claims claims = getClaimsFromToken(token);
+userName = claims.get(CLAIM_KEY_USERNAME) == null ? &quot;&quot; : claims.get(CLAIM_KEY_USERNAME).toString();
+</code></pre><p> } catch (Exception e) {</p>
+<pre><code>userName = null;
+</code></pre><p> }<br> return userName;<br>}</p>
+<p>/**</p>
+</li>
+<li>Description:获取token创建时间<br>*</li>
+<li><p>@param token<br>*/<br>public Date getCreatedDateFromToken(String token) {<br> Date created;<br> try {</p>
+<pre><code>final Claims claims = getClaimsFromToken(token);
+created = new Date((Long) claims.get(CLAIM_KEY_CREATE_TIME));
+</code></pre><p> } catch (Exception e) {</p>
+<pre><code>created = null;
+</code></pre><p> }<br> return created;<br>}</p>
+<p>/**</p>
+</li>
+<li>Description: 获取token过期时间<br>*</li>
+<li><p>@param token<br>*/<br>public Date getExpirationDateFromToken(String token) {<br> Date expiration;<br> try {</p>
+<pre><code>final Claims claims = getClaimsFromToken(token);
+expiration = claims.getExpiration();
+</code></pre><p> } catch (Exception e) {</p>
+<pre><code>expiration = null;
+</code></pre><p> }<br> return expiration;<br>}</p>
+<p>/**</p>
+</li>
+<li><p>Description:token生成过期时间<br><em>/<br>private Date generateExpirationDate() {<br> return new Date(System.currentTimeMillis() + redisExpiration </em> 60 * 1000);<br>}</p>
+<p>/**</p>
+</li>
+<li>Description:token是否过期<br>*</li>
+<li><p>@param token<br>*/<br>private Boolean isTokenExpired(String token) {<br> final Date expiration = getExpirationDateFromToken(token);<br> return expiration.before(new Date());<br>}</p>
+<p>/**</p>
+</li>
+<li><p>Description: 创建token<br>*/<br>public String generateToken(String userName, String mac) {<br> Map&lt;String, Object&gt; claims = new HashMap&lt;&gt;();<br> claims.put(CLAIM_KEY_USERNAME, userName);<br> claims.put(CLAIM_KEY_CREATE_TIME, new Date());<br> claims.put(CLAIM_KEY_END_TIME, generateExpirationDate());<br> return generateToken(claims);<br>}</p>
+<p>/**</p>
+</li>
+<li><p>Description:使用Rs256签名<br>*/<br>private String generateToken(Map&lt;String, Object&gt; claims) {<br> return Jwts.builder()</p>
+<pre><code>.setClaims(claims)//自定义变量
+.setIssuer(issuer)
+.setIssuedAt(new Date())//发行时间
+.setAudience((String) claims.get(CLAIM_KEY_USERNAME))
+.setExpiration(generateExpirationDate())//过期时间
+.signWith(SignatureAlgorithm.HS512, secret)//签名密钥
+.compact();
+</code></pre><p>}</p>
+<p>/**</p>
+</li>
+<li>Description:验证token<br>*</li>
+<li>@param token</li>
+<li>@param userName</li>
+<li>@param mac<br>*/<br>public boolean validateToken(String token, String userName, String mac) {<br> String tokenName = “”;<br> try {<pre><code>if (redisTemplate.hasKey(&quot;token_&quot; + userName)) {
+    tokenName = (String) redisTemplate.opsForValue().get(&quot;token_&quot; + userName);
+    if (tokenName.equals(token)) {
+        return true;
+    } else {
+        //自定义异常
+        throw new WebException(&quot;无效令牌&quot;);
+    }
+}
+</code></pre> } catch (WebException e) {<pre><code>throw new WebException(e.getMessage());
+</code></pre> }<br> return false;<br>}<br>}<br><code>`</code></li>
+</ul>
+</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lastsummer.top/blog/2020/01/25/JWT生成TOKEN/" data-id="ck5t36ykw0022k8vbs47womov" class="article-share-link-test"></a>
+      <a data-url="http://lastsummer.top/blog/2020/01/25/JWT生成TOKEN/" data-id="ck66jzmjk002x84vbpfuy5as0" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java/">java</a></li></ul>
@@ -217,6 +310,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/blog/2020/02/03/Docker安装和使用/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Docker安装和使用
+        
+      </div>
+    </a>
   
   
     <a href="/blog/2019/12/09/微服务下实现日志模块/" id="article-nav-older" class="article-nav-link-wrap">
@@ -327,9 +429,9 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
     <h2 class="author">Wang Rui</h2>
     <h3 class="description">做自己爱做的事，爱自己在做的事！</h3>
     <div class="count-box">
-      <a href="/blog/archives"><div><strong>42</strong><br>文章</div></a>
-      <a href="/blog/categories"><div><strong>15</strong><br>分类</div></a>
-      <a href="/blog/tags"><div><strong>35</strong><br>标签</div></a>
+      <a href="/blog/archives"><div><strong>43</strong><br>文章</div></a>
+      <a href="/blog/categories"><div><strong>16</strong><br>分类</div></a>
+      <a href="/blog/tags"><div><strong>36</strong><br>标签</div></a>
     </div>
 	<div id="site_search" align="center" style="margin:15px 0 0 0;">
 	  <input type="text" id="local-search-input" name="q" results="0" placeholder="本站搜索" style="width:180px;height:25px;">
@@ -381,7 +483,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
   <div class="widget tag">
     <h2><font style="font-size: 15px;font-weight: bold;padding: 10px 0px;">归档</font></h2>
 	<div style="margin-top:6px;"></div>
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/01/">2020年01月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/12/">2019年12月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/11/">2019年11月</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/10/">2019年10月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/07/">2019年07月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/06/">2019年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/05/">2019年05月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/04/">2019年04月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/03/">2019年03月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/01/">2019年01月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/12/">2018年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/11/">2018年11月</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/10/">2018年10月</a><span class="archive-list-count">10</span></li></ul>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/02/">2020年02月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2020/01/">2020年01月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/12/">2019年12月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/11/">2019年11月</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/10/">2019年10月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/07/">2019年07月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/06/">2019年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/05/">2019年05月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/04/">2019年04月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/03/">2019年03月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/01/">2019年01月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/12/">2018年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/11/">2018年11月</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/10/">2018年10月</a><span class="archive-list-count">10</span></li></ul>
   </div>
 
 
@@ -525,7 +627,7 @@ var searchFunc = function(path, search_id, content_id) {
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy;2020-01-25 Sa Wang Rui<br>
+      &copy;2020-02-03 Mo Wang Rui<br>
       个人专属 | 
       <a href="https://wangrui15034005712.github.io">博客-Wang Rui</a>
       
