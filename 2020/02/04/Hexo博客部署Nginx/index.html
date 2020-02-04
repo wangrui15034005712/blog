@@ -7,20 +7,20 @@
   <meta name="sogou_site_verification" content="y4IFS8seKn"><!--搜狗 验证不成功-->
   <meta name="google-site-verification" content="2qH4bOdXGa7Pk1tuRp6ePLAGiP6K3H07EUYDPo_Ugp4"><!--谷歌-->
   
-  <title>JWT生成TOKEN | 去年夏天</title>
+  <title>Hexo博客部署Nginx | 去年夏天</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="简介Jwt 是一种生成token,或者解析token 返回对象的工具，现在流行的都是前后端分离项目，用之前的shiro,或者sercurity 去做权限是会遇到无法做前端的权限，所以就采用token 这种方式，服务器返回token  给前端，前端通过token 访问资源，前端通过cookie保存。">
-<meta name="keywords" content="java">
+  <meta name="description" content="Hexo部署方法部署hexo静态博客到生产环境通常有两种方法1、nohup命令执行hexo s由于hexo s，是框架提供的调试方法，不是部署方式，因此在生产环境会存在性能问题不建议使用2、nginx部署静态资源将本地调试好的hexo打包生成的public目录部署到nginx上。nginx性能好访问速度快">
+<meta name="keywords" content="Git,Nginx,Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JWT生成TOKEN">
-<meta property="og:url" content="https://lastsummer.top/blog/2020/01/25/JWT生成TOKEN/index.html">
+<meta property="og:title" content="Hexo博客部署Nginx">
+<meta property="og:url" content="https://lastsummer.top/blog/2020/02/04/Hexo博客部署Nginx/index.html">
 <meta property="og:site_name" content="去年夏天">
-<meta property="og:description" content="简介Jwt 是一种生成token,或者解析token 返回对象的工具，现在流行的都是前后端分离项目，用之前的shiro,或者sercurity 去做权限是会遇到无法做前端的权限，所以就采用token 这种方式，服务器返回token  给前端，前端通过token 访问资源，前端通过cookie保存。">
+<meta property="og:description" content="Hexo部署方法部署hexo静态博客到生产环境通常有两种方法1、nohup命令执行hexo s由于hexo s，是框架提供的调试方法，不是部署方式，因此在生产环境会存在性能问题不建议使用2、nginx部署静态资源将本地调试好的hexo打包生成的public目录部署到nginx上。nginx性能好访问速度快">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-03T09:04:37.336Z">
+<meta property="og:updated_time" content="2020-02-04T12:37:46.373Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JWT生成TOKEN">
-<meta name="twitter:description" content="简介Jwt 是一种生成token,或者解析token 返回对象的工具，现在流行的都是前后端分离项目，用之前的shiro,或者sercurity 去做权限是会遇到无法做前端的权限，所以就采用token 这种方式，服务器返回token  给前端，前端通过token 访问资源，前端通过cookie保存。">
+<meta name="twitter:title" content="Hexo博客部署Nginx">
+<meta name="twitter:description" content="Hexo部署方法部署hexo静态博客到生产环境通常有两种方法1、nohup命令执行hexo s由于hexo s，是框架提供的调试方法，不是部署方式，因此在生产环境会存在性能问题不建议使用2、nginx部署静态资源将本地调试好的hexo打包生成的public目录部署到nginx上。nginx性能好访问速度快">
   
     <link rel="alternate" href="/atom.xml" title="去年夏天" type="application/atom+xml">
   
@@ -104,12 +104,12 @@
   </div>
 </div>
 
-        <section id="main"><article id="post-JWT生成TOKEN" class="wow slideInRight article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-Hexo博客部署Nginx" class="wow slideInRight article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/blog/2020/01/25/JWT生成TOKEN/" class="article-date">
-  <time class="post-time" datetime="2020-01-25T03:26:15.000Z" itemprop="datePublished">
-    <span class="post-month">1月</span><br>
-    <span class="post-day">25</span>
+    <a href="/blog/2020/02/04/Hexo博客部署Nginx/" class="article-date">
+  <time class="post-time" datetime="2020-02-04T12:00:05.000Z" itemprop="datePublished">
+    <span class="post-month">2月</span><br>
+    <span class="post-day">04</span>
   </time>
 </a>
    
@@ -121,21 +121,21 @@
         
   
     <h1 class="article-title" itemprop="name">
-      JWT生成TOKEN
+      Hexo博客部署Nginx
     </h1>
   
 
         <div>
           
   <div class="article-category">
-    <a class="article-category-link" href="/blog/categories/JAVA/">JAVA</a>
+    <a class="article-category-link" href="/blog/categories/HEXO/">HEXO</a>
   </div>
 
           
               
   &nbsp; | &nbsp;
   <div class="view-box">
-    <span id="/blog/2020/01/25/JWT生成TOKEN/" class="leancloud_visitors" data-flag-title="JWT生成TOKEN">
+    <span id="/blog/2020/02/04/Hexo博客部署Nginx/" class="leancloud_visitors" data-flag-title="Hexo博客部署Nginx">
       &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
     </span>
   </div>
@@ -148,8 +148,37 @@
     <div class="article-entry" itemprop="articleBody">
       
 		
+      <div id="toc" class="toc-article">
+      <strong class="toc-title">文章目录</strong>
+      
+      </div>
+    
       <!-- 目录内容 -->
 
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+    <div id="toc-article" class="toc-article">
+        <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+        <strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hexo部署方法"><span class="toc-number">1.</span> <span class="toc-text">Hexo部署方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hexo配置"><span class="toc-number">2.</span> <span class="toc-text">Hexo配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#部署在根目录无需处理"><span class="toc-number">2.1.</span> <span class="toc-text">部署在根目录无需处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#处理二级目录"><span class="toc-number">2.2.</span> <span class="toc-text">处理二级目录</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nginx配置-HTTPS（阿里云申请SSL证书配置即可）"><span class="toc-number">3.</span> <span class="toc-text">nginx配置+HTTPS（阿里云申请SSL证书配置即可）</span></a></li></ol>
+         </div>
+   <script type="text/javascript">
+    function showToc(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:block");
+        show_toc_btn.setAttribute("style","display:none");
+        };
+    function showBtn(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:none");
+        show_toc_btn.setAttribute("style","display:block");
+        };
+   </script>
+   
 <!-- 目录内容结束 -->
 <style>
 /* 新添加的 */
@@ -163,113 +192,19 @@
 }
 
 </style>
-        <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Jwt 是一种生成token,或者解析token 返回对象的工具，现在流行的都是前后端分离项目，用之前的shiro,或者sercurity 去做权限是会遇到无法做前端的权限，所以就采用token 这种方式，服务器返回token  给前端，前端通过token 访问资源，前端通过cookie保存。<br><a id="more"></a></p>
-<h3 id="什么是jwt"><a href="#什么是jwt" class="headerlink" title="什么是jwt"></a>什么是jwt</h3><p>WT本质上是一个字符串，一个完整的JWT由三部分组成，头部(header), 荷载(Payload), 和签名(Signature)，中间用.隔开，如下是一个典型的JWT：eyJhbGciOiJIUzUxMiJ9.iIxMjM0NSIsInN1YiI6InhsIn0.5MSq92FV7vneEo9IrrZw9XH6g<br><b>注意：保存的信息越多，生成的token长度越长<b></b></b></p>
-<h3 id="JWT-头部（Header）"><a href="#JWT-头部（Header）" class="headerlink" title="JWT 头部（Header）"></a>JWT 头部（Header）</h3><p>用于描述关于该JWT的最基本的信息，例如其类型以及签名所用的算法等。这也可以被表示成一个JSON对象。<br>{“typ”:”JWT”,”alg”:”HS256”}</p>
-<h3 id="载荷（playload）"><a href="#载荷（playload）" class="headerlink" title="载荷（playload）"></a>载荷（playload）</h3><p>载荷就是存放有效信息的地方（自定义变量+标准变量）。</p>
-<h3 id="签证（signature）"><a href="#签证（signature）" class="headerlink" title="签证（signature）"></a>签证（signature）</h3><p>jwt的第三部分是一个签证信息，这个签证信息由三部分组成：<br>这个部分需要base64加密后的header和base64加密后的payload使用.连接组成的字符串，然后通过header中声明的加密方式进行加盐secret组合加密，然后就构成了jwt的第三部分。<br>eyJhbGciOiJIUzUxMiJ9.iIxMjM0NSIsInN1YiI6InhsIn0.5MSq92FV7vneEo9IrrZw9XH6g</p>
-<h3 id="引入依赖包"><a href="#引入依赖包" class="headerlink" title="引入依赖包"></a>引入依赖包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;jjwt&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;0.6.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">``` </span><br><span class="line">### JWT工具类</span><br></pre></td></tr></table></figure>
-<p>package com.zes.utils;</p>
-<p>import com.zexx.springcloudcommon.exception.WebException;<br>import com.zexx.springcloudcommon.utils.StringUtil;<br>import io.jsonwebtoken.Claims;<br>import io.jsonwebtoken.Jwts;<br>import io.jsonwebtoken.SignatureAlgorithm;<br>import org.springframework.beans.factory.annotation.Autowired;<br>import org.springframework.beans.factory.annotation.Value;<br>import org.springframework.data.redis.core.RedisTemplate;<br>import org.springframework.stereotype.Component;</p>
-<p>import java.io.Serializable;<br>import java.util.Date;<br>import java.util.HashMap;<br>import java.util.Map;<br>import java.util.concurrent.TimeUnit;</p>
-<p>/**</p>
-<ul>
-<li>Description: JWT生成token相关的工具类<br>*</li>
-<li>@author wangrui</li>
-<li><p>@date 2019/12/18<br>*/<br>@Component<br>public class JwtTokenUtil implements Serializable {</p>
-<p> private static final long serialVersionUID = -4324967L;</p>
-<p> //用户名称<br> private static final String CLAIM_KEY_USERNAME = “CLAIM_KEY_USERNAME”;<br> //创建时间<br> private static final String CLAIM_KEY_CREATE_TIME = “CLAIM_KEY_CREATE_TIME”;<br> //结束时间<br> private static final String CLAIM_KEY_END_TIME = “CLAIM_KEY_END_TIME”;</p>
-<p> //注入redis<br> @Autowired<br> private RedisTemplate redisTemplate;</p>
-<p> // JWT 密钥（服务器密钥加密解密 application.yml配置）<br> @Value(“${jwt.secret}”)<br> private String secret;</p>
-<p> // redis存储时间 分钟 一般24小时<br> @Value(“${jwt.redisexpiration}”)<br> private Long redisExpiration;</p>
-<p> //签发人<br> @Value(“${jwt.issuer}”)<br> private String issuer;</p>
-<p> /**</p>
-<ul>
-<li>Description: 解析token，从token中获取信息<br>*</li>
-<li><p>@param token<br>*/<br>private Claims getClaimsFromToken(String token) {<br> Claims claims;<br> try {</p>
-<pre><code>claims = Jwts.parser()
-        .setSigningKey(secret)
-        .parseClaimsJws(token)
-        .getBody();
-</code></pre><p> } catch (Exception e) {</p>
-<pre><code>e.printStackTrace();
-claims = null;
-</code></pre><p> }<br> return claims;<br>}</p>
-<p>/**</p>
-</li>
-<li>Description:获取用户名<br>*</li>
-<li><p>@param token<br>*/<br>public String getUserNameFromToken(String token) {<br> String userName;<br> try {</p>
-<pre><code>final Claims claims = getClaimsFromToken(token);
-userName = claims.get(CLAIM_KEY_USERNAME) == null ? &quot;&quot; : claims.get(CLAIM_KEY_USERNAME).toString();
-</code></pre><p> } catch (Exception e) {</p>
-<pre><code>userName = null;
-</code></pre><p> }<br> return userName;<br>}</p>
-<p>/**</p>
-</li>
-<li>Description:获取token创建时间<br>*</li>
-<li><p>@param token<br>*/<br>public Date getCreatedDateFromToken(String token) {<br> Date created;<br> try {</p>
-<pre><code>final Claims claims = getClaimsFromToken(token);
-created = new Date((Long) claims.get(CLAIM_KEY_CREATE_TIME));
-</code></pre><p> } catch (Exception e) {</p>
-<pre><code>created = null;
-</code></pre><p> }<br> return created;<br>}</p>
-<p>/**</p>
-</li>
-<li>Description: 获取token过期时间<br>*</li>
-<li><p>@param token<br>*/<br>public Date getExpirationDateFromToken(String token) {<br> Date expiration;<br> try {</p>
-<pre><code>final Claims claims = getClaimsFromToken(token);
-expiration = claims.getExpiration();
-</code></pre><p> } catch (Exception e) {</p>
-<pre><code>expiration = null;
-</code></pre><p> }<br> return expiration;<br>}</p>
-<p>/**</p>
-</li>
-<li><p>Description:token生成过期时间<br><em>/<br>private Date generateExpirationDate() {<br> return new Date(System.currentTimeMillis() + redisExpiration </em> 60 * 1000);<br>}</p>
-<p>/**</p>
-</li>
-<li>Description:token是否过期<br>*</li>
-<li><p>@param token<br>*/<br>private Boolean isTokenExpired(String token) {<br> final Date expiration = getExpirationDateFromToken(token);<br> return expiration.before(new Date());<br>}</p>
-<p>/**</p>
-</li>
-<li><p>Description: 创建token<br>*/<br>public String generateToken(String userName, String mac) {<br> Map&lt;String, Object&gt; claims = new HashMap&lt;&gt;();<br> claims.put(CLAIM_KEY_USERNAME, userName);<br> claims.put(CLAIM_KEY_CREATE_TIME, new Date());<br> claims.put(CLAIM_KEY_END_TIME, generateExpirationDate());<br> return generateToken(claims);<br>}</p>
-<p>/**</p>
-</li>
-<li><p>Description:使用Rs256签名<br>*/<br>private String generateToken(Map&lt;String, Object&gt; claims) {<br> return Jwts.builder()</p>
-<pre><code>.setClaims(claims)//自定义变量
-.setIssuer(issuer)
-.setIssuedAt(new Date())//发行时间
-.setAudience((String) claims.get(CLAIM_KEY_USERNAME))
-.setExpiration(generateExpirationDate())//过期时间
-.signWith(SignatureAlgorithm.HS512, secret)//签名密钥
-.compact();
-</code></pre><p>}</p>
-<p>/**</p>
-</li>
-<li>Description:验证token<br>*</li>
-<li>@param token</li>
-<li>@param userName</li>
-<li>@param mac<br>*/<br>public boolean validateToken(String token, String userName, String mac) {<br> String tokenName = “”;<br> try {<pre><code>if (redisTemplate.hasKey(&quot;token_&quot; + userName)) {
-    tokenName = (String) redisTemplate.opsForValue().get(&quot;token_&quot; + userName);
-    if (tokenName.equals(token)) {
-        return true;
-    } else {
-        //自定义异常
-        throw new WebException(&quot;无效令牌&quot;);
-    }
-}
-</code></pre> } catch (WebException e) {<pre><code>throw new WebException(e.getMessage());
-</code></pre> }<br> return false;<br>}<br>}<br><code>`</code></li>
-</ul>
-</li>
-</ul>
+        <h3 id="Hexo部署方法"><a href="#Hexo部署方法" class="headerlink" title="Hexo部署方法"></a>Hexo部署方法</h3><p>部署hexo静态博客到生产环境通常有两种方法<br>1、nohup命令执行hexo s由于hexo s，是框架提供的调试方法，不是部署方式，因此在生产环境会存在性能问题不建议使用<br>2、nginx部署静态资源将本地调试好的hexo打包生成的public目录部署到nginx上。nginx性能好访问速度快<a id="more"></a></p>
+<h3 id="Hexo配置"><a href="#Hexo配置" class="headerlink" title="Hexo配置"></a>Hexo配置</h3><h4 id="部署在根目录无需处理"><a href="#部署在根目录无需处理" class="headerlink" title="部署在根目录无需处理"></a>部署在根目录无需处理</h4><p>打包：通常在调试环境无需打包，修改后使用hexo s，即可生效，可以直接在本地查看效果。但是，以静态资源的方式部署需要打包生成静态资源，命令为：hexo generate到public文件夹中。</p>
+<h4 id="处理二级目录"><a href="#处理二级目录" class="headerlink" title="处理二级目录"></a>处理二级目录</h4><p>当生产环境中，静态博客部署在二级目录下（如：“http://域名(ip)/blog”这种情况），需要修改hexo工程下的_config.yml配置文件，否则打包生成的css、js文件目录会缺失（默认在根目录），导致无法加载样式。<br>一般修改root和url,增加二级目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># URL</span><br><span class="line">## If your site is put in a subdirectory, set url as &apos;http://yoursite.com/child&apos; and root as &apos;/child/&apos;</span><br><span class="line">url: http://lastsummer.top/blog</span><br><span class="line">root: /blog</span><br><span class="line">permalink: :year/:month/:day/:title/</span><br><span class="line">permalink_defaults:</span><br></pre></td></tr></table></figure></p>
+<h3 id="nginx配置-HTTPS（阿里云申请SSL证书配置即可）"><a href="#nginx配置-HTTPS（阿里云申请SSL证书配置即可）" class="headerlink" title="nginx配置+HTTPS（阿里云申请SSL证书配置即可）"></a>nginx配置+HTTPS（阿里云申请SSL证书配置即可）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">1、部署在根目录无需处理，放到nginx webapp中即可</span><br><span class="line">2、部署到二级目录则在webapp中新建二级目录名称，把静态文件放入到二级目录下</span><br><span class="line"> server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  www.lastsummer.top;</span><br><span class="line">	rewrite ^(.*)$ https://$host$1 permanent;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">    listen 443; </span><br><span class="line">    server_name lastsummer.top;</span><br><span class="line">    ssl on;</span><br><span class="line">    ssl_certificate  lastsummer.top.pem;</span><br><span class="line">    ssl_certificate_key lastsummer.top.key;</span><br><span class="line">    ssl_session_timeout 5m;</span><br><span class="line">    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;</span><br><span class="line">    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">    ssl_prefer_server_ciphers on;</span><br><span class="line">    location / &#123;</span><br><span class="line">		root /usr/local/nginx/;</span><br><span class="line">		index index.html index.htm;</span><br><span class="line">	&#125;</span><br><span class="line">	location ^~ /blog &#123;</span><br><span class="line">		root /usr/local/nginx;</span><br><span class="line">	&#125;</span><br><span class="line">	#...缓存等</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>推荐博客：<a href="https://www.jianshu.com/p/62acf17b1710" target="_blank" rel="noopener">nginx部署hexo的方法</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://lastsummer.top/blog/2020/01/25/JWT生成TOKEN/" data-id="ck67xlebs0033z0vboqn8hdsk" class="article-share-link-test"></a>
+      <a data-url="https://lastsummer.top/blog/2020/02/04/Hexo博客部署Nginx/" data-id="ck67xleb20028z0vbbic6wt4w" class="article-share-link-test"></a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java/">java</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Nginx/">Nginx</a></li></ul>
 
     </footer>
 	
@@ -311,19 +246,10 @@ expiration = claims.getExpiration();
     
 <nav id="article-nav">
   
-    <a href="/blog/2020/02/03/Docker安装和使用/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">
-        
-          Docker安装和使用
-        
-      </div>
-    </a>
   
-  
-    <a href="/blog/2019/12/09/微服务下实现日志模块/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/blog/2020/02/03/Docker安装和使用/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">微服务下实现日志模块</div>
+      <div class="article-nav-title">Docker安装和使用</div>
     </a>
   
 </nav>
