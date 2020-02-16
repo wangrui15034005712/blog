@@ -9,20 +9,20 @@
   
   <title>使用Dockerfile构建Nginx镜像 | 去年夏天</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Dockerfile是一个文本文件，包含若干条指令，描述了构建镜像的细节。1、Dockerfile修改Nginx镜像的首页。2、Docker部署jar包运行。 Dockerfile修改Nginx镜像的首页12345678[root@root ~]# mkdir docker[root@root ~]# cd docker[root@root ~]# vi Dockerfile	# D开头必须大写F">
+  <meta name="description" content="Dockerfile是一个文本文件，包含若干条指令，描述了构建镜像的细节。1、Dockerfile修改Nginx镜像的首页。2、Docker部署jar包运行。">
 <meta name="keywords" content="Docker,Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用Dockerfile构建Nginx镜像">
 <meta property="og:url" content="https://lastsummer.top/blog/2020/02/15/使用Dockerfile构建Nginx镜像/index.html">
 <meta property="og:site_name" content="去年夏天">
-<meta property="og:description" content="Dockerfile是一个文本文件，包含若干条指令，描述了构建镜像的细节。1、Dockerfile修改Nginx镜像的首页。2、Docker部署jar包运行。 Dockerfile修改Nginx镜像的首页12345678[root@root ~]# mkdir docker[root@root ~]# cd docker[root@root ~]# vi Dockerfile	# D开头必须大写F">
+<meta property="og:description" content="Dockerfile是一个文本文件，包含若干条指令，描述了构建镜像的细节。1、Dockerfile修改Nginx镜像的首页。2、Docker部署jar包运行。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://lastsummer.top/blog/2020/02/15/使用Dockerfile构建Nginx镜像/docker.png">
 <meta property="og:image" content="https://lastsummer.top/blog/2020/02/15/使用Dockerfile构建Nginx镜像/docker1.png">
-<meta property="og:updated_time" content="2020-02-16T04:11:29.070Z">
+<meta property="og:updated_time" content="2020-02-16T04:13:30.099Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Dockerfile构建Nginx镜像">
-<meta name="twitter:description" content="Dockerfile是一个文本文件，包含若干条指令，描述了构建镜像的细节。1、Dockerfile修改Nginx镜像的首页。2、Docker部署jar包运行。 Dockerfile修改Nginx镜像的首页12345678[root@root ~]# mkdir docker[root@root ~]# cd docker[root@root ~]# vi Dockerfile	# D开头必须大写F">
+<meta name="twitter:description" content="Dockerfile是一个文本文件，包含若干条指令，描述了构建镜像的细节。1、Dockerfile修改Nginx镜像的首页。2、Docker部署jar包运行。">
 <meta name="twitter:image" content="https://lastsummer.top/blog/2020/02/15/使用Dockerfile构建Nginx镜像/docker.png">
   
     <link rel="alternate" href="/atom.xml" title="去年夏天" type="application/atom+xml">
@@ -195,7 +195,7 @@
 }
 
 </style>
-        <p>Dockerfile是一个文本文件，包含若干条指令，描述了构建镜像的细节。<br>1、<b>Dockerfile</b>修改<b>Nginx</b>镜像的首页。<br>2、<b>Docker部署jar包运行</b>。</p>
+        <p>Dockerfile是一个文本文件，包含若干条指令，描述了构建镜像的细节。<br>1、<b>Dockerfile</b>修改<b>Nginx</b>镜像的首页。<br>2、<b>Docker部署jar包运行</b>。<a id="more"></a></p>
 <h3 id="Dockerfile修改Nginx镜像的首页"><a href="#Dockerfile修改Nginx镜像的首页" class="headerlink" title="Dockerfile修改Nginx镜像的首页"></a>Dockerfile修改Nginx镜像的首页</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@root ~]# mkdir docker</span><br><span class="line">[root@root ~]# cd docker</span><br><span class="line">[root@root ~]# vi Dockerfile	# D开头必须大写</span><br><span class="line">FROM nginx</span><br><span class="line">RUN echo &apos;&lt;h1&gt;Hello Docker&lt;/h1&gt;&apos; &gt; /usr/share/nginx/html/index.html</span><br><span class="line">[root@root ~]# docker build -t nginx:wr .	# mynginx表示标签 . 表示当前目录</span><br><span class="line">#上行代码如有报错 手打一次即可（编码、空格等问题）</span><br><span class="line">[root@root ~]# docker run -d -p 8888:80 nginx:wr 	#启动创建的镜像</span><br></pre></td></tr></table></figure>
 <p><img src="/blog/2020/02/15/使用Dockerfile构建Nginx镜像/docker.png" alt=""></p>
 <h3 id="Docker部署Jar包运行"><a href="#Docker部署Jar包运行" class="headerlink" title="Docker部署Jar包运行"></a>Docker部署Jar包运行</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">[root@root ~]# mkdir eureka</span><br><span class="line">[root@root ~]# cd eureka</span><br><span class="line">[root@root ~]# vi Dockerfile	# D开头必须大写</span><br><span class="line"></span><br><span class="line"># 基于java镜像</span><br><span class="line">FROM java:8</span><br><span class="line"></span><br><span class="line"># 作者</span><br><span class="line">MAINTAINER wr</span><br><span class="line"></span><br><span class="line"># 复制文件到容器</span><br><span class="line">ADD eureka.jar eureka.jar</span><br><span class="line"></span><br><span class="line"># 声明需要暴露的端口</span><br><span class="line">EXPOSE 8761</span><br><span class="line"></span><br><span class="line"># 配置容器启动后执行的命令</span><br><span class="line">ENTRYPOINT [&quot;java&quot;,&quot;-jar&quot;,&quot;eureka.jar&quot;]</span><br><span class="line"></span><br><span class="line">[root@root ~]# docker build -t wr/eureka:wr . </span><br><span class="line"># -t 指定镜像的仓库名称/镜像名称：标签名称</span><br><span class="line"></span><br><span class="line">[root@root ~]# docker run -d -p 8761:8761 wr/eureka:wr </span><br><span class="line"># -d 后台启动容器，打印容器ID -p 映射端口</span><br></pre></td></tr></table></figure>
@@ -206,7 +206,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://lastsummer.top/blog/2020/02/15/使用Dockerfile构建Nginx镜像/" data-id="ck6oiji4000565gvbj84yzaa9" class="article-share-link-test"></a>
+      <a data-url="https://lastsummer.top/blog/2020/02/15/使用Dockerfile构建Nginx镜像/" data-id="ck6oilzxl0045zsvbzbccymx8" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Docker/">Docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Linux/">Linux</a></li></ul>

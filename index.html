@@ -147,34 +147,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-		
-      <!-- 目录内容 -->
-
-<!-- 目录内容结束 -->
-<style>
-/* 新添加的 */
-#container .show-toc-btn,#container .toc-article{display:block}
-.toc-article{z-index:100;background:#fff;border:1px solid #ccc;max-width:250px;min-width:150px;max-height:500px;overflow-y:auto;-webkit-box-shadow:5px 5px 2px #ccc;box-shadow:5px 5px 2px #ccc;font-size:12px;padding:10px;position:fixed;right:35px;top:129px}.toc-article .toc-close{font-weight:700;font-size:20px;cursor:pointer;float:right;color:#ccc}.toc-article .toc-close:hover{color:#000}.toc-article .toc{font-size:12px;padding:0;line-height:20px}.toc-article .toc .toc-number{color:#333}.toc-article .toc .toc-text:hover{text-decoration:underline;color:#2a6496}.toc-article li{list-style-type:none}.toc-article .toc-level-1{margin:4px 0}.toc-article .toc-child{}@-moz-keyframes cd-bounce-1{0%{opacity:0;-o-transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}60%{opacity:1;-o-transform:scale(1.01);-webkit-transform:scale(1.01);-moz-transform:scale(1.01);-ms-transform:scale(1.01);transform:scale(1.01)}100%{-o-transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}}@-webkit-keyframes cd-bounce-1{0%{opacity:0;-o-transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}60%{opacity:1;-o-transform:scale(1.01);-webkit-transform:scale(1.01);-moz-transform:scale(1.01);-ms-transform:scale(1.01);transform:scale(1.01)}100%{-o-transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}}@-o-keyframes cd-bounce-1{0%{opacity:0;-o-transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}60%{opacity:1;-o-transform:scale(1.01);-webkit-transform:scale(1.01);-moz-transform:scale(1.01);-ms-transform:scale(1.01);transform:scale(1.01)}100%{-o-transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}}@keyframes cd-bounce-1{0%{opacity:0;-o-transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}60%{opacity:1;-o-transform:scale(1.01);-webkit-transform:scale(1.01);-moz-transform:scale(1.01);-ms-transform:scale(1.01);transform:scale(1.01)}100%{-o-transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}}.show-toc-btn{display:none;z-index:10;width:30px;min-height:14px;overflow:hidden;padding:4px 6px 8px 5px;border:1px solid #ddd;border-right:none;position:fixed;right:40px;text-align:center;background-color:#f9f9f9}.show-toc-btn .btn-bg{margin-top:2px;display:block;width:16px;height:14px;background:url(http://7xtawy.com1.z0.glb.clouddn.com/show.png) no-repeat;-webkit-background-size:100%;-moz-background-size:100%;background-size:100%}.show-toc-btn .btn-text{color:#999;font-size:12px}.show-toc-btn:hover{cursor:pointer}.show-toc-btn:hover .btn-bg{background-position:0 -16px}.show-toc-btn:hover .btn-text{font-size:12px;color:#ea8010}
-.toc-article li ol, .toc-article li ul {
-    margin-left: 30px;
-}
-.toc-article ol, .toc-article ul {
-    margin: 10px 0;
-}
-
-</style>
         <p>Dockerfile是一个文本文件，包含若干条指令，描述了构建镜像的细节。<br>1、<b>Dockerfile</b>修改<b>Nginx</b>镜像的首页。<br>2、<b>Docker部署jar包运行</b>。</p>
-<h3 id="Dockerfile修改Nginx镜像的首页"><a href="#Dockerfile修改Nginx镜像的首页" class="headerlink" title="Dockerfile修改Nginx镜像的首页"></a>Dockerfile修改Nginx镜像的首页</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@root ~]# mkdir docker</span><br><span class="line">[root@root ~]# cd docker</span><br><span class="line">[root@root ~]# vi Dockerfile	# D开头必须大写</span><br><span class="line">FROM nginx</span><br><span class="line">RUN echo &apos;&lt;h1&gt;Hello Docker&lt;/h1&gt;&apos; &gt; /usr/share/nginx/html/index.html</span><br><span class="line">[root@root ~]# docker build -t nginx:wr .	# mynginx表示标签 . 表示当前目录</span><br><span class="line">#上行代码如有报错 手打一次即可（编码、空格等问题）</span><br><span class="line">[root@root ~]# docker run -d -p 8888:80 nginx:wr 	#启动创建的镜像</span><br></pre></td></tr></table></figure>
-<p><img src="/blog/2020/02/15/使用Dockerfile构建Nginx镜像/docker.png" alt=""></p>
-<h3 id="Docker部署Jar包运行"><a href="#Docker部署Jar包运行" class="headerlink" title="Docker部署Jar包运行"></a>Docker部署Jar包运行</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">[root@root ~]# mkdir eureka</span><br><span class="line">[root@root ~]# cd eureka</span><br><span class="line">[root@root ~]# vi Dockerfile	# D开头必须大写</span><br><span class="line"></span><br><span class="line"># 基于java镜像</span><br><span class="line">FROM java:8</span><br><span class="line"></span><br><span class="line"># 作者</span><br><span class="line">MAINTAINER wr</span><br><span class="line"></span><br><span class="line"># 复制文件到容器</span><br><span class="line">ADD eureka.jar eureka.jar</span><br><span class="line"></span><br><span class="line"># 声明需要暴露的端口</span><br><span class="line">EXPOSE 8761</span><br><span class="line"></span><br><span class="line"># 配置容器启动后执行的命令</span><br><span class="line">ENTRYPOINT [&quot;java&quot;,&quot;-jar&quot;,&quot;eureka.jar&quot;]</span><br><span class="line"></span><br><span class="line">[root@root ~]# docker build -t wr/eureka:wr . </span><br><span class="line"># -t 指定镜像的仓库名称/镜像名称：标签名称</span><br><span class="line"></span><br><span class="line">[root@root ~]# docker run -d -p 8761:8761 wr/eureka:wr </span><br><span class="line"># -d 后台启动容器，打印容器ID -p 映射端口</span><br></pre></td></tr></table></figure>
-<p><img src="/blog/2020/02/15/使用Dockerfile构建Nginx镜像/docker1.png" alt=""></p>
-<h3 id="推送Oocker镜像到Docker-Hub"><a href="#推送Oocker镜像到Docker-Hub" class="headerlink" title="推送Oocker镜像到Docker Hub"></a>推送Oocker镜像到Docker Hub</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">在[Docker官网](https://lastsummer.top)注册、登录并创建存储库 wangrui</span><br><span class="line">登录docker账号</span><br><span class="line">[root@root ~]# docker login</span><br><span class="line">Username: wangrui</span><br><span class="line">Password:</span><br><span class="line">Login Succeeded</span><br><span class="line">[root@root ~]# docker images</span><br><span class="line">REPOSITORY                 TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">nginx                      wr                  9f21117959fe        About an hour ago   127 MB</span><br><span class="line"># tag 打标签 wangrui 为你的 docker hub名字</span><br><span class="line">[root@root ~]# docker tag 9f21117959fe wangrui/nginx:wr</span><br><span class="line">[root@root ~]# docker push wangrui/nginx:wr</span><br></pre></td></tr></table></figure>
-<p>参考博客：<a href="https://blog.csdn.net/weixin_42054155/article/details/90815393" target="_blank" rel="noopener">Docker部署jar包运行</a><br>参考博客：<a href="https://yangfannie.com/1272.html" target="_blank" rel="noopener">推送你的镜像到Docker Hub</a></p>
-
+        
+          <p class="article-more-link">
+            <a href="/blog/2020/02/15/使用Dockerfile构建Nginx镜像/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://lastsummer.top/blog/2020/02/15/使用Dockerfile构建Nginx镜像/" data-id="ck6oiji4000565gvbj84yzaa9" class="article-share-link-test"></a>
+      <a data-url="https://lastsummer.top/blog/2020/02/15/使用Dockerfile构建Nginx镜像/" data-id="ck6oilzxl0045zsvbzbccymx8" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Docker/">Docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Linux/">Linux</a></li></ul>
@@ -254,7 +236,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://lastsummer.top/blog/2020/02/05/分布式事务/" data-id="ck6oiji4200595gvbxusm399z" class="article-share-link-test"></a>
+      <a data-url="https://lastsummer.top/blog/2020/02/05/分布式事务/" data-id="ck6oilzxo004azsvb70edf4ho" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/RabbitMQ/">RabbitMQ</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/队列/">队列</a></li></ul>
@@ -334,7 +316,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://lastsummer.top/blog/2020/02/04/Hexo博客部署Nginx/" data-id="ck6oiji1e00155gvbv45c7t15" class="article-share-link-test"></a>
+      <a data-url="https://lastsummer.top/blog/2020/02/04/Hexo博客部署Nginx/" data-id="ck6oilzvu001ozsvb0u302hnd" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Nginx/">Nginx</a></li></ul>
@@ -414,7 +396,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://lastsummer.top/blog/2020/02/03/Docker安装和使用/" data-id="ck6oiji0b00035gvb2n4anyga" class="article-share-link-test"></a>
+      <a data-url="https://lastsummer.top/blog/2020/02/03/Docker安装和使用/" data-id="ck6oilztc0006zsvbq8a4ubpd" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Docker/">Docker</a></li></ul>
@@ -494,7 +476,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://lastsummer.top/blog/2020/01/25/JWT生成TOKEN/" data-id="ck6oiji1x001v5gvbx00gqkxm" class="article-share-link-test"></a>
+      <a data-url="https://lastsummer.top/blog/2020/01/25/JWT生成TOKEN/" data-id="ck6oilzw1001zzsvboxxtttwo" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java/">java</a></li></ul>
@@ -574,7 +556,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://lastsummer.top/blog/2019/12/09/微服务下实现日志模块/" data-id="ck6oiji43005b5gvbx8p884r0" class="article-share-link-test"></a>
+      <a data-url="https://lastsummer.top/blog/2019/12/09/微服务下实现日志模块/" data-id="ck6oilzxp004bzsvb8p9cymdg" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/JAVA/">JAVA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/RabbitMQ/">RabbitMQ</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/SpringBoot/">SpringBoot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/SpringCloud/">SpringCloud</a></li></ul>
@@ -654,7 +636,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://lastsummer.top/blog/2019/11/26/SpringCloud基础/" data-id="ck6oiji3m004k5gvbvjbfwewa" class="article-share-link-test"></a>
+      <a data-url="https://lastsummer.top/blog/2019/11/26/SpringCloud基础/" data-id="ck6oilzwz003hzsvbdyddn05n" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/JAVA/">JAVA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/SpringBoot/">SpringBoot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/SpringCloud/">SpringCloud</a></li></ul>
@@ -734,7 +716,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://lastsummer.top/blog/2019/11/26/Linux常用命令详解/" data-id="ck6oiji29002h5gvbkymzwlld" class="article-share-link-test"></a>
+      <a data-url="https://lastsummer.top/blog/2019/11/26/Linux常用命令详解/" data-id="ck6oilzwo002zzsvbrc2pm3n6" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Linux/">Linux</a></li></ul>
@@ -814,7 +796,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://lastsummer.top/blog/2019/11/14/Java代理模式/" data-id="ck6oiji1z001y5gvb37505v4m" class="article-share-link-test"></a>
+      <a data-url="https://lastsummer.top/blog/2019/11/14/Java代理模式/" data-id="ck6oilzwe002kzsvbr3dyy4w9" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java/">java</a></li></ul>
@@ -894,7 +876,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://lastsummer.top/blog/2019/11/06/Java8中抽象类与接口的异同/" data-id="ck6oiji2400295gvbsb4suk4k" class="article-share-link-test"></a>
+      <a data-url="https://lastsummer.top/blog/2019/11/06/Java8中抽象类与接口的异同/" data-id="ck6oilzwa002dzsvb21gf56bh" class="article-share-link-test"></a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java/">java</a></li></ul>
