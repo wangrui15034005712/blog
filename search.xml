@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[使用Dockerfile构建Nginx镜像]]></title>
-    <url>%2Fblog%2F2020%2F02%2F15%2F%E4%BD%BF%E7%94%A8Dockerfile%E6%9E%84%E5%BB%BANginx%E9%95%9C%E5%83%8F%2F</url>
+    <title><![CDATA[使用Dockerfile构建及推送镜像]]></title>
+    <url>%2Fblog%2F2020%2F02%2F16%2F%E4%BD%BF%E7%94%A8Dockerfile%E6%9E%84%E5%BB%BA%E5%8F%8A%E6%8E%A8%E9%80%81%E9%95%9C%E5%83%8F%2F</url>
     <content type="text"><![CDATA[Dockerfile是一个文本文件，包含若干条指令，描述了构建镜像的细节。1、Dockerfile修改Nginx镜像的首页。2、Docker部署jar包运行。 Dockerfile修改Nginx镜像的首页12345678[root@root ~]# mkdir docker[root@root ~]# cd docker[root@root ~]# vi Dockerfile # D开头必须大写FROM nginxRUN echo &apos;&lt;h1&gt;Hello Docker&lt;/h1&gt;&apos; &gt; /usr/share/nginx/html/index.html[root@root ~]# docker build -t nginx:wr . # mynginx表示标签 . 表示当前目录#上行代码如有报错 手打一次即可（编码、空格等问题）[root@root ~]# docker run -d -p 8888:80 nginx:wr #启动创建的镜像 Docker部署Jar包运行123456789101112131415161718192021222324[root@root ~]# mkdir eureka[root@root ~]# cd eureka[root@root ~]# vi Dockerfile # D开头必须大写# 基于java镜像FROM java:8# 作者MAINTAINER wr# 复制文件到容器ADD eureka.jar eureka.jar# 声明需要暴露的端口EXPOSE 8761# 配置容器启动后执行的命令ENTRYPOINT [&quot;java&quot;,&quot;-jar&quot;,&quot;eureka.jar&quot;][root@root ~]# docker build -t wr/eureka:wr . # -t 指定镜像的仓库名称/镜像名称：标签名称[root@root ~]# docker run -d -p 8761:8761 wr/eureka:wr # -d 后台启动容器，打印容器ID -p 映射端口 推送Oocker镜像到Docker Hub123456789101112在[Docker官网](https://lastsummer.top)注册、登录并创建存储库 wangrui登录docker账号[root@root ~]# docker loginUsername: wangruiPassword:Login Succeeded[root@root ~]# docker imagesREPOSITORY TAG IMAGE ID CREATED SIZEnginx wr 9f21117959fe About an hour ago 127 MB# tag 打标签 wangrui 为你的 docker hub名字[root@root ~]# docker tag 9f21117959fe wangrui/nginx:wr[root@root ~]# docker push wangrui/nginx:wr 参考博客：Docker部署jar包运行参考博客：推送你的镜像到Docker Hub]]></content>
       <categories>
         <category>Docker</category>
       </categories>
       <tags>
         <tag>Docker</tag>
+        <tag>Nginx</tag>
         <tag>Linux</tag>
       </tags>
   </entry>
@@ -438,8 +439,8 @@
         <category>SOA</category>
       </categories>
       <tags>
-        <tag>Dubbo</tag>
         <tag>Zookeeper</tag>
+        <tag>Dubbo</tag>
         <tag>Maven</tag>
       </tags>
   </entry>
