@@ -7,21 +7,20 @@
   <meta name="sogou_site_verification" content="y4IFS8seKn"><!--搜狗 验证不成功-->
   <meta name="google-site-verification" content="2qH4bOdXGa7Pk1tuRp6ePLAGiP6K3H07EUYDPo_Ugp4"><!--谷歌-->
   
-  <title>About Me | 去年夏天</title>
+  <title>Docker常用命令 | 去年夏天</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Wang Rui&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; GitHub ID: &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; github.com/wangrui15034005712&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; Coding ID: &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; dev.tencent.com/u/wangrui15034005712&amp;nbsp">
-<meta property="og:type" content="website">
-<meta property="og:title" content="About Me">
-<meta property="og:url" content="https://lastsummer.top/blog/about/index.html">
+  <meta name="description" content="Docker 常用命令。">
+<meta name="keywords" content="Docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker常用命令">
+<meta property="og:url" content="https://lastsummer.top/blog/2020/02/19/Docker常用命令/index.html">
 <meta property="og:site_name" content="去年夏天">
-<meta property="og:description" content="Wang Rui&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; GitHub ID: &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; github.com/wangrui15034005712&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; Coding ID: &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; dev.tencent.com/u/wangrui15034005712&amp;nbsp">
+<meta property="og:description" content="Docker 常用命令。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://pic.qqtn.com/up/2018-9/15368261867401976.jpg">
-<meta property="og:updated_time" content="2018-11-09T07:57:06.615Z">
+<meta property="og:updated_time" content="2020-02-19T12:53:27.749Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About Me">
-<meta name="twitter:description" content="Wang Rui&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; GitHub ID: &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; github.com/wangrui15034005712&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; Coding ID: &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; dev.tencent.com/u/wangrui15034005712&amp;nbsp">
-<meta name="twitter:image" content="https://pic.qqtn.com/up/2018-9/15368261867401976.jpg">
+<meta name="twitter:title" content="Docker常用命令">
+<meta name="twitter:description" content="Docker 常用命令。">
   
     <link rel="alternate" href="/atom.xml" title="去年夏天" type="application/atom+xml">
   
@@ -105,12 +104,12 @@
   </div>
 </div>
 
-        <section id="main"><article id="page-" class="wow slideInRight article article-type-page" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-Docker常用命令" class="wow slideInRight article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/blog/about/index.html" class="article-date">
-  <time class="post-time" datetime="2018-10-11T07:22:46.000Z" itemprop="datePublished">
-    <span class="post-month">10月</span><br>
-    <span class="post-day">11</span>
+    <a href="/blog/2020/02/19/Docker常用命令/" class="article-date">
+  <time class="post-time" datetime="2020-02-19T12:22:04.000Z" itemprop="datePublished">
+    <span class="post-month">2月</span><br>
+    <span class="post-day">19</span>
   </time>
 </a>
    
@@ -122,12 +121,26 @@
         
   
     <h1 class="article-title" itemprop="name">
-      About Me
+      Docker常用命令
     </h1>
   
 
         <div>
           
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/Docker/">Docker</a>
+  </div>
+
+          
+              
+  &nbsp; | &nbsp;
+  <div class="view-box">
+    <span id="/blog/2020/02/19/Docker常用命令/" class="leancloud_visitors" data-flag-title="Docker常用命令">
+      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
+    </span>
+  </div>
+
+
           
         </div>
       </header>
@@ -135,8 +148,37 @@
     <div class="article-entry" itemprop="articleBody">
       
 		
+      <div id="toc" class="toc-article">
+      <strong class="toc-title">文章目录</strong>
+      
+      </div>
+    
       <!-- 目录内容 -->
 
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+    <div id="toc-article" class="toc-article">
+        <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+        <strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker-常用命令"><span class="toc-number">1.</span> <span class="toc-text">Docker 常用命令</span></a></li></ol>
+         </div>
+   <script type="text/javascript">
+    function showToc(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:block");
+        show_toc_btn.setAttribute("style","display:none");
+        };
+    function showBtn(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:none");
+        show_toc_btn.setAttribute("style","display:block");
+        };
+   </script>
+   
 <!-- 目录内容结束 -->
 <style>
 /* 新添加的 */
@@ -150,22 +192,64 @@
 }
 
 </style>
-        <div><br><img class="avatar" src="https://pic.qqtn.com/up/2018-9/15368261867401976.jpg"><br><h2 class="author">Wang Rui</h2><br><hr width="85%"><br>&nbsp;&nbsp;&nbsp;&nbsp; GitHub ID: &nbsp;&nbsp;&nbsp;&nbsp; <a href="https://github.com/wangrui15034005712" target="_blank" rel="noopener">github.com/wangrui15034005712</a><br><hr width="85%"><br>&nbsp;&nbsp;&nbsp;&nbsp; Coding ID: &nbsp;&nbsp;&nbsp;&nbsp; <a href="https://dev.tencent.com/u/wangrui15034005712" target="_blank" rel="noopener">dev.tencent.com/u/wangrui15034005712</a><br><hr width="85%"><br>&nbsp;&nbsp;&nbsp;&nbsp; Email: &nbsp;&nbsp;&nbsp;&nbsp; <a href="mailto: 15034005712@163.com" target="_blank" rel="’external’">15034005712@163.com</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="mailto: 815421706@qq.com" target="_blank" rel="’external’">815421706@qq.com</a><br><hr width="85%"><br><div style="margin:0 auto;width:90%;">大家好，我是一名计算机专业的大学生，很高兴来到Github博客论坛。我写这些博客的目的有两点，第一点是为了通过这些博客使自己成长起来，增长见识，学习到更多的知识，以便以后能够用到自己的所学，第二点是为了读者，看我的博客的人其实是幸运的，因为我是一个初学者，读者朋友可以和我一起进步，一起探讨，共同进步，达到互利共赢，也希望我写的博客内容能够帮助一些在编程方面有问题的朋友。在这里如果你发现我写的有哪些不对或不足之处，请您谅解。你可以及时评论来回馈我，我会采纳改正的，我会不断完善我的博客论坛的。希望你们常来，谢谢！</div><br></div>
-
+        <p>Docker 常用命令。<a id="more"></a></p>
+<h3 id="Docker-常用命令"><a href="#Docker-常用命令" class="headerlink" title="Docker 常用命令"></a>Docker 常用命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"># 搜索Docker Hub中的镜像</span><br><span class="line">docker search java</span><br><span class="line"># 从Docker Hub下载最新的java</span><br><span class="line">docker pull java</span><br><span class="line"># Docker Registry地址/仓库/镜像名称:标签</span><br><span class="line">docker pull registry.cn-hangzhou.aliyuncs.com/wangrui15034005712/nginx</span><br><span class="line"># 列出本地所有镜像，默认过滤中间映像层</span><br><span class="line">docker images -a</span><br><span class="line"># 删除指定镜像</span><br><span class="line">docker rmi -f [镜像名称]</span><br><span class="line"># 删除全部镜像</span><br><span class="line">docker rmi -f $(docker images)</span><br><span class="line"># 构建镜像 -t 设置签名</span><br><span class="line">docker build -t nginx:wr .</span><br><span class="line"># 启动容器 -d 后台启动，并打印容器ID -p 指定映射端口</span><br><span class="line">docker run -d -p 8080:8080 nginx:wr</span><br><span class="line"># 累出运行中的容器 -a 列出所有容器（包括未运行容器）</span><br><span class="line">docker ps -a</span><br><span class="line"># 停止容器</span><br><span class="line">docker stop 容器ID</span><br><span class="line"># 强制停止容器</span><br><span class="line">docker kill 容器ID</span><br><span class="line"># 启动已停止的容器</span><br><span class="line">docker statr 容器ID</span><br><span class="line"># 重新启动容器</span><br><span class="line">docker restatr 容器ID</span><br><span class="line"># 进入容器</span><br><span class="line">docker attach 容器ID</span><br><span class="line"># 删除容器指定容器</span><br><span class="line">docker rm [容器ID]</span><br><span class="line"># 删除全部容器 -q 只展示容器ID</span><br><span class="line">docker rm -f $(docker ps -a -q)</span><br><span class="line"># 将指定容器导出tar包 --output将内容写入文件而非标准输出</span><br><span class="line">docker export 容器名称 &gt; app.tar</span><br><span class="line">docker export --output &gt; app.tar</span><br><span class="line"># 引入容器并创建nginx镜像</span><br><span class="line">docker import app.tar nginx</span><br><span class="line"># 保存镜像</span><br><span class="line">docker save 容器名称 &gt; app.tar</span><br><span class="line">docker save --output app.tar 容器名称</span><br><span class="line"># 加载镜像 --input 从文件加载而非标准输入</span><br><span class="line">docker load &lt; app.tar</span><br><span class="line">docker load --input app.tar</span><br><span class="line"># docker Hub注册后才可登录</span><br><span class="line">docker login</span><br><span class="line"># 推送镜像</span><br><span class="line">docker push wangrui/nginx:wr</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://lastsummer.top/blog/about/index.html" data-id="ck7659gu50003vkvb0uhm4hhn" class="article-share-link-test"></a>
+      <a data-url="https://lastsummer.top/blog/2020/02/19/Docker常用命令/" data-id="ck7659gue000avkvbh1he3fek" class="article-share-link-test"></a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Docker/">Docker</a></li></ul>
+
     </footer>
 	
+	
+	  
+    <!--MOB SHARE BEGIN-->
+	<div class="-mob-share-ui-button -mob-share-open">分享</div>
+	<div class="-mob-share-ui" style="display: none">
+		<ul class="-mob-share-list">
+			<li class="-mob-share-weibo"><p>新浪微博</p></li>
+			<li class="-mob-share-tencentweibo"><p>腾讯微博</p></li>
+			<li class="-mob-share-qzone"><p>QQ空间</p></li>
+			<li class="-mob-share-qq"><p>QQ好友</p></li>
+			<li class="-mob-share-weixin"><p>微信</p></li>
+			<li class="-mob-share-douban"><p>豆瓣</p></li>
+			<li class="-mob-share-renren"><p>人人网</p></li>
+			<li class="-mob-share-kaixin"><p>开心网</p></li>
+			<li class="-mob-share-facebook"><p>Facebook</p></li>
+			<li class="-mob-share-twitter"><p>Twitter</p></li>
+			<li class="-mob-share-pocket"><p>Pocket</p></li>
+			<li class="-mob-share-google"><p>Google+</p></li>
+			<li class="-mob-share-youdao"><p>有道云笔记</p></li>
+			<li class="-mob-share-mingdao"><p>明道</p></li>
+			<li class="-mob-share-pengyou"><p>朋友网</p></li>
+			<li class="-mob-share-tumblr"><p>Tumblr</p></li>
+			<li class="-mob-share-instapaper"><p>Instapaper</p></li>
+			<li class="-mob-share-linkedin"><p>LinkedIn</p></li>
+		</ul>
+		<div class="-mob-share-close">取消</div>
+	</div>
+	<div class="-mob-share-ui-bg"></div>
+	<script id="-mob-share" src="https://f1.webshare.mob.com/code/mob-share.js?appkey=283bca7b96411"></script>
+	<!--MOB SHARE END-->
 	
 	
   </div>
   
   
     
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2020/02/18/Mysql基础函数及行转列/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Mysql基础函数及行转列</div>
+    </a>
+  
+</nav>
+
   
 
 	
@@ -177,6 +261,17 @@
 
 
 
+
+
+	<!--PC和WAP自适应版 sid="请将此处替换为配置SourceID的语句"-->
+<div id="SOHUCS"></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cytRJBBqd'; 
+var conf = '6c62cf127e7cfd66a7c253c93daeda6e'; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
 
 
 
