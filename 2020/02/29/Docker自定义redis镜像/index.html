@@ -7,18 +7,20 @@
   <meta name="sogou_site_verification" content="y4IFS8seKn"><!--搜狗 验证不成功-->
   <meta name="google-site-verification" content="2qH4bOdXGa7Pk1tuRp6ePLAGiP6K3H07EUYDPo_Ugp4"><!--谷歌-->
   
-  <title>Tag: Mysql | 去年夏天</title>
+  <title>Docker自定义redis镜像 | 去年夏天</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="做自己爱做的事，爱自己在做的事！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="去年夏天">
-<meta property="og:url" content="https://lastsummer.top/blog/tags/Mysql/index.html">
+  <meta name="description" content="Docker自定义redis镜像。">
+<meta name="keywords" content="Docker,Redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker自定义redis镜像">
+<meta property="og:url" content="https://lastsummer.top/blog/2020/02/29/Docker自定义redis镜像/index.html">
 <meta property="og:site_name" content="去年夏天">
-<meta property="og:description" content="做自己爱做的事，爱自己在做的事！">
+<meta property="og:description" content="Docker自定义redis镜像。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-02-29T15:52:38.231Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="去年夏天">
-<meta name="twitter:description" content="做自己爱做的事，爱自己在做的事！">
+<meta name="twitter:title" content="Docker自定义redis镜像">
+<meta name="twitter:description" content="Docker自定义redis镜像。">
   
     <link rel="alternate" href="/atom.xml" title="去年夏天" type="application/atom+xml">
   
@@ -102,42 +104,199 @@
   </div>
 </div>
 
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap animated rubberBand">
-        <div class="archive-year-wrap">
-          <a href="/blog/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/blog/2020/02/18/Mysql基础函数及行转列/" class="archive-article-date">
-  <time class="post-time" datetime="2020-02-18T12:17:18.000Z" itemprop="datePublished">
+        <section id="main"><article id="post-Docker自定义redis镜像" class="wow slideInRight article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2020/02/29/Docker自定义redis镜像/" class="article-date">
+  <time class="post-time" datetime="2020-02-29T15:35:26.000Z" itemprop="datePublished">
     <span class="post-month">2月</span><br>
-    <span class="post-day">18</span>
+    <span class="post-day">29</span>
   </time>
 </a>
-      
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/blog/2020/02/18/Mysql基础函数及行转列/">Mysql基础函数及行转列</a>
+    <h1 class="article-title" itemprop="name">
+      Docker自定义redis镜像
     </h1>
   
 
-    </header>
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/Docker/">Docker</a>
   </div>
+
+          
+              
+  &nbsp; | &nbsp;
+  <div class="view-box">
+    <span id="/blog/2020/02/29/Docker自定义redis镜像/" class="leancloud_visitors" data-flag-title="Docker自定义redis镜像">
+      &nbsp;阅读次数<span class="leancloud-visitors-count"></span>
+    </span>
+  </div>
+
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+		
+      <div id="toc" class="toc-article">
+      <strong class="toc-title">文章目录</strong>
+      
+      </div>
+    
+      <!-- 目录内容 -->
+
+    <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+          <span class="btn-bg"></span>
+          <span class="btn-text">文章导航</span>
+          </p>
+    <div id="toc-article" class="toc-article">
+        <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+        <strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#DockerFile配置"><span class="toc-number">1.</span> <span class="toc-text">DockerFile配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#redis-conf配置"><span class="toc-number">2.</span> <span class="toc-text">redis.conf配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker指令"><span class="toc-number">3.</span> <span class="toc-text">Docker指令</span></a></li></ol>
+         </div>
+   <script type="text/javascript">
+    function showToc(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:block");
+        show_toc_btn.setAttribute("style","display:none");
+        };
+    function showBtn(){
+        var toc_article = document.getElementById("toc-article");
+        var show_toc_btn = document.getElementById("show-toc-btn");
+        toc_article.setAttribute("style","display:none");
+        show_toc_btn.setAttribute("style","display:block");
+        };
+   </script>
+   
+<!-- 目录内容结束 -->
+<style>
+/* 新添加的 */
+#container .show-toc-btn,#container .toc-article{display:block}
+.toc-article{z-index:100;background:#fff;border:1px solid #ccc;max-width:250px;min-width:150px;max-height:500px;overflow-y:auto;-webkit-box-shadow:5px 5px 2px #ccc;box-shadow:5px 5px 2px #ccc;font-size:12px;padding:10px;position:fixed;right:35px;top:129px}.toc-article .toc-close{font-weight:700;font-size:20px;cursor:pointer;float:right;color:#ccc}.toc-article .toc-close:hover{color:#000}.toc-article .toc{font-size:12px;padding:0;line-height:20px}.toc-article .toc .toc-number{color:#333}.toc-article .toc .toc-text:hover{text-decoration:underline;color:#2a6496}.toc-article li{list-style-type:none}.toc-article .toc-level-1{margin:4px 0}.toc-article .toc-child{}@-moz-keyframes cd-bounce-1{0%{opacity:0;-o-transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}60%{opacity:1;-o-transform:scale(1.01);-webkit-transform:scale(1.01);-moz-transform:scale(1.01);-ms-transform:scale(1.01);transform:scale(1.01)}100%{-o-transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}}@-webkit-keyframes cd-bounce-1{0%{opacity:0;-o-transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}60%{opacity:1;-o-transform:scale(1.01);-webkit-transform:scale(1.01);-moz-transform:scale(1.01);-ms-transform:scale(1.01);transform:scale(1.01)}100%{-o-transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}}@-o-keyframes cd-bounce-1{0%{opacity:0;-o-transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}60%{opacity:1;-o-transform:scale(1.01);-webkit-transform:scale(1.01);-moz-transform:scale(1.01);-ms-transform:scale(1.01);transform:scale(1.01)}100%{-o-transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}}@keyframes cd-bounce-1{0%{opacity:0;-o-transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}60%{opacity:1;-o-transform:scale(1.01);-webkit-transform:scale(1.01);-moz-transform:scale(1.01);-ms-transform:scale(1.01);transform:scale(1.01)}100%{-o-transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}}.show-toc-btn{display:none;z-index:10;width:30px;min-height:14px;overflow:hidden;padding:4px 6px 8px 5px;border:1px solid #ddd;border-right:none;position:fixed;right:40px;text-align:center;background-color:#f9f9f9}.show-toc-btn .btn-bg{margin-top:2px;display:block;width:16px;height:14px;background:url(http://7xtawy.com1.z0.glb.clouddn.com/show.png) no-repeat;-webkit-background-size:100%;-moz-background-size:100%;background-size:100%}.show-toc-btn .btn-text{color:#999;font-size:12px}.show-toc-btn:hover{cursor:pointer}.show-toc-btn:hover .btn-bg{background-position:0 -16px}.show-toc-btn:hover .btn-text{font-size:12px;color:#ea8010}
+.toc-article li ol, .toc-article li ul {
+    margin-left: 30px;
+}
+.toc-article ol, .toc-article ul {
+    margin: 10px 0;
+}
+
+</style>
+        <p>Docker自定义redis镜像。<a id="more"></a></p>
+<h3 id="DockerFile配置"><a href="#DockerFile配置" class="headerlink" title="DockerFile配置"></a>DockerFile配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">FROM centos</span><br><span class="line"></span><br><span class="line">MAINTAINER wangrui&lt;15034005712@163.com&gt;</span><br><span class="line"></span><br><span class="line">RUN yum -y install gcc make pcre-devel zlib-devel tar zlib</span><br><span class="line"></span><br><span class="line">ADD redis-4.0.8.tar.gz /usr/src/</span><br><span class="line"></span><br><span class="line">ENV MYPATH /usr/local</span><br><span class="line">WORKDIR $MYPATH</span><br><span class="line"></span><br><span class="line"># redis配置</span><br><span class="line">RUN cd /usr/src/redis-4.0.8 &amp;&amp; make &amp;&amp; make install PREFIX=/usr/local/redis</span><br><span class="line">RUN cd /usr/local/redis</span><br><span class="line">COPY redis.conf /usr/local/redis/redis.conf</span><br><span class="line">RUN rm -rf /usr/src/redis-4.0.8</span><br><span class="line"></span><br><span class="line"># 容器卷（持久化数据到宿主机）</span><br><span class="line">VOLUME [&quot;/docker/redis/&quot;]</span><br><span class="line"></span><br><span class="line">EXPOSE 6379</span><br><span class="line"></span><br><span class="line">CMD [&quot;/usr/local/redis/bin/redis-server&quot;,&quot;/usr/local/redis/redis.conf&quot;]</span><br></pre></td></tr></table></figure>
+<h3 id="redis-conf配置"><a href="#redis-conf配置" class="headerlink" title="redis.conf配置"></a>redis.conf配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">（1）注释掉bind 127.0.0.1（外网访问）</span><br><span class="line">（2）添加daemonize no（解决启动报错）</span><br><span class="line">（3）修改protected-mode yes-&gt;no（外网访问）</span><br><span class="line">（4）添加requirepass yourpassword（自定义auth密码）</span><br><span class="line">（5）dir /docker/redis/（容器卷持久化redis数据到宿主机）可选</span><br><span class="line">（6）logfile &quot;/docker/redis/redis.log&quot;（容器卷持久化日志到宿主机）可选</span><br></pre></td></tr></table></figure>
+<h3 id="Docker指令"><a href="#Docker指令" class="headerlink" title="Docker指令"></a>Docker指令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker build -f ./Dockerfile it redis .</span><br><span class="line">docker run -d -p 6379:6379 redis</span><br><span class="line"># 获取容器/镜像的元数据。</span><br><span class="line">docker inspect 容器ID</span><br><span class="line"># 删除镜像</span><br><span class="line">docker rmi -f redis</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://lastsummer.top/blog/2020/02/29/Docker自定义redis镜像/" data-id="ck77sbbif0005fovbblacqhzh" class="article-share-link-test"></a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Docker/">Docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Redis/">Redis</a></li></ul>
+
+    </footer>
+	
+	
+	  
+    <!--MOB SHARE BEGIN-->
+	<div class="-mob-share-ui-button -mob-share-open">分享</div>
+	<div class="-mob-share-ui" style="display: none">
+		<ul class="-mob-share-list">
+			<li class="-mob-share-weibo"><p>新浪微博</p></li>
+			<li class="-mob-share-tencentweibo"><p>腾讯微博</p></li>
+			<li class="-mob-share-qzone"><p>QQ空间</p></li>
+			<li class="-mob-share-qq"><p>QQ好友</p></li>
+			<li class="-mob-share-weixin"><p>微信</p></li>
+			<li class="-mob-share-douban"><p>豆瓣</p></li>
+			<li class="-mob-share-renren"><p>人人网</p></li>
+			<li class="-mob-share-kaixin"><p>开心网</p></li>
+			<li class="-mob-share-facebook"><p>Facebook</p></li>
+			<li class="-mob-share-twitter"><p>Twitter</p></li>
+			<li class="-mob-share-pocket"><p>Pocket</p></li>
+			<li class="-mob-share-google"><p>Google+</p></li>
+			<li class="-mob-share-youdao"><p>有道云笔记</p></li>
+			<li class="-mob-share-mingdao"><p>明道</p></li>
+			<li class="-mob-share-pengyou"><p>朋友网</p></li>
+			<li class="-mob-share-tumblr"><p>Tumblr</p></li>
+			<li class="-mob-share-instapaper"><p>Instapaper</p></li>
+			<li class="-mob-share-linkedin"><p>LinkedIn</p></li>
+		</ul>
+		<div class="-mob-share-close">取消</div>
+	</div>
+	<div class="-mob-share-ui-bg"></div>
+	<script id="-mob-share" src="https://f1.webshare.mob.com/code/mob-share.js?appkey=283bca7b96411"></script>
+	<!--MOB SHARE END-->
+	
+	
+  </div>
+  
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2020/02/19/Docker常用命令/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Docker常用命令</div>
+    </a>
+  
+</nav>
+
+  
+
+	
+  
 </article>
-  
-  
-    </div></section>
-  
+
+
+
+
+
+
+
+
+	<!--PC和WAP自适应版 sid="请将此处替换为配置SourceID的语句"-->
+<div id="SOHUCS"></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = 'cytRJBBqd'; 
+var conf = '6c62cf127e7cfd66a7c253c93daeda6e'; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+
+
+
+
+  <script type="text/javascript" src="https://lastsummer.top/blog/js/tctip-1.0.2.js"></script>
+<script>
+  new tctip({
+    top: '20%',
+    button: {
+      id: 9,
+      type: 'zanzhu'
+    },
+    list: [
+      {
+        type: 'alipay',
+        qrImg: 'https://lastsummer.top/blog/photos/donate/zhifubao.jpg'
+      }, {
+        type: 'wechat',
+        qrImg: 'https://lastsummer.top/blog/photos/donate/weixin.png'
+      }
+    ]
+  }).init()
+</script>
 
 </section>
         
