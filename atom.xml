@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://lastsummer.top/blog/"/>
-  <updated>2020-02-29T15:52:38.231Z</updated>
+  <updated>2020-03-04T11:14:05.982Z</updated>
   <id>https://lastsummer.top/blog/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>分布式事务解决方案</title>
+    <link href="https://lastsummer.top/blog/2020/03/04/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    <id>https://lastsummer.top/blog/2020/03/04/分布式事务解决方案/</id>
+    <published>2020-03-04T08:26:00.000Z</published>
+    <updated>2020-03-04T11:14:05.982Z</updated>
+    
+    <content type="html"><![CDATA[<p>分布式事务的五种解决方案。<a id="more"></a></p><h3 id="事务的四种特性（ACID）"><a href="#事务的四种特性（ACID）" class="headerlink" title="事务的四种特性（ACID）"></a>事务的四种特性（ACID）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">原子性(A)整个事务中要么全部成功要么全部失败</span><br><span class="line">一致性(C)A给B转账，不论转账的事务操作是否成功，其两者的存款总额不变</span><br><span class="line">   事务不能破坏关系数据的完整性以及业务逻辑上的一致性。</span><br><span class="line">隔离性(I)事务之间不会相互影响</span><br><span class="line">持久性(D)事务完成后保存到数据库（持久化）</span><br></pre></td></tr></table></figure><h3 id="CAP原则"><a href="#CAP原则" class="headerlink" title="CAP原则"></a>CAP原则</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">C Consistency:强一致性 强调的是数据正确，一定正确的数据</span><br><span class="line">A Availability:可用性 强调的是不出错，不保证最新数据</span><br><span class="line">P Partition tolerance:分区容忍性 强调不挂掉，节点同步数据丢失或者延迟也不会挂掉</span><br></pre></td></tr></table></figure><h3 id="分布式事务的产生的原因"><a href="#分布式事务的产生的原因" class="headerlink" title="分布式事务的产生的原因"></a>分布式事务的产生的原因</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">微服务-数据库分库分表</span><br><span class="line">应用服务化（SOA），多个业务中心对应各自的数据库</span><br></pre></td></tr></table></figure><h3 id="分布式事务的五种解决方案"><a href="#分布式事务的五种解决方案" class="headerlink" title="分布式事务的五种解决方案"></a>分布式事务的五种解决方案</h3><h4 id="XA-方案"><a href="#XA-方案" class="headerlink" title="XA 方案"></a>XA 方案</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">全票通过方案，要求事务全部准备好，才进行事务处理</span><br><span class="line">优点：将事务问题抛给数据库本身，一致性高</span><br><span class="line">缺点：耗费性能，一般用的不多</span><br></pre></td></tr></table></figure><h4 id="TCC-方案"><a href="#TCC-方案" class="headerlink" title="TCC 方案"></a>TCC 方案</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">局部通过方案，要求部分事务准备好即可，相对XA方案灵活很多</span><br><span class="line">优点：将事务问题交给系统本身，一致性很高</span><br><span class="line">缺点：大量的代码控制，控制事务的逻辑复杂冗余，性能较差，一般用的不多</span><br></pre></td></tr></table></figure><h4 id="本地消息表"><a href="#本地消息表" class="headerlink" title="本地消息表"></a>本地消息表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">基于数据库，由各个系统分别建立自己的消息表，记录数据的发起及接收，并给数据做状态标记，通过</span><br><span class="line">MQ，观察消息的状态来决定事务是否需要回滚</span><br><span class="line">优点：代码量少，数据可以保持最终一致性</span><br><span class="line">缺点：表需要维护，且对高并发支持并不好</span><br></pre></td></tr></table></figure><h4 id="可靠消息最终一致性方案"><a href="#可靠消息最终一致性方案" class="headerlink" title="可靠消息最终一致性方案"></a>可靠消息最终一致性方案</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">常用的方案，借助MQ，由系统发起一条预发送信息，当系统本身的事务执行完毕后再将MQ中的消息变成</span><br><span class="line">确认消息，同样其它系统接收到MQ的消息后开始处理本地事务，根据处理情况决定是否回滚</span><br><span class="line">优点：事务控制灵活</span><br><span class="line">缺点：不稳定因素较多</span><br></pre></td></tr></table></figure><h4 id="最大努力通知方案"><a href="#最大努力通知方案" class="headerlink" title="最大努力通知方案"></a>最大努力通知方案</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">方案尚不成熟，有系统处理完本地事务后发起MQ，而接收方是本地的一套专门处理事务的服务，此服务</span><br><span class="line">调用待接收系统的接口。</span><br><span class="line">优点：事务节点较少</span><br><span class="line">缺点：事务处理的维护成本较高，同时需要多个系统的接口才行</span><br></pre></td></tr></table></figure><p>参考博客：<a href="https://blog.csdn.net/zzhuan_1/article/details/86615421" target="_blank" rel="noopener">分布式事物常见的5种解决方案-详细篇章</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;分布式事务的五种解决方案。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="分布式事务" scheme="https://lastsummer.top/blog/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Docker自定义redis镜像</title>
@@ -128,9 +148,9 @@
       <category term="分布式事务" scheme="https://lastsummer.top/blog/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/"/>
     
     
-      <category term="队列" scheme="https://lastsummer.top/blog/tags/%E9%98%9F%E5%88%97/"/>
-    
       <category term="RabbitMQ" scheme="https://lastsummer.top/blog/tags/RabbitMQ/"/>
+    
+      <category term="队列" scheme="https://lastsummer.top/blog/tags/%E9%98%9F%E5%88%97/"/>
     
   </entry>
   
@@ -453,32 +473,6 @@
     
     
       <category term="Nginx" scheme="https://lastsummer.top/blog/tags/Nginx/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Nginx配置Https遇到的问题</title>
-    <link href="https://lastsummer.top/blog/2019/07/06/Nginx%E9%85%8D%E7%BD%AEHttps%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"/>
-    <id>https://lastsummer.top/blog/2019/07/06/Nginx配置Https遇到的问题/</id>
-    <published>2019-07-06T04:44:44.000Z</published>
-    <updated>2019-07-06T05:50:05.424Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Nginx配置Https-开启例外443端口"><a href="#Nginx配置Https-开启例外443端口" class="headerlink" title="Nginx配置Https 开启例外443端口"></a>Nginx配置Https 开启例外443端口</h3><a id="more"></a><h4 id="Nginx如果未开启SSL模块，配置Https时提示错误"><a href="#Nginx如果未开启SSL模块，配置Https时提示错误" class="headerlink" title="Nginx如果未开启SSL模块，配置Https时提示错误"></a>Nginx如果未开启SSL模块，配置Https时提示错误</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx: [emerg] the &quot;ssl&quot; parameter requires ngx_http_ssl_module in /usr/local/nginx/conf/nginx.conf:37</span><br></pre></td></tr></table></figure><p>nginx缺少http_ssl_module模块，编译安装的时候带上–with-http_ssl_module配置就行了</p><h4 id="Nginx开启SSL模块（重新编译）"><a href="#Nginx开启SSL模块（重新编译）" class="headerlink" title="Nginx开启SSL模块（重新编译）"></a>Nginx开启SSL模块（重新编译）</h4><p>Nginx源码包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/nginx-1.8.1</span><br></pre></td></tr></table></figure></p><p>查看Nginx已安装的模块<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx -V</span><br></pre></td></tr></table></figure></p><p>重新编译安装nginx（必须停止Nginx）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 停止Nginx</span><br><span class="line">/usr/local/nginx/sbin/nginx -s stop</span><br><span class="line"></span><br><span class="line"># 重新编译Nginx</span><br><span class="line">./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module</span><br><span class="line"></span><br><span class="line"># Nginx编译(不要进行make install，否则就是覆盖安装Nginx)</span><br><span class="line">make</span><br><span class="line"></span><br><span class="line"># 然后备份原有已安装好的nginx</span><br><span class="line">cp /usr/local/nginx/sbin/nginx /usr/local/nginx/sbin/nginx.bak</span><br><span class="line"></span><br><span class="line"># 然后将刚刚编译好的nginx覆盖掉原有的nginx（这个时候nginx要停止状态）</span><br><span class="line">cp ./objs/nginx /usr/local/nginx/sbin/</span><br><span class="line"></span><br><span class="line"># 然后启动nginx，仍可以通过命令查看是否已经加入成功</span><br><span class="line">/usr/local/nginx/sbin/nginx -V</span><br></pre></td></tr></table></figure></p><p><img src="/blog/2019/07/06/Nginx配置Https遇到的问题/nginx.png" alt="nginx -V"></p><h4 id="Nginx配置Https"><a href="#Nginx配置Https" class="headerlink" title="Nginx配置Https"></a>Nginx配置Https</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  web.tset.com;# 改为绑定证书的域名</span><br><span class="line">return 301 https://$server_name$request_uri;# 重定向https</span><br><span class="line">&#125;    </span><br><span class="line">server &#123;</span><br><span class="line">    listen       443;</span><br><span class="line">    server_name  web.tset.com;# 改为绑定证书的域名</span><br><span class="line">ssl on;</span><br><span class="line"># Nginx SSL性能调优</span><br><span class="line">ssl_certificate  cert/web.tset.com.pem;# 改为自己申请得到的 crt 文件的名称(新建cert目录)</span><br><span class="line">ssl_certificate_key cert/web.tset.com.key;# 改为自己申请得到的 key 文件的名称(新建cert目录)</span><br><span class="line">ssl_session_timeout 5m;</span><br><span class="line">ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;</span><br><span class="line">ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">ssl_prefer_server_ciphers on;</span><br><span class="line">location / &#123;</span><br><span class="line">root html;</span><br><span class="line">index  index.html index.htm;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>重启Nginx<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure></p><h4 id="阿里云开启服务器443端口及80端口（https默认端口）"><a href="#阿里云开启服务器443端口及80端口（https默认端口）" class="headerlink" title="阿里云开启服务器443端口及80端口（https默认端口）"></a>阿里云开启服务器443端口及80端口（https默认端口）</h4><p>阿里云控制台=》云计算基础服务=》云服务器ECS=》网络和安全=》安全组，没有安全组的创建一个安全组，有的直接选择相应安全组，点击配置规则=》添加安全组规则（把80端口和443端口添加进安全组，授权对象填0.0.0.0/0）<br><img src="/blog/2019/07/06/Nginx配置Https遇到的问题/aliyun.png" alt="阿里云开启服务器443端口"></p><h4 id="阿里云申请SSL证书"><a href="#阿里云申请SSL证书" class="headerlink" title="阿里云申请SSL证书"></a>阿里云申请SSL证书</h4><p><a href="https://jingyan.baidu.com/article/6c67b1d6431a872787bb1ece.html" target="_blank" rel="noopener">教大家怎么申请阿里云的免费版 SSL证书</a></p><p>配置完成！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Nginx配置Https-开启例外443端口&quot;&gt;&lt;a href=&quot;#Nginx配置Https-开启例外443端口&quot; class=&quot;headerlink&quot; title=&quot;Nginx配置Https 开启例外443端口&quot;&gt;&lt;/a&gt;Nginx配置Https 开启例外443端口&lt;/h3&gt;
-    
-    </summary>
-    
-      <category term="Nginx" scheme="https://lastsummer.top/blog/categories/Nginx/"/>
-    
-    
-      <category term="Nginx" scheme="https://lastsummer.top/blog/tags/Nginx/"/>
-    
-      <category term="SSL" scheme="https://lastsummer.top/blog/tags/SSL/"/>
-    
-      <category term="HTTPS" scheme="https://lastsummer.top/blog/tags/HTTPS/"/>
     
   </entry>
   

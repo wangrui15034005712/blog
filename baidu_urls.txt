@@ -1,3 +1,4 @@
+https://lastsummer.top/blog/2020/03/04/分布式事务解决方案/
 https://lastsummer.top/blog/2020/02/29/Docker自定义redis镜像/
 https://lastsummer.top/blog/2020/02/19/Docker常用命令/
 https://lastsummer.top/blog/2020/02/18/Mysql基础函数及行转列/
