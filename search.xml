@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Long类型返回前端损失精度]]></title>
+    <url>%2Fblog%2F2021%2F03%2F25%2FLong%E7%B1%BB%E5%9E%8B%E8%BF%94%E5%9B%9E%E5%89%8D%E7%AB%AF%E6%8D%9F%E5%A4%B1%E7%B2%BE%E5%BA%A6%2F</url>
+    <content type="text"><![CDATA[JavaScript的Number类型最大长度16位置，超过数值0补齐，四舍五入。 注解方式12@JSONField(serializeUsing= ToStringSerializer.class)private Long id; 自定义ObjectMapper123456789101112131415161718@JsonComponentpublic class JsonSerializerManage &#123; @Bean public ObjectMapper jacksonObjectMapper(Jackson2ObjectMapperBuilder builder) &#123; ObjectMapper objectMapper = builder.createXmlMapper(false).build(); //忽略value为null 时 key的输出 objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL); /** * 序列换成json时,将所有的long变成string * 因为js中得数字类型不能包含所有的java long值 */ SimpleModule module = new SimpleModule(); module.addSerializer(Long.class, ToStringSerializer.instance); module.addSerializer(Long.TYPE, ToStringSerializer.instance); objectMapper.registerModule(module); return objectMapper; &#125;&#125; 自定义全局转换器1234567891011121314151617181920212223242526@Configurationpublic class WebMvcConfig implements WebMvcConfigurer &#123; /** * 解决主键Long类型返回给页面时，页面精度丢失的问题,时间格式化返回 * @param converters */ @Override public void configureMessageConverters(List&lt;HttpMessageConverter&lt;?&gt;&gt; converters) &#123; FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter(); //格式化json数据格式 FastJsonConfig fastJsonConfig = new FastJsonConfig(); //序列化时避免精度丢失，转换为字符串 SerializeConfig serializeConfig = SerializeConfig.globalInstance; serializeConfig.put(BigInteger.class, ToStringSerializer.instance); serializeConfig.put(Long.class, ToStringSerializer.instance); serializeConfig.put(Long.TYPE, ToStringSerializer.instance); fastJsonConfig.setSerializeConfig(serializeConfig); fastJsonConfig.setDateFormat(&quot;yyyy-HH-dd HH:mm:ss&quot;); fastConverter.setFastJsonConfig(fastJsonConfig); List&lt;MediaType&gt; fastMediaTypes = new ArrayList&lt;&gt;(); fastMediaTypes.add(MediaType.APPLICATION_JSON_UTF8); fastMediaTypes.add(MediaType.APPLICATION_JSON); fastConverter.setSupportedMediaTypes(fastMediaTypes); converters.add(0,fastConverter); &#125;&#125;]]></content>
+      <categories>
+        <category>JAVA</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[SQL优化]]></title>
     <url>%2Fblog%2F2021%2F02%2F24%2FSQL%E4%BC%98%E5%8C%96%2F</url>
     <content type="text"><![CDATA[SQL优化 1、SQL语句不要使用*，务必指明字段名称2、当只需要一条数据的时候，使用limit 13、通过explain分析低效率的SQL4、如果排序字段没有用到索引，就尽量少排序5、in和exists、not in和not exists区别6、使用合理的分页方式以提高分页的效率7、避免在where子句中对字段进行null值判断，对于null的判断会导致引擎放弃使用索引而进行全表扫描8、不建议使用%前缀模糊查询，会导致索引失效而进行全表扫描9、避免隐式类型转换（传入的参数和字段类型不一致）10、对于联合索引来说，要遵守最左前缀法则11、必要时可以使用force index来强制查询走某个索引12、对查询进行优化，应尽量避免全表扫描，首先应考虑在 where 及 order by 涉及的列上建立索引13、应尽量避免在 where 子句中使用!=、&lt;&gt;、or操作符，否则将引擎放弃使用索引而进行全表扫描14、应尽量避免在 where 子句中对字段进行表达式、函数操作，否则将引擎放弃使用索引而进行全表扫描15、并不是所有索引对查询都有效，当索引列有大量数据重复时（男、女），SQL查询可能不会去利用索引16、一个表的索引数最好不要超过6个17、尽量使用数字型字段，降低查询和连接的性能、增加存储开销18、表的设计合理化，符合三大范式、恰当使用索引19、where提代having，having是在结果集后再过滤总计排序20、使用内置函数提高sql效率21、删除重复数据rowid22、sql语句大写23、使用别名24、truncate提代delete25、较少对表的查询、较少数据库访问、整合无关联简单的数据库访问26、把能排除大量数据的条件写最右边，连接条件写where左边27、sql自右向左解析，把基础表放最右边或者关系表]]></content>
@@ -328,8 +339,8 @@
         <category>hexo</category>
       </categories>
       <tags>
-        <tag>Github</tag>
         <tag>Hexo</tag>
+        <tag>Github</tag>
         <tag>Python</tag>
       </tags>
   </entry>
@@ -595,8 +606,8 @@
       </categories>
       <tags>
         <tag>Git</tag>
-        <tag>Hexo</tag>
         <tag>Nodejs</tag>
+        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
