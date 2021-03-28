@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://lastsummer.top/blog/"/>
-  <updated>2021-03-25T09:29:20.958Z</updated>
+  <updated>2021-03-28T08:28:42.567Z</updated>
   <id>https://lastsummer.top/blog/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>redis实现在线人数统计</title>
+    <link href="https://lastsummer.top/blog/2021/03/28/redis%E5%AE%9E%E7%8E%B0%E5%9C%A8%E7%BA%BF%E4%BA%BA%E6%95%B0%E7%BB%9F%E8%AE%A1/"/>
+    <id>https://lastsummer.top/blog/2021/03/28/redis实现在线人数统计/</id>
+    <published>2021-03-28T08:19:51.000Z</published>
+    <updated>2021-03-28T08:28:42.567Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="redis实现在线人数统计"><a href="#redis实现在线人数统计" class="headerlink" title="redis实现在线人数统计"></a>redis实现在线人数统计<a id="more"></a></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">private static final String ONLINE_USERS = &quot;online&quot;;</span><br><span class="line">@Autowired</span><br><span class="line">private StringRedisTemplate stringRedisTemplate;</span><br><span class="line">/**</span><br><span class="line"> * 添加用户在线信息</span><br><span class="line"> */</span><br><span class="line">public Boolean add(Object userId) &#123;</span><br><span class="line">    return this.stringRedisTemplate.opsForZSet().add(ONLINE_USERS, userId.toString(), Instant.now().toEpochMilli());</span><br><span class="line">&#125;</span><br><span class="line">/**</span><br><span class="line"> * 用户注销后删除用户信息</span><br><span class="line"> */</span><br><span class="line">public void del(Object userId) &#123;</span><br><span class="line">    this.stringRedisTemplate.opsForZSet().remove(ONLINE_USERS, userId);</span><br><span class="line">&#125;</span><br><span class="line">/**</span><br><span class="line"> * 获取一定时间内，在线的用户数量</span><br><span class="line"> */</span><br><span class="line">public Long count(Duration duration) &#123;</span><br><span class="line">    duration = Duration.ofMinutes(10);// 十分钟内的数据</span><br><span class="line">    LocalDateTime now = LocalDateTime.now();</span><br><span class="line">    return this.stringRedisTemplate.opsForZSet().count(ONLINE_USERS, now.minus(duration).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli(), now.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());</span><br><span class="line">&#125;</span><br><span class="line">/**</span><br><span class="line"> * 获取所有在线过的用户数量，不论时间</span><br><span class="line"> */</span><br><span class="line">public Long count() &#123;</span><br><span class="line">    return this.stringRedisTemplate.opsForZSet().zCard(ONLINE_USERS);</span><br><span class="line">&#125;</span><br><span class="line">/**</span><br><span class="line"> * 清除超过一定时间没在线的用户数据</span><br><span class="line"> */</span><br><span class="line">public Long clear(Duration duration) &#123;</span><br><span class="line">    duration = Duration.ofHours(24);//删除一天内未登录的用户</span><br><span class="line">    return this.stringRedisTemplate.opsForZSet().removeRangeByScore(ONLINE_USERS, 0, LocalDateTime.now().minus(duration).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;redis实现在线人数统计&quot;&gt;&lt;a href=&quot;#redis实现在线人数统计&quot; class=&quot;headerlink&quot; title=&quot;redis实现在线人数统计&quot;&gt;&lt;/a&gt;redis实现在线人数统计&lt;/h4&gt;
+    
+    </summary>
+    
+      <category term="Redis" scheme="https://lastsummer.top/blog/categories/Redis/"/>
+    
+    
+      <category term="JAVA" scheme="https://lastsummer.top/blog/tags/JAVA/"/>
+    
+      <category term="Redis" scheme="https://lastsummer.top/blog/tags/Redis/"/>
+    
+      <category term="Zset" scheme="https://lastsummer.top/blog/tags/Zset/"/>
+    
+  </entry>
   
   <entry>
     <title>Long类型返回前端损失精度</title>
@@ -451,28 +477,6 @@
     
     
       <category term="java" scheme="https://lastsummer.top/blog/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Web相关优化</title>
-    <link href="https://lastsummer.top/blog/2019/10/09/Web%E7%9B%B8%E5%85%B3%E4%BC%98%E5%8C%96/"/>
-    <id>https://lastsummer.top/blog/2019/10/09/Web相关优化/</id>
-    <published>2019-10-09T01:24:13.000Z</published>
-    <updated>2019-10-16T07:55:20.813Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Web相关优化"><a href="#Web相关优化" class="headerlink" title="Web相关优化"></a>Web相关优化</h3><a id="more"></a><h4 id="表现层页面的优化"><a href="#表现层页面的优化" class="headerlink" title="表现层页面的优化"></a>表现层页面的优化</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">尽量使用静态HTML页面</span><br><span class="line">不使用FLASH、图片</span><br><span class="line">尽量使用DIV、不将整个页面放入TABLE中</span><br><span class="line">将javascript放入到js文件中</span><br><span class="line">使用IFrame嵌套另一个页面，和主页面分开加载，不影响页面加载速度</span><br><span class="line">CSS放在头部、JS脚本放在底部加载</span><br><span class="line">对于访问量高的页面，设计缓存方案，经常访问的数据缓存起来</span><br><span class="line">优化重要的公共模块、高度集成提示信息</span><br></pre></td></tr></table></figure><h4 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">redis分布式缓存</span><br><span class="line">ehcache、oscache缓存</span><br><span class="line">hibernate二级缓存</span><br><span class="line">前端静态js、css、样式文件缓存</span><br></pre></td></tr></table></figure><h4 id="数据库的优化"><a href="#数据库的优化" class="headerlink" title="数据库的优化"></a>数据库的优化</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">数据库的优化(读写分离、分区、分表、缓存、索引、视图、存储过程等)</span><br><span class="line">sql优化</span><br></pre></td></tr></table></figure><h4 id="服务器的优化"><a href="#服务器的优化" class="headerlink" title="服务器的优化"></a>服务器的优化</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">外部环境优化：</span><br><span class="line">（1）java虚拟机的优化、尽量采用最新的版本、设置java虚拟机的内存参数</span><br><span class="line">服务器自身的优化：</span><br><span class="line">（1）Tomcat 例如：设置线程数量、JSP编译速度、防止恶意攻击、压缩</span><br><span class="line"> 1、优化Tomcat的JVM环境内存优化</span><br><span class="line">2、优化tomcat线程池</span><br><span class="line">3、禁用DNS查询 enableLookups=&quot;false&quot;</span><br><span class="line">4、session过期时间</span><br><span class="line">5、Apr插件提高Tomcat性能</span><br><span class="line">6、压缩</span><br><span class="line">7、文字转码UTF-8</span><br><span class="line">（2）Nginx </span><br><span class="line">1、expires缓存模块、网页缓存</span><br><span class="line">2、gzip压缩模块</span><br><span class="line">3、隐藏版本号</span><br><span class="line">4、日志切割</span><br><span class="line">5、设置连接超时、进程数、配置防盗链</span><br><span class="line">6、动静分离</span><br><span class="line">7、代理http跳转https这块配置  </span><br><span class="line">8、nginx添加用户组</span><br><span class="line">9、最多可以打开文件数</span><br></pre></td></tr></table></figure><h4 id="硬件优化"><a href="#硬件优化" class="headerlink" title="硬件优化"></a>硬件优化</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">负载均衡：</span><br><span class="line">是大型网站解决高负荷访问和大量并发请求采用的最终解决办法</span><br><span class="line">与图片服务器分离：</span><br><span class="line">设置独立的图片服务器，可以降低web应用的服务器的压力，保证系统不会因为图片问题二奔溃(优化)</span><br></pre></td></tr></table></figure><h4 id="减少外部http协议"><a href="#减少外部http协议" class="headerlink" title="减少外部http协议"></a>减少外部http协议</h4><h4 id="CDN加速"><a href="#CDN加速" class="headerlink" title="CDN加速"></a>CDN加速</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CDN的全称是Content Delivery Network，即内容分发网络。其基本思路是尽可能避开互联网上有可能影响数据传输速度和稳定性的瓶颈和环节，使内容传输的更快、更稳定。</span><br><span class="line">简单的来说，就是把原服务器上数据复制到其他服务器上，用户访问时，那台服务器近访问到的就是那台服务器上的数据。CDN加速优点是成本低，速度快。适合访问量比较大的网站。</span><br></pre></td></tr></table></figure><h4 id="echarts简单优化？"><a href="#echarts简单优化？" class="headerlink" title="echarts简单优化？"></a>echarts简单优化？</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">模块复用</span><br><span class="line">缓存</span><br><span class="line">关闭动画（3D）</span><br><span class="line">SQL优化</span><br><span class="line">可选择 dataZoom</span><br><span class="line">type为line时可选择sampling</span><br><span class="line">懒加载（逐步加载）echarts模块或图片lazyload</span><br><span class="line">清理不用的图表、clear和dispose</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Web相关优化&quot;&gt;&lt;a href=&quot;#Web相关优化&quot; class=&quot;headerlink&quot; title=&quot;Web相关优化&quot;&gt;&lt;/a&gt;Web相关优化&lt;/h3&gt;
-    
-    </summary>
-    
-      <category term="WEB" scheme="https://lastsummer.top/blog/categories/WEB/"/>
-    
-    
-      <category term="web" scheme="https://lastsummer.top/blog/tags/web/"/>
     
   </entry>
   

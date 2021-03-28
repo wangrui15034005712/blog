@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[redis实现在线人数统计]]></title>
+    <url>%2Fblog%2F2021%2F03%2F28%2Fredis%E5%AE%9E%E7%8E%B0%E5%9C%A8%E7%BA%BF%E4%BA%BA%E6%95%B0%E7%BB%9F%E8%AE%A1%2F</url>
+    <content type="text"><![CDATA[redis实现在线人数统计123456789101112131415161718192021222324252627282930313233343536private static final String ONLINE_USERS = &quot;online&quot;;@Autowiredprivate StringRedisTemplate stringRedisTemplate;/** * 添加用户在线信息 */public Boolean add(Object userId) &#123; return this.stringRedisTemplate.opsForZSet().add(ONLINE_USERS, userId.toString(), Instant.now().toEpochMilli());&#125;/** * 用户注销后删除用户信息 */public void del(Object userId) &#123; this.stringRedisTemplate.opsForZSet().remove(ONLINE_USERS, userId);&#125;/** * 获取一定时间内，在线的用户数量 */public Long count(Duration duration) &#123; duration = Duration.ofMinutes(10);// 十分钟内的数据 LocalDateTime now = LocalDateTime.now(); return this.stringRedisTemplate.opsForZSet().count(ONLINE_USERS, now.minus(duration).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli(), now.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());&#125;/** * 获取所有在线过的用户数量，不论时间 */public Long count() &#123; return this.stringRedisTemplate.opsForZSet().zCard(ONLINE_USERS);&#125;/** * 清除超过一定时间没在线的用户数据 */public Long clear(Duration duration) &#123; duration = Duration.ofHours(24);//删除一天内未登录的用户 return this.stringRedisTemplate.opsForZSet().removeRangeByScore(ONLINE_USERS, 0, LocalDateTime.now().minus(duration).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());&#125;]]></content>
+      <categories>
+        <category>Redis</category>
+      </categories>
+      <tags>
+        <tag>JAVA</tag>
+        <tag>Redis</tag>
+        <tag>Zset</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Long类型返回前端损失精度]]></title>
     <url>%2Fblog%2F2021%2F03%2F25%2FLong%E7%B1%BB%E5%9E%8B%E8%BF%94%E5%9B%9E%E5%89%8D%E7%AB%AF%E6%8D%9F%E5%A4%B1%E7%B2%BE%E5%BA%A6%2F</url>
     <content type="text"><![CDATA[JavaScript的Number类型最大长度16位置，超过数值0补齐，四舍五入。 注解方式12@JSONField(serializeUsing= ToStringSerializer.class)private Long id; 自定义ObjectMapper123456789101112131415161718@JsonComponentpublic class JsonSerializerManage &#123; @Bean public ObjectMapper jacksonObjectMapper(Jackson2ObjectMapperBuilder builder) &#123; ObjectMapper objectMapper = builder.createXmlMapper(false).build(); //忽略value为null 时 key的输出 objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL); /** * 序列换成json时,将所有的long变成string * 因为js中得数字类型不能包含所有的java long值 */ SimpleModule module = new SimpleModule(); module.addSerializer(Long.class, ToStringSerializer.instance); module.addSerializer(Long.TYPE, ToStringSerializer.instance); objectMapper.registerModule(module); return objectMapper; &#125;&#125; 自定义全局转换器1234567891011121314151617181920212223242526@Configurationpublic class WebMvcConfig implements WebMvcConfigurer &#123; /** * 解决主键Long类型返回给页面时，页面精度丢失的问题,时间格式化返回 * @param converters */ @Override public void configureMessageConverters(List&lt;HttpMessageConverter&lt;?&gt;&gt; converters) &#123; FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter(); //格式化json数据格式 FastJsonConfig fastJsonConfig = new FastJsonConfig(); //序列化时避免精度丢失，转换为字符串 SerializeConfig serializeConfig = SerializeConfig.globalInstance; serializeConfig.put(BigInteger.class, ToStringSerializer.instance); serializeConfig.put(Long.class, ToStringSerializer.instance); serializeConfig.put(Long.TYPE, ToStringSerializer.instance); fastJsonConfig.setSerializeConfig(serializeConfig); fastJsonConfig.setDateFormat(&quot;yyyy-HH-dd HH:mm:ss&quot;); fastConverter.setFastJsonConfig(fastJsonConfig); List&lt;MediaType&gt; fastMediaTypes = new ArrayList&lt;&gt;(); fastMediaTypes.add(MediaType.APPLICATION_JSON_UTF8); fastMediaTypes.add(MediaType.APPLICATION_JSON); fastConverter.setSupportedMediaTypes(fastMediaTypes); converters.add(0,fastConverter); &#125;&#125;]]></content>
@@ -339,8 +352,8 @@
         <category>hexo</category>
       </categories>
       <tags>
-        <tag>Hexo</tag>
         <tag>Github</tag>
+        <tag>Hexo</tag>
         <tag>Python</tag>
       </tags>
   </entry>
@@ -606,8 +619,8 @@
       </categories>
       <tags>
         <tag>Git</tag>
-        <tag>Nodejs</tag>
         <tag>Hexo</tag>
+        <tag>Nodejs</tag>
       </tags>
   </entry>
   <entry>
