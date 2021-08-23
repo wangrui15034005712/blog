@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[阿里云部署docker网站]]></title>
+    <url>%2Fblog%2F2021%2F08%2F23%2F%E9%98%BF%E9%87%8C%E4%BA%91%E9%83%A8%E7%BD%B2docker%E7%BD%91%E7%AB%99%2F</url>
+    <content type="text"><![CDATA[阿里云部署docker网站停止阿里云服务更换系统1、进入云服务器ECS面板2、实例详情3、停止服务4、更换操作系统 centos8.4-64 配置docker环境1234567891011121314# 阿里云docker环境配置 https://developer.aliyun.com/article/110806 curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun# 查看版本docker version# 配置阿里云镜像加速器sudo mkdir -p /etc/dockersudo tee /etc/docker/daemon.json &lt;&lt;-&apos;EOF&apos;&#123; &quot;registry-mirrors&quot;: [&quot;https://5ww35ti0.mirror.aliyuncs.com&quot;]&#125;EOFsudo systemctl daemon-reloadsudo systemctl restart dockersudo systemctl enable docker docker配置 nginx ssl12345678910111213141516171819202122# nginx文件路径配置mkdir -p /root/docker/nginx/confmkdir -p /root/docker/nginx/conf.dmkdir -p /root/docker/nginx/htmlmkdir -p /root/docker/nginx/logsmkdir -p /root/docker/nginx/cert# 启动nginx容器，并复制容器配置到本地目录下docker run --name nginx -d -p 80:80 nginxdocker cp nginx:/etc/nginx/conf.conf /root/docker/nginx/conf/docker cp nginx:/etc/nginx/default.conf /root/docker/nginx/conf.d/docker cp nginx:/usr/share/nginx/html/index.html /root/docker/nginx/html/# 关闭删除 nginx 容器docker psdocker stop ..docker rm ..# 修改 default.conf、conf.d及index.html 启动docker run --name nginx -itd -m 100m --restart=always -p 80:80 -p 443:443 \-v /root/docker/nginx/html:/usr/share/nginx/html \-v /root/docker/nginx/conf/nginx.conf:/etc/nginx/nginx.conf \-v /root/docker/nginx/logs:/var/log/nginx \-v /root/docker/nginx/conf.d:/etc/nginx/conf.d \-v /root/docker/nginx/cert:/etc/nginx/cert nginx:latest]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+        <tag>nginx</tag>
+        <tag>ssl</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[redis限流]]></title>
     <url>%2Fblog%2F2021%2F04%2F03%2Fredis%E9%99%90%E6%B5%81%2F</url>
     <content type="text"><![CDATA[redis Zset限流。 注解123456789101112131415161718192021@Target(ElementType.METHOD)@Retention(RetentionPolicy.RUNTIME)@Documentedpublic @interface IpLimiter &#123; /** * 限流ip */ String ipAdress() default &quot;&quot;; /** * 单位时间限制通过请求数 测试值10 实现自行修改 */ long limit() default 10; /** * 单位时间，单位秒 测试值10 实现自行修改 */ long time() default 10; /** * 达到限流提示语 */ String message();&#125; aop实现拦截1234567891011121314151617181920212223242526272829303132333435363738@Aspect@Componentpublic class IpLimterHandler &#123; @Autowired RedisTemplate redisTemplate; @Around(&quot;@annotation(ipLimiter)&quot;) public Object around(ProceedingJoinPoint proceedingJoinPoint, IpLimiter ipLimiter) throws Throwable &#123; Signature signature = proceedingJoinPoint.getSignature(); if (!(signature instanceof MethodSignature)) &#123; throw new IllegalArgumentException(&quot;the Annotation @IpLimter must used on method!&quot;); &#125; /** * 获取注解参数 限流模块IP */ HttpServletRequest request = HttpContextUtils.getHttpServletRequest(); String limitIp = IPUtils.getIpAddr(request); String methodName = signature.getName();; // 限流阈值 long limitTimes = ipLimiter.limit(); // 限流超时时间 long expireTime = ipLimiter.time(); // 限流提示语 String message = ipLimiter.message(); Long currentTime = new Date().getTime(); /*构建限流查询的key值*/ String keys = &quot;limit&quot; + &quot;-&quot; + limitIp + &quot;-&quot; + methodName; Long time = expireTime * 1000; if (redisTemplate.hasKey(keys)) &#123; // intervalTime是限流的时间 1分钟 Integer count = redisTemplate.opsForZSet().rangeByScore(keys, currentTime - time, currentTime).size(); if (count != null &amp;&amp; count &gt; limitTimes) &#123; throw new WebException(message); &#125; &#125; redisTemplate.opsForZSet().add(keys, IdWorker.getIdStr(), currentTime); return proceedingJoinPoint.proceed(); &#125;&#125;]]></content>
@@ -564,8 +577,8 @@
         <category>SOA</category>
       </categories>
       <tags>
-        <tag>Zookeeper</tag>
         <tag>Dubbo</tag>
+        <tag>Zookeeper</tag>
         <tag>Maven</tag>
       </tags>
   </entry>
